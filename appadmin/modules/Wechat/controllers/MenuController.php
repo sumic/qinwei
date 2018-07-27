@@ -1,23 +1,24 @@
 <?php
 /**
  * =======================================================
- * @Description :菜单设置控制器
+ * @Description : wechat menu controller
  * =======================================================
  * @copyright Copyright (c) 2018 成都勤为科技有限公司
  * @link: http://www.qinweigroup.cn
  * @author: sumic <sumic515@gmail.com>
- * @date: 2018年4月15日
+ * @date: 2018年7月27日 下午4:49:57
  * @version: v1.0.0
  */
 
-namespace appadmin\modules\Menu\controllers;
+namespace appadmin\modules\Wechat\controllers;
 
+use Yii;
 use appadmin\modules\AppadminController;
 
-class MainController extends AppadminController{
+class MenuController extends AppadminController{
     
     public function actionIndex(){
-        $data = $this->getBlock()->getLastData();
+        var_dump('test');exit;
         return $this->render($this->action->id,$data['params']);
     }
     

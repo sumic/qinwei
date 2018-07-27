@@ -63,9 +63,6 @@ class BaseController extends Controller{
     /**
      * @property $view|string , (only) view file name ,by this module id, this controller id , generate view relative path.
      * @property $params|Array,
-     * 这个是fecshop重写的render函数，根据fecshop的多模板机制
-     * 首先在高级别的模板中找view文件，如果找不到，按照模板路径优先级依次查找
-     * 直到找到view'文件。
      * 1.get exist view file from mutil theme by theme protity.
      * 2.get content by yii view compontent  function renderFile()  ,
      */
