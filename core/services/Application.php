@@ -17,8 +17,6 @@ use yii\base\InvalidConfigException;
 
 /**
  * 此对象就是Yii::$service,通过魔术方法__get ， 得到服务对象，服务对象是单例模式。
- * @author Terry Zhao <2358269014@qq.com>
- * @since 1.0
  */
 class Application
 {

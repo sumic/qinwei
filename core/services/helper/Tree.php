@@ -15,6 +15,7 @@ namespace core\services\helper;
 use Yii;
 use Closure;
 use core\services\Service;
+use yii\helpers\ArrayHelper;
 
 /**
  * Class Tree 通用的树型类，可以生成任何树型结构
@@ -120,6 +121,9 @@ class Tree extends Service
     {
         $array = [];
         if (is_array($this->array)) {
+            //var_dump($this->array);
+            //$this->array = ArrayHelper::multisort($this->array, 'sort');
+            //var_dump($this->array);exit;
             foreach ($this->array as $key => $value) {
                 if ($value[$this->parentIdName] == $id) {
                     $array[$key] = $value;

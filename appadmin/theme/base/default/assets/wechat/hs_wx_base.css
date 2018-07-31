@@ -661,11 +661,20 @@ body{ font-size: 14px; font-family: "微软雅黑"; }
     background-repeat: no-repeat;
     padding-left: 43px!important;
 }
-.hs-menu-li{ line-height: 50px; position: relative; float: left; text-align: center; border-left: 1px solid #E7E7EB; }
+.hs-menu-li {
+	line-height: 50px;
+	height: 50px;
+	position: relative; 
+	float: left; 
+	text-align: center; 
+	border-left: 1px solid #E7E7EB; 
+}
 .hs-menu-li:nth-child(4){ border: none }
 .hs-menu-item-add{ float: none; width: auto; overflow: hidden; }
 .hs-menu-item{  }
 .hs-menu-a, .hs-nocan, .hs-sub-inner{
+	line-height: 50px;
+	height: 50px;
 	display: block;
     width: auto;
     overflow: hidden;
@@ -782,13 +791,11 @@ body{ font-size: 14px; font-family: "微软雅黑"; }
 .hs-menuright-ipt{
     display: inline-block;
     position: relative;
-    height: 30px;
-    line-height: 30px;
+    height: 33px;
+    line-height: 33px;
     vertical-align: middle;
-    width: 278px;
+    width: 255px;
     font-size: 14px;
-    padding: 0 10px;
-    border: 1px solid #e7e7eb;
     box-shadow: none;
     -moz-box-shadow: none;
     -webkit-box-shadow: none;
@@ -809,6 +816,8 @@ body{ font-size: 14px; font-family: "微软雅黑"; }
 .hs-personality-conditions{ overflow: hidden }
 .hs-matchrule-div{ float: left; margin-right: 10px }
 /* 自定义菜单个性筛选条件 end */
-
-
+li[class*=item-] {
+    border: 0px solid #DDD;
+    border-left-width: 0px;
+}
 /* 自定义菜单  end*/

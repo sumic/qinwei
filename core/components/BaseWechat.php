@@ -1,20 +1,21 @@
 <?php
-namespace core\services;
+namespace callmez\wechat\sdk\components;
 
 use DOMDocument;
 use DOMElement;
 use DOMText;
 use Yii;
+use yii\base\Event;
+use yii\base\Component;
 use yii\web\HttpException;
 use yii\base\InvalidParamException;
-use core\services\Service;
 
 /**
  * 微信SDK操作基类
  *
  * @package callmez\wechat\sdk
  */
-class Wechat extends Service
+abstract class BaseWechat extends Component
 {
     /**
      * Access Token更新后事件
@@ -47,6 +48,17 @@ class Wechat extends Service
      * @var array
      */
     public $lastError;
+
+    /**
+     * 请求微信服务器获取AccessToken
+     * 必须返回以下格式内容
+     * [
+     *     'access_token => 'xxx',
+     *     'expirs_in' => 7200
+     * ]
+     * @return array|bool
+     */
+    abstract protected function requestAccessToken();
 
     /**
      * 获取AccessToken
@@ -89,6 +101,22 @@ class Wechat extends Service
     }
 
     /**
+     * 请求微信服务器获取JsApiTicket
+     * 必须返回以下格式内容
+     * [
+     *     'ticket => 'xxx',
+     *     'expirs_in' => 7200
+     * ]
+     * @return array|bool
+     */
+    abstract protected function requestJsApiTicket();
+
+    /**
+     * 生成js 必要的config
+     */
+    abstract public function jsApiConfig(array $config = []);
+
+    /**
      * 获取js api ticket
      * 超时后会自动重新获取JsApiTicket并触发self::EVENT_AFTER_JS_API_TICKET_UPDATE事件
      * @param bool $force 是否强制获取
@@ -121,6 +149,12 @@ class Wechat extends Service
     {
         $this->_jsApiTicket = $jsApiTicket;
     }
+
+    /**
+     * 创建消息加密类
+     * @return mixed
+     */
+    abstract protected function createMessageCrypt();
 
     /**
      * 设置消息加密处理类
@@ -242,6 +276,13 @@ class Wechat extends Service
     }
 
     /**
+     * 微信数据缓存基本键值
+     * @param $name
+     * @return string
+     */
+    abstract protected function getCacheKey($name);
+
+    /**
      * 缓存微信数据
      * @param $name
      * @param $value
@@ -338,6 +379,15 @@ class Wechat extends Service
             ]);
         }, $this->httpBuildQuery($url, $options), $postOptions);
     }
+
+    /**
+     * 解析微信请求响应内容
+     * @param callable $callable Http请求主体函数
+     * @param string $url Api地址
+     * @param array|string|null $postOptions Api地址一般所需要的post参数
+     * @return array|bool
+     */
+    abstract public function parseHttpRequest(callable $callable, $url, $postOptions = null);
 
     /**
      * Http基础库 使用该库请求微信服务器

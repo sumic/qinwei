@@ -210,17 +210,18 @@ class AdminUser extends Service
     
     public function logout()
     {
+        Yii::$app->user->logout();
+    }
+    
+    public function logip()
+    {
+        // 用户登陆成功修改登录时间
         $uid = \Yii::$app->user->id;
-        // 用户退出修改登录时间
         $admin = $this->getByPrimaryKey($uid);
-        
         if ($admin) {
             $admin->last_time = time();
             $admin->last_ip = CFunc::get_real_ip();
             $admin->save();
         }
-        //var_dump(\Yii::$service->admin->role->getAllRoleArray(false));
-        //var_dump($admin->role);exit;
-        Yii::$app->user->logout();
     }
 }

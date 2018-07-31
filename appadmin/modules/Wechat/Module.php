@@ -29,16 +29,10 @@ class Module extends AppadminModule
             $this->controllerNamespace = $nameSpace . '\\controllers';
             // 设置模块block namespace的文件路径
             $this->blockNamespace = $nameSpace . '\\block';
-            // console controller
-            //} elseif (Yii::$app instanceof \yii\console\Application) {
-            //$this->controllerNamespace = $nameSpace . '\\console\\controllers';
-            //$this->blockNamespace = $nameSpace . '\\console\\block';
         }
-        //$this->_currentDir			= 	__DIR__ ;
-        //$this->_currentNameSpace	=   __NAMESPACE__;
         
         // 设置该模块的view(theme)的默认layout文件。
-        //Yii::$service->page->theme->layoutFile = 'home.php';
+        //Yii::$service->page->theme->layoutFile = 'main.php';
         parent::init();
     }
 }

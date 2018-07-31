@@ -50,6 +50,9 @@ class AdminUserLogin extends Service
         if (!empty($errors)) {
             Yii::$service->helper->errors->addByModelErrors($errors);
         }
+        if($loginStatus){
+            \Yii::$service->admin->user->logip();
+        }
         return $loginStatus;
     }
     

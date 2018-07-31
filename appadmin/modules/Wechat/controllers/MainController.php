@@ -1,7 +1,7 @@
 <?php
 /**
  * =======================================================
- * @Description : wechat menu controller
+ * @Description : wechat main controller
  * =======================================================
  * @copyright Copyright (c) 2018 成都勤为科技有限公司
  * @link: http://www.qinweigroup.cn
@@ -15,9 +15,11 @@ namespace appadmin\modules\Wechat\controllers;
 use Yii;
 use appadmin\modules\AppadminController;
 
-class MenuController extends AppadminController{
+class MainController extends AppadminController{
     
     public function actionIndex(){
+        var_dump(\Yii::$service->mpwechat->sdk);exit;
+        $data  = $this->getBlock()->getLastData();
         return $this->render($this->action->id);
     }
     

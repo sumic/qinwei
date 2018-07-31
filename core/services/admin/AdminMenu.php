@@ -37,6 +37,7 @@ class AdminMenu extends Service
         ])
         ->indexBy('id')
         ->asArray()
+        ->orderBy('sort Asc')
         ->all();
         return $result;
     }
