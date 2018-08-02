@@ -5,10 +5,21 @@ WechatAsset::register($this);
 
 $this->title = '自定义菜单管理';
 ?>
-<section class="vbox" style="background: #fff">
-	<section class="scrollable wrapper">
-		<div class="hs-ui clearfix">
-			<div class="hs-ph-area">
+<div class="col-xs-12 col-sm-3" style="min-width: 375px">
+	<div class="widget-box">
+		<div class="widget-header">
+			<h4 class="widget-title">预览</h4>
+
+			<div class="widget-toolbar">
+				<a href="#" data-action="collapse"> <i
+					class="ace-icon fa fa-chevron-up"></i>
+				</a>
+			</div>
+		</div>
+
+		<div class="widget-body" style="display: block;min-height:530px">
+			<div class="widget-main clearfix">
+                <div class="hs-ph-area">
 				<div class="hs-ph-view">
 					<div class="hs-ph-hd"></div>
 					<div class="hs-ph-bd">
@@ -20,7 +31,26 @@ $this->title = '自定义菜单管理';
 					</div>
 				</div>
 			</div>
-			<div class="hs-ph-edit">
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="col-xs-12 col-sm-8" style="min-width:800px">
+	<div class="widget-box">
+		<div class="widget-header">
+			<h4 class="widget-title">菜单信息</h4>
+
+			<div class="widget-toolbar">
+				<a href="#" data-action="collapse"> <i
+					class="ace-icon fa fa-chevron-up"></i>
+				</a>
+			</div>
+		</div>
+
+		<div class="widget-body" style="display: block;">
+			<div class="widget-main clearfix">
+                <div class="hs-ph-edit">
 				<div class="hs-menuright-box">
 					<div class="hs-menuright-hd">
 						<div class="hs-menuright-row">
@@ -191,14 +221,15 @@ $this->title = '自定义菜单管理';
 					</div>
 				</div>
 			</div>
+			</div>
 		</div>
-		<div class="hs-clearfix"
-			style="padding-left: 332px; padding-top: 30px">
-			<button class="btn btn-success " type="button" id="hsSubmitSave">保存</button>
-			<button class="btn btn-info " type="button" id="hsSubmitSyncWx">生成微信菜单</button>
-		</div>
-	</section>
-</section>
+	</div>
+</div>
+
+<div class="col-xs-12 col-sm-8" style="margin:10px auto;">
+	<button class="btn btn-success " type="button" id="hsSubmitSave">保存</button>
+    <button class="btn btn-info " type="button" id="hsSubmitSyncWx">生成微信菜单</button> 
+</div>
 <?php JsBlock::begin()?>
 <script>
     var data = null;
@@ -240,7 +271,7 @@ $this->title = '自定义菜单管理';
             var newv = JSON.stringify(hsGetCurrentAllData());
             console.log(JSON.stringify(newv));
 
-            $.post('/admin/mpbase/savecustommenu',
+            $.post('/wechat/menu/create',
                 {
                     newv : newv,
                     menuid : menuid

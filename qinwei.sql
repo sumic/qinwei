@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: 2018-07-31 17:37:21
--- 服务器版本： 5.7.22-0ubuntu18.04.1
+-- Generation Time: 2018-08-01 17:57:05
+-- 服务器版本： 5.7.23-0ubuntu0.18.04.1
 -- PHP Version: 7.2.7-0ubuntu0.18.04.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -399,7 +399,12 @@ INSERT INTO `cw_admin_log` (`id`, `type`, `controller`, `action`, `url`, `index`
 (377, 1, 'menu/main', 'create', '/menu/main/create', 'id=35', '{\"id\":\"\",\"pid\":\"0\",\"menu_name\":\"群发消息\",\"icons\":\"menu-icon fa fa-caret-right\",\"url\":\"wechat/message/index\",\"status\":\"1\",\"sort\":\"100\"}', 1533008699, 1),
 (378, 2, 'menu/main', 'update', '/menu/main/update', 'id=35', '{\"id\":\"35\",\"pid\":\"29\",\"menu_name\":\"群发消息\",\"icons\":\"menu-icon fa fa-caret-right\",\"url\":\"wechat/message/index\",\"status\":\"1\",\"sort\":\"100\"}', 1533008727, 1),
 (379, 1, 'menu/main', 'create', '/menu/main/create', 'id=36', '{\"id\":\"\",\"pid\":\"29\",\"menu_name\":\"模板消息管理\",\"icons\":\"menu-icon fa fa-caret-right\",\"url\":\"wechat/template/index\",\"status\":\"1\",\"sort\":\"100\"}', 1533008824, 1),
-(380, 1, 'roleitem/main', 'create', '/roleitem/main/create', 'id=', '{\"type\":\"2\",\"id\":\"\",\"name\":\"\",\"newName\":\"wechat/main/index\",\"description\":\"微信公众号管理-公众号列表\",\"rule_name\":\"\"}', 1533017306, 1);
+(380, 1, 'roleitem/main', 'create', '/roleitem/main/create', 'id=', '{\"type\":\"2\",\"id\":\"\",\"name\":\"\",\"newName\":\"wechat/main/index\",\"description\":\"微信公众号管理-公众号列表\",\"rule_name\":\"\"}', 1533017306, 1),
+(381, 2, 'menu/main', 'update', '/menu/main/update', 'id=29', '{\"id\":\"29\",\"pid\":\"0\",\"menu_name\":\"微信公众号\",\"icons\":\"menu-icon fa fa-weixin\",\"url\":\"\",\"status\":\"1\",\"sort\":\"3\"}', 1533088388, 1),
+(382, 2, 'menu/main', 'update', '/menu/main/update', 'id=31', '{\"id\":\"31\",\"pid\":\"29\",\"menu_name\":\"公众号管理\",\"icons\":\"menu-icon fa fa-caret-right\",\"url\":\"wechat/main/index\",\"status\":\"1\",\"sort\":\"1\"}', 1533088413, 1),
+(383, 1, 'roleitem/main', 'create', '/roleitem/main/create', 'id=', '{\"type\":\"2\",\"id\":\"\",\"name\":\"\",\"newName\":\"wechat/main/search\\t\",\"description\":\"公众号管理 - 数据查询\",\"rule_name\":\"\"}', 1533089442, 1),
+(384, 1, 'roleitem/main', 'create', '/roleitem/main/create', 'id=', '{\"type\":\"2\",\"id\":\"\",\"name\":\"\",\"newName\":\"wechat/main/add\\t\",\"description\":\"公众号管理 - 数据添加\",\"rule_name\":\"\"}', 1533094203, 1),
+(385, 2, 'roleitem/main', 'update', '/roleitem/main/update', 'id=', '{\"type\":\"2\",\"id\":\"90\",\"name\":\"wechat/main/add\",\"newName\":\"wechat/main/create\",\"description\":\"公众号管理 - 数据添加\"}', 1533094214, 1);
 
 -- --------------------------------------------------------
 
@@ -441,9 +446,9 @@ INSERT INTO `cw_admin_menu` (`id`, `pid`, `menu_name`, `icons`, `url`, `status`,
 (26, 0, '上传管理', 'menu-icon fa fa-upload', '', 1, 2, 1527578316, 1, 1533001674, 1),
 (27, 26, '文件列表 ', 'menu-icon fa fa-caret-right', 'uploads/main/index', 1, 100, 1527578343, 1, 1527658493, 1),
 (28, 23, 'TAG管理', 'menu-icon fa fa-caret-right', 'cms/tags/index', 1, 100, 1528342007, 1, 1528342007, 1),
-(29, 0, '微信公众号管理', 'menu-icon fa fa-weixin', '', 1, 3, 1528947457, 1, 1533001701, 1),
+(29, 0, '微信公众号', 'menu-icon fa fa-weixin', '', 1, 3, 1528947457, 1, 1533088388, 1),
 (30, 29, '自定义菜单', 'menu-icon fa fa-caret-right', 'wechat/menu/index', 1, 2, 1528975617, 1, 1533001777, 1),
-(31, 29, '公众号列表', 'menu-icon fa fa-caret-right', 'wechat/main/index', 1, 1, 1532942401, 1, 1533001772, 1),
+(31, 29, '公众号管理', 'menu-icon fa fa-caret-right', 'wechat/main/index', 1, 1, 1532942401, 1, 1533088413, 1),
 (32, 29, '自动回复', 'menu-icon fa fa-caret-right', 'wechat/replay/index', 1, 3, 1532942535, 1, 1533001787, 1),
 (33, 29, '素材管理', 'menu-icon fa fa-caret-right', 'wechat/material/index', 1, 4, 1532944068, 1, 1533004250, 1),
 (34, 29, '微信用户管理', 'menu-icon fa fa-caret-right', 'wechat/users/index', 1, 5, 1533003861, 1, 1533003899, 1),
@@ -484,7 +489,7 @@ CREATE TABLE `cw_admin_user` (
 --
 
 INSERT INTO `cw_admin_user` (`id`, `username`, `email`, `face`, `role`, `status`, `auth_key`, `password_hash`, `password_reset_token`, `access_token`, `access_token_created_at`, `allowance`, `allowance_updated_at`, `last_time`, `last_ip`, `address`, `created_at`, `created_id`, `updated_at`, `updated_id`) VALUES
-(1, 'super', 'super@admin.com', '/avatars/image/20180614/152890601224415620.jpg', 'admin', 10, 'gKkLFMdB2pvIXOFNpF_Aeemvdf1j0YUM', '$2y$13$Nuf1mzDRoCMxrWI.rIjENu20QshJG41smdEeHFHxq0qdmS99YytHy', '5vLaPpUS-I-XxJaoGP-GZDk474WdnaK3_1469073015', 'BriM4BZIRi8mlVJ74rVmiVpvVbR3Xukp', 1532662856, 0, 0, 1533029819, '110.184.147.169', '湖南省,岳阳市,岳阳县', 1525678041, 1, 1533029819, 1),
+(1, 'super', 'super@admin.com', '/avatars/image/20180614/152890601224415620.jpg', 'admin', 10, 'gKkLFMdB2pvIXOFNpF_Aeemvdf1j0YUM', '$2y$13$Nuf1mzDRoCMxrWI.rIjENu20QshJG41smdEeHFHxq0qdmS99YytHy', '5vLaPpUS-I-XxJaoGP-GZDk474WdnaK3_1469073015', 'BriM4BZIRi8mlVJ74rVmiVpvVbR3Xukp', 1532662856, 0, 0, 1533114449, '127.0.0.1', '湖南省,岳阳市,岳阳县', 1525678041, 1, 1533114449, 1),
 (2, 'admin', 'admin@admin.com', '', 'admin', 10, 'tArp_Kv4z1JlzBUZYCL33N24AZL-_77p', '$2y$13$RNrJ7GK1A5iZRxBpho6sbeCJKfNRxzy5axCeRjZLqvA5W6RuVYBRW', 'CgScbf1E96N3pqH01b0mVi_Z58j8QsRV_1501916190', '', 0, 0, 0, 1525678041, '127.0.0.1', '湖南省,岳阳市,岳阳县', 1525678041, 1, 1525678041, 1),
 (3, 'feeling515', 'test@test.com', '', 'menu_editor', 10, '7kaT_2heHfFPOGiASRIYWZVh7xkf10X3', '$2y$13$7wtV4r4YPg65GG.jIW5dZupKvQ7vGMcemO2qgAPxE.nSzyeh1K4am', '7rUwl7cfvDv7Ph06w1uVRLdRJf_wAxpM_1532586198', '', 0, 0, 0, 1533009122, '110.184.144.249', '', 1525961352, 1, 1533009122, 3),
 (4, 'test', 'test@test123.com', '', 'admin', 10, 'hCAsj5qx8HNvPlyyOGKvCQ7cTKcAcmmP', '$2y$13$IvTIE.J/QUfCD4tyLb6FcOTsC/mILvH.fv61rxKXedM1vNQIV26dS', 'tQL-qFx7dYDuXtJBeiECJ7n4dYeSyCLg_1532673226', '', 0, 0, 0, 0, '', '', 1528980583, 1, 1532673226, 1);
@@ -682,7 +687,9 @@ INSERT INTO `cw_auth_item` (`id`, `name`, `type`, `description`, `rule_name`, `d
 (76, 'uploads/main/index', 2, '上传管理-文件列表', NULL, NULL, 1527579052, 1527579052),
 (77, 'uploads/main/search', 2, '上传管理-文件搜索', NULL, NULL, 1527579075, 1527579075),
 (79, 'uploads/main/uploads', 2, '上传管理-文件上传', NULL, NULL, 1527655294, 1527657267),
+(90, 'wechat/main/create', 2, '公众号管理 - 数据添加', NULL, NULL, 1533094203, 1533094214),
 (88, 'wechat/main/index', 2, '微信公众号管理-公众号列表', NULL, NULL, 1533017306, 1533017306),
+(89, 'wechat/main/search', 2, '公众号管理 - 数据查询', NULL, NULL, 1533089442, 1533089442),
 (87, 'wechat/menu/index', 2, '微信自定义菜单-菜单列表', NULL, NULL, 1532684818, 1532684818);
 
 -- --------------------------------------------------------
@@ -835,7 +842,9 @@ INSERT INTO `cw_auth_item_child` (`parent`, `child`) VALUES
 ('tester', 'uploads/main/search'),
 ('administrator', 'uploads/main/uploads'),
 ('tester', 'uploads/main/uploads'),
+('administrator', 'wechat/main/create'),
 ('administrator', 'wechat/main/index'),
+('administrator', 'wechat/main/search'),
 ('administrator', 'wechat/menu/index');
 
 -- --------------------------------------------------------
@@ -928,7 +937,7 @@ INSERT INTO `cw_uploads` (`id`, `name`, `savename`, `savepath`, `ext`, `mime`, `
 CREATE TABLE `cw_wechat` (
   `id` int(10) UNSIGNED NOT NULL,
   `mpname` varchar(20) COLLATE utf8_unicode_ci NOT NULL COMMENT '公众号名称',
-  `mptype` tinyint(1) NOT NULL COMMENT '公众号类型',
+  `mptype` tinyint(1) NOT NULL COMMENT '公众号类型 0=>''未认证订阅号'',1=>''认证订阅号'',2=>''未认证服务号'',3=>''认证服务号''',
   `appid` varchar(20) COLLATE utf8_unicode_ci NOT NULL COMMENT '应用ID',
   `appsecret` varchar(40) COLLATE utf8_unicode_ci NOT NULL COMMENT '应用密匙',
   `token` varchar(20) COLLATE utf8_unicode_ci NOT NULL COMMENT '令牌',
@@ -1069,7 +1078,7 @@ ALTER TABLE `cw_wechat_menu`
 -- 使用表AUTO_INCREMENT `cw_admin_log`
 --
 ALTER TABLE `cw_admin_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '日志ID', AUTO_INCREMENT=381;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '日志ID', AUTO_INCREMENT=386;
 
 --
 -- 使用表AUTO_INCREMENT `cw_admin_menu`
@@ -1105,7 +1114,7 @@ ALTER TABLE `cw_article_tags`
 -- 使用表AUTO_INCREMENT `cw_auth_item`
 --
 ALTER TABLE `cw_auth_item`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 
 --
 -- 使用表AUTO_INCREMENT `cw_auth_rule`

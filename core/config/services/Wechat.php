@@ -17,6 +17,9 @@ return [
 	         'sdk' => [
                 'class'  => 'core\services\mpwechat\Sdk',
             ],
+            'base' => [
+                'class'  => 'core\services\mpwechat\Base',
+            ]
         ],
     ],
 ];

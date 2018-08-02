@@ -1,12 +1,12 @@
 <?php
 /**
  * =======================================================
- * @Description :wechat main block
+ * @Description :wechat menu block
  * =======================================================
  * @copyright Copyright (c) 2018 成都勤为科技有限公司
  * @link: http://www.qinweigroup.cn
  * @author: sumic <sumic515@gmail.com>
- * @date: 2018年07月31日 14:23:21
+ * @date: 2018年08月02日 17:21:14
  * @version: v1.0.0
  */
 namespace appadmin\modules\Wechat\block\main;
@@ -25,7 +25,7 @@ class Index extends AppadminBlock implements AppadminBlockInterface{
     
     public function setModel()
     {
-        $this->_modelName = 'Base';
+        $this->_modelName = 'Menu';
     }
     
     public function setSearchFields()
@@ -35,7 +35,7 @@ class Index extends AppadminBlock implements AppadminBlockInterface{
     
     public function setService()
     {
-        $this->_service = Yii::$service->mpwechat->base;
+        $this->_service = Yii::$service->mpwechat->menu;
     }
     
     public function setDisplay()

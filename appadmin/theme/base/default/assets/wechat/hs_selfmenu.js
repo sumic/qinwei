@@ -336,7 +336,7 @@ function hsInitMenuRight(onebtn) {
 // };
 //hsInitMenuRight(options);
 
-//取个id玩儿玩儿
+//取个id
 function $ID(str) {
     return document.getElementById(str);
 }
@@ -424,5 +424,6 @@ function hsGetCurrentAllData() {
             })
         }
     })
+    console.log(currAllData);
     return currAllData;
 }

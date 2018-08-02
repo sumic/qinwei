@@ -18,9 +18,8 @@ use appadmin\modules\AppadminController;
 class MainController extends AppadminController{
     
     public function actionIndex(){
-        var_dump(\Yii::$service->mpwechat->sdk);exit;
         $data  = $this->getBlock()->getLastData();
-        return $this->render($this->action->id);
+        return $this->render($this->action->id,$data['params']);
     }
     
 }

@@ -4,7 +4,7 @@
 
 body {font-family: "Helvetica Neue", "Hiragino Sans GB", "Microsoft YaHei", "\9ED1\4F53", Arial, sans-serif;}
 a {text-decoration: none;}
-ul {list-style: none;padding-left: 0px;}
+ul {list-style: none;padding-left: 0px;margin:0px}
 .hs_save_btn {
 	background-color:#44b549 ;
 	border: 0px;

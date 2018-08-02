@@ -8,35 +8,32 @@ use yii\helpers\Url;
 //$auth = Auth::getDataTableAuth('auth-rule');
 
 // 定义标题和面包屑信息
-$this->title = '菜单管理';
+$this->title = '公众号管理';
 ?>
 <?= Yii::$service->page->widget->render('datatables');?>
 <?php JsBlock::begin() ?>
 <script type="text/javascript">
-
-		var aAdmins = <?=Json::encode($users)?>,
-        aParents = <?=Json::encode($parents) ?>,
-        arrStatus = <?=Json::encode($status)?>;
-        function parentStatus(td, data) {
-            $(td).html(aParents[data] ? aParents[data] : '顶级分类');
+		var aMptype = <?=Json::encode($mptype)?>,
+            arrStatus = <?=Json::encode($isdefault)?>;
+        function amptype(td, data) {
+            $(td).html(aMptype[data] ? aMptype[data] : '未选择');
         }
         
         meTables.extend({
             selectOptionsCreate: function (params) {
-                return '<select ' + mt.handleParams(params) + '><option value="0">顶级分类</option><?=$options?></select>';
+                return '<select ' + mt.handleParams(params) + '><option value="">请选择</option><?=$options?></select>';
             },
             selectOptionsSearchMiddleCreate: function (params) {
                 delete params.type;
                 params.id = "search-" + params.name;
                 return '<label for="' + params.id + '"> ' + params.title + ': <select ' + mt.handleParams(params) + '>' +
-                    '<option value="All">请选择</option>' +
-                    '<option value="0">顶级分类</option>' +
+                    '<option value="">请选择</option>' +
                     '<?=$options?>'   +
                     '</select></label>';
             }
         });
         var m = mt({
-            title: "菜单管理",
+            title: "公众号管理",
             buttons: <?=Json::encode($buttons['buttons'])?>,
             operations: {
                 buttons: <?=Json::encode($buttons['operations'])?>
@@ -59,69 +56,65 @@ $this->title = '菜单管理';
                         "title": "Id",
                         "defaultOrder": "desc",
                         "edit": {"type": "hidden"},
-                        "search": {"type": "text"}
                     },
                     {
-                        "data": "pid",
-                        "sName": "pid",
-                        "title": "上级分类",
+                        "data": "mpname",
+                        "sName": "mpname",
+                        "title": "公众号名称",
+                        "edit": {"required": 1, "rangelength": "[2, 50]"},
+                        "search": {type: "text"},
+                    },
+                    {
+                        "data": "mptype",
+                        "sName": "mptype",
+                        "title": "公众号类型",
                         "edit": {"type": "selectOptions", "number": 1, id: "select-options"},
                         "search": {type: "selectOptions"},
-                        "createdCell": parentStatus
+                        "createdCell": amptype
                     },
                     {
-                        "data": "menu_name",
-                        "sName": "menu_name",
-                        "title": "栏目名称",
-                        "edit": {"required": 1, "rangelength": "[2, 50]"},
+                        "data": "appid",
+                        "sName": "appid",
+                        "title": "应用ID (Appid)",
+                        "edit": {"required": 1, "rangelength": "[2, 100]"},
                         "search": {"type": "text"},
                         "bSortable": false
                     },
                     {
-                        "data": "icons",
-                        "sName": "icons",
-                        "title": "图标",
-                        "edit": {"rangelength": "[2, 50]","value": "menu-icon fa fa-caret-right"},
-                        "bSortable": false
-                    },
-                    {
-                        "data": "url",
-                        "sName": "url",
-                        "title": "访问地址",
+                        "data": "appsecret",
+                        "sName": "appsecret",
+                        "title": "应用密匙 (AppSecret)",
                         "edit": {"rangelength": "[2, 50]"},
-                        "search": {"type": "text"},
+                        "bSortable": false,
+                    },
+                    {
+                        "data": "token",
+                        "sName": "token",
+                        "title": "令牌 (Token)",
+                        "edit": {"rangelength": "[3, 32]"},
                         "bSortable": false
                     },
                     {
-                        "data": "status", "sName": "status", "title": "状态", "value": arrStatus,
-                        "edit": {"type": "radio", "default": 1, "required": 1, "number": 1},
-                        "search": {"type": "select"},
+                        "data": "aeskey", 
+                        "sName": "aeskey", 
+                        "title": "消息加密密匙 (AesKey)", 
+                        "edit": {"rangelength": "[43, 43]"},
+                        "bSortable": false,
+                        "bViews": true,
+                        "isHide":true
+                    },
+                    {
+                        "data": "isdefault", 
+                        "sName": "isdefault", 
+                        "title": "状态", 
+                        "value": arrStatus,
                         "createdCell": mt.statusString,
+                        "edit": {"type": "radio", "default": 1, "required": 1, "number": 1},
                         "bSortable": false
-                    },
-                    {
-                        "data": "sort",
-                        "sName": "sort",
-                        "title": "排序",
-                        "edit": {"type": "text", "required": 1, "number": 1, "value": 100}
                     },
                     // 公共属性字段信息
                     {"data": "created_at", "sName": "created_at", "title": "创建时间", "createdCell": mt.dateTimeString},
-                    {
-                        "data": "created_id",
-                        "sName": "created_id",
-                        "title": "创建用户",
-                        "createdCell": mt.adminString,
-                        "bSortable": false
-                    },
                     {"data": "updated_at", "sName": "updated_at", "title": "修改时间", "createdCell": mt.dateTimeString},
-                    {
-                        "data": "updated_id",
-                        "sName": "updated_id",
-                        "title": "修改用户",
-                        "createdCell": mt.adminString,
-                        "bSortable": false
-                    }
                 ]
             }
         });
