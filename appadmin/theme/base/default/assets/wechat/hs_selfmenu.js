@@ -60,7 +60,17 @@ function hsMRPShowOrHide() {
     $('.hs-ico-radio').removeClass('hs-selected');
     $('[name=nnn]').filter('[value=' + eVal + ']').siblings('.hs-ico-radio').addClass('hs-selected');
 }
-
+/**
+ * 检测公众号选择
+ */
+function checkMPid(){
+	var mpid = $("#mpid").val();
+	if(mpid ==''){
+		swal("错误！", "请选择公众号！","error");
+		return false;
+	}
+	return true;
+}
 /**
  * 事件
  */
@@ -69,8 +79,10 @@ $(function () {
      * 添加一级菜单
      */
     $(document).on('click', '.hs-menu-li.hs-menu-item-add', function () {
-        hsAddFirstMenu();
-        $('.hs-current').trigger('click')
+    	if(checkMPid()){
+    		hsAddFirstMenu();
+            $('.hs-current').trigger('click')
+    	}
     });
 
     /**
@@ -173,8 +185,10 @@ $(function () {
  * @param {Object}
  */
 function hsInitMenu(menuData) {
+	console.log(menuData);
     try {
         if (!menuData) {
+        	$('.hs-menu-item').remove();
             $(".hs-ph-edit").addClass("hide")
         } else {
             menuData = JSON.parse(menuData);

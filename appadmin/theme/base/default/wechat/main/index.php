@@ -14,7 +14,7 @@ $this->title = '公众号管理';
 <?php JsBlock::begin() ?>
 <script type="text/javascript">
 		var aMptype = <?=Json::encode($mptype)?>,
-            arrStatus = <?=Json::encode($isdefault)?>;
+            arrStatus = <?=Json::encode($status)?>;
         function amptype(td, data) {
             $(td).html(aMptype[data] ? aMptype[data] : '未选择');
         }
@@ -104,8 +104,8 @@ $this->title = '公众号管理';
                         "isHide":true
                     },
                     {
-                        "data": "isdefault", 
-                        "sName": "isdefault", 
+                        "data": "status", 
+                        "sName": "status", 
                         "title": "状态", 
                         "value": arrStatus,
                         "createdCell": mt.statusString,

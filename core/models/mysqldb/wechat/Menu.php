@@ -31,32 +31,32 @@ use yii\behaviors\TimestampBehavior;
  * @property int $crreated_at 创建时间
  * @property int $updated_at 更新时间
  */
-class Menu extends \yii\db\ActiveRecord
+class Menu extends ActiveRecord
 {
+    /**
+     * @inheritdoc
+     */
     public static function tableName()
     {
         return '{{%wechat_menu}}';
     }
-
-    public function behaviors()
-    {
-        TimestampBehavior::className();
-    }
+    
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['mpid', 'pid', 'name', 'type', 'mpkey', 'url', 'media_id', 'created_at', 'updated_at'], 'required'],
-            [['mpid', 'pid', 'crreated_at', 'updated_at'], 'integer'],
-            [['created_at', 'updated_at'], 'safe'],
+            [['mpid', 'pid', 'name', 'type', 'mpkey', 'url', 'media_id'], 'required'],
+            [['mpid', 'pid', 'created_at', 'updated_at'], 'integer'],
+            [['name'], 'string', 'max' => 10],
+            [['created_at', 'updated_at'],'safe'],
             [['type', 'media_id'], 'string', 'max' => 20],
             [['mpkey'], 'string', 'max' => 129],
             [['url'], 'string', 'max' => 255],
         ];
     }
-
+    
     /**
      * @inheritdoc
      */
@@ -71,7 +71,7 @@ class Menu extends \yii\db\ActiveRecord
             'mpkey' => '菜单KEY值，用于消息接口推送，不超过128字节',
             'url' => '网页链接，用户点击菜单可打开链接',
             'media_id' => '素材id',
-            'crreated_at' => '创建时间',
+            'created_at' => '创建时间',
             'updated_at' => '更新时间',
         ];
     }

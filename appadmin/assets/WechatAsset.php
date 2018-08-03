@@ -28,6 +28,6 @@ class WechatAsset extends AssetBundle
          
     ];
     public $depends = [
-        'appadmin\assets\AceAsset',
+        'appadmin\assets\CmsAsset',
     ];
 }

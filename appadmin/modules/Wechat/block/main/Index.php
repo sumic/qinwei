@@ -80,7 +80,7 @@ class Index extends AppadminBlock implements AppadminBlockInterface{
     public function getLastData()
     {
         #状态
-        $params['isdefault'] = [0=>'停用',1=>'启用'];
+        $params['status'] = [2=>'停用',1=>'启用'];
         #公众号类型
         $params['mptype'] = [0=>'未认证订阅号',1=>'认证订阅号',2=>'未认证服务号',3=>'认证服务号'];
         #公众号类型菜单

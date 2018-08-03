@@ -17,7 +17,7 @@ use yii;
 use yii\base\InvalidValueException;
 use yii\helpers\ArrayHelper;
 
-class Base extends Service
+class Menu extends Service
 {
     protected $_modelName = '\core\models\mysqldb\wechat\Menu';
     protected $_model;
@@ -67,6 +67,9 @@ class Base extends Service
     
     public function save($param,$scenario = 'default')
     {
+        var_dump($param);
+        var_dump(json_decode($param['newv']));
+        exit;
         $primaryVal = isset($param[$this->getPrimaryKey()]) ? $param[$this->getPrimaryKey()] : '';
         if ($primaryVal) {
             //更新数据

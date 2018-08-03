@@ -1,10 +1,17 @@
 <?php
 use appadmin\assets\WechatAsset;
 use core\widgets\JsBlock;
+use yii\bootstrap\Html;
+use yii\helpers\ArrayHelper;
 WechatAsset::register($this);
-
 $this->title = '自定义菜单管理';
+$chosenOptions = [
+    'options' => [
+        'class' => 'no-padding-right'
+    ],
+];
 ?>
+
 <div class="col-xs-12 col-sm-3" style="min-width: 375px">
 	<div class="widget-box">
 		<div class="widget-header">
@@ -19,6 +26,12 @@ $this->title = '自定义菜单管理';
 
 		<div class="widget-body" style="display: block;min-height:530px">
 			<div class="widget-main clearfix">
+				<div style="margin-bottom:10px">
+					<?= Html::dropDownList('mpid',
+					    $currentMp,
+					    ArrayHelper::map($mpbase, 'id', 'mpname'),
+					    ['class' => 'chosen-select', 'encode'=>false,'prompt' => '选择公众号...','id'=>'mpid']); ?>
+				</div>
                 <div class="hs-ph-area">
 				<div class="hs-ph-view">
 					<div class="hs-ph-hd"></div>
@@ -233,10 +246,23 @@ $this->title = '自定义菜单管理';
 <?php JsBlock::begin()?>
 <script>
     var data = null;
-    var menuid = '3';
+    var mpid = $('#mpid').val();
     hsInitMenu(data);
 
     $(function(){
+    	$('.chosen-select').chosen({
+			allow_single_deselect:false,
+			no_results_text: "没有找到相关栏目",
+			search_contains:true
+			});
+		$(window)
+		.off('resize.chosen')
+		.on('resize.chosen', function() {
+			$('.chosen-select').each(function() {
+				 var $this = $(this);
+				 $this.next().css({'width': $this.parent().width()});
+			})
+		}).trigger('resize.chosen'); 
         /**
          * 选择图文
          */  
@@ -269,12 +295,13 @@ $this->title = '自定义菜单管理';
         //保存
         $(document).on('click', '#hsSubmitSave', function(){
             var newv = JSON.stringify(hsGetCurrentAllData());
+            var mpid = $('#mpid').val();
             console.log(JSON.stringify(newv));
 
             $.post('/wechat/menu/create',
                 {
                     newv : newv,
-                    menuid : menuid
+                    mpid : mpid
                 },
                 function(data){
                     if(data.errno == 0){

@@ -9,12 +9,11 @@
  * @date: 2018年08月02日 17:21:14
  * @version: v1.0.0
  */
-namespace appadmin\modules\Wechat\block\main;
+namespace appadmin\modules\Wechat\block\menu;
 
 use Yii;
 use appadmin\modules\AppadminBlock;
 use appadmin\interfaces\AppadminBlockInterface;
-use yii\helpers\ArrayHelper;
 
 class Index extends AppadminBlock implements AppadminBlockInterface{
     
@@ -87,6 +86,8 @@ class Index extends AppadminBlock implements AppadminBlockInterface{
         foreach ($params['mptype'] as $k =>$v){
             $params['options'] .= '<option value="'.$k.'">'.$v.'</option>';
         }
+        #所有公众号
+        $params['mpbase'] = \Yii::$service->mpwechat->base->getall();
         #可用按钮
         $params['buttons']  = $this->_tableButton;
         #初始化过滤器

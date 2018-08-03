@@ -19,6 +19,9 @@ return [
             ],
             'base' => [
                 'class'  => 'core\services\mpwechat\Base',
+            ],
+            'menu' => [
+                'class'  => 'core\services\mpwechat\Menu',
             ]
         ],
     ],

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: 2018-08-01 17:57:05
+-- Generation Time: 2018-08-03 17:42:58
 -- 服务器版本： 5.7.23-0ubuntu0.18.04.1
 -- PHP Version: 7.2.7-0ubuntu0.18.04.2
 
@@ -404,7 +404,20 @@ INSERT INTO `cw_admin_log` (`id`, `type`, `controller`, `action`, `url`, `index`
 (382, 2, 'menu/main', 'update', '/menu/main/update', 'id=31', '{\"id\":\"31\",\"pid\":\"29\",\"menu_name\":\"公众号管理\",\"icons\":\"menu-icon fa fa-caret-right\",\"url\":\"wechat/main/index\",\"status\":\"1\",\"sort\":\"1\"}', 1533088413, 1),
 (383, 1, 'roleitem/main', 'create', '/roleitem/main/create', 'id=', '{\"type\":\"2\",\"id\":\"\",\"name\":\"\",\"newName\":\"wechat/main/search\\t\",\"description\":\"公众号管理 - 数据查询\",\"rule_name\":\"\"}', 1533089442, 1),
 (384, 1, 'roleitem/main', 'create', '/roleitem/main/create', 'id=', '{\"type\":\"2\",\"id\":\"\",\"name\":\"\",\"newName\":\"wechat/main/add\\t\",\"description\":\"公众号管理 - 数据添加\",\"rule_name\":\"\"}', 1533094203, 1),
-(385, 2, 'roleitem/main', 'update', '/roleitem/main/update', 'id=', '{\"type\":\"2\",\"id\":\"90\",\"name\":\"wechat/main/add\",\"newName\":\"wechat/main/create\",\"description\":\"公众号管理 - 数据添加\"}', 1533094214, 1);
+(385, 2, 'roleitem/main', 'update', '/roleitem/main/update', 'id=', '{\"type\":\"2\",\"id\":\"90\",\"name\":\"wechat/main/add\",\"newName\":\"wechat/main/create\",\"description\":\"公众号管理 - 数据添加\"}', 1533094214, 1),
+(386, 1, 'wechat/main', 'create', '/wechat/main/create', 'id=1', '{\"id\":\"\",\"mpname\":\"凯思威尔\",\"mptype\":\"0\",\"appid\":\"wxcbcea616249faa7a\",\"appsecret\":\"4c84f0d1a90afa468c9b3c82ce62137f\",\"token\":\"casewill\",\"aeskey\":\"I3Pu7Z2yodWCZRsxZuAPfUQek6nfvLYnsGuM26mGpTb\",\"isdefault\":\"1\"}', 1533175378, 1),
+(387, 1, 'roleitem/main', 'create', '/roleitem/main/create', 'id=', '{\"type\":\"2\",\"id\":\"\",\"name\":\"\",\"newName\":\"wechat/main/update\\t\",\"description\":\"公众号管理 - 数据修改\",\"rule_name\":\"\"}', 1533180152, 1),
+(388, 1, 'roleitem/main', 'create', '/roleitem/main/create', 'id=', '{\"type\":\"2\",\"id\":\"\",\"name\":\"\",\"newName\":\"wechat/main/delete\",\"description\":\"公众号管理 - 数据删除\",\"rule_name\":\"\"}', 1533180196, 1),
+(389, 2, 'wechat/main', 'update', '/wechat/main/update', 'id=1', '{\"id\":\"1\",\"mpname\":\"凯思威尔\",\"mptype\":\"0\",\"appid\":\"wxcbcea616249faa7a\",\"appsecret\":\"4c84f0d1a90afa468c9b3c82ce62137f\",\"token\":\"casewill\",\"aeskey\":\"I3Pu7Z2yodWCZRsxZuAPfUQek6nfvLYnsGuM26mGpTb\",\"isdefault\":\"0\"}', 1533180243, 1),
+(390, 2, 'wechat/main', 'update', '/wechat/main/update', 'id=1', '{\"id\":\"1\",\"mpname\":\"凯思威尔\",\"mptype\":\"0\",\"appid\":\"wxcbcea616249faa7a\",\"appsecret\":\"4c84f0d1a90afa468c9b3c82ce62137f\",\"token\":\"casewill\",\"aeskey\":\"I3Pu7Z2yodWCZRsxZuAPfUQek6nfvLYnsGuM26mGpTb\",\"isdefault\":\"1\"}', 1533180253, 1),
+(391, 1, 'wechat/main', 'create', '/wechat/main/create', 'id=2', '{\"id\":\"\",\"mpname\":\"阿斯蒂芬\",\"mptype\":\"1\",\"appid\":\"14123412341234\",\"appsecret\":\"阿是大法师的\",\"token\":\"阿是大法师的\",\"aeskey\":\"I3Pu7Z2yodWCZRsxZuAPfUQek6nfvLYnsGuM26mGpTb\",\"isdefault\":\"1\"}', 1533180304, 1),
+(392, 1, 'roleitem/main', 'create', '/roleitem/main/create', 'id=', '{\"type\":\"2\",\"id\":\"\",\"name\":\"\",\"newName\":\"wechat/menu/create\",\"description\":\"自定义菜单 - 添加菜单\",\"rule_name\":\"\"}', 1533189587, 1),
+(393, 1, 'roleitem/main', 'create', '/roleitem/main/create', 'id=', '{\"type\":\"2\",\"id\":\"\",\"name\":\"\",\"newName\":\"wechat/menu/search\\t\",\"description\":\"自定义菜单 - 搜索菜单\",\"rule_name\":\"\"}', 1533189641, 1),
+(394, 2, 'roleitem/main', 'update', '/roleitem/main/update', 'id=', '{\"type\":\"2\",\"id\":\"88\",\"name\":\"wechat/main/index\",\"newName\":\"wechat/main/index\",\"description\":\"公众号管理-公众号列表\"}', 1533189652, 1),
+(395, 2, 'roleitem/main', 'update', '/roleitem/main/update', 'id=', '{\"type\":\"2\",\"id\":\"87\",\"name\":\"wechat/menu/index\",\"newName\":\"wechat/menu/index\",\"description\":\"自定义菜单-菜单列表\"}', 1533189663, 1),
+(396, 2, 'wechat/main', 'update', '/wechat/main/update', 'id=', '[]', 1533283045, 1),
+(397, 2, 'wechat/main', 'update', '/wechat/main/update', 'id=1', '{\"id\":\"1\",\"mpname\":\"凯思威尔2\",\"mptype\":\"0\",\"appid\":\"wxcbcea616249faa7a\",\"appsecret\":\"4c84f0d1a90afa468c9b3c82ce62137f\",\"token\":\"casewill\",\"aeskey\":\"I3Pu7Z2yodWCZRsxZuAPfUQek6nfvLYnsGuM26mGpTb\",\"status\":\"1\"}', 1533283071, 1),
+(398, 2, 'wechat/main', 'update', '/wechat/main/update', 'id=1', '{\"id\":\"1\",\"mpname\":\"勤为科技\",\"mptype\":\"0\",\"appid\":\"wxcbcea616249faa7a\",\"appsecret\":\"4c84f0d1a90afa468c9b3c82ce62137f\",\"token\":\"casewill\",\"aeskey\":\"I3Pu7Z2yodWCZRsxZuAPfUQek6nfvLYnsGuM26mGpTb\",\"status\":\"1\"}', 1533283088, 1);
 
 -- --------------------------------------------------------
 
@@ -489,7 +502,7 @@ CREATE TABLE `cw_admin_user` (
 --
 
 INSERT INTO `cw_admin_user` (`id`, `username`, `email`, `face`, `role`, `status`, `auth_key`, `password_hash`, `password_reset_token`, `access_token`, `access_token_created_at`, `allowance`, `allowance_updated_at`, `last_time`, `last_ip`, `address`, `created_at`, `created_id`, `updated_at`, `updated_id`) VALUES
-(1, 'super', 'super@admin.com', '/avatars/image/20180614/152890601224415620.jpg', 'admin', 10, 'gKkLFMdB2pvIXOFNpF_Aeemvdf1j0YUM', '$2y$13$Nuf1mzDRoCMxrWI.rIjENu20QshJG41smdEeHFHxq0qdmS99YytHy', '5vLaPpUS-I-XxJaoGP-GZDk474WdnaK3_1469073015', 'BriM4BZIRi8mlVJ74rVmiVpvVbR3Xukp', 1532662856, 0, 0, 1533114449, '127.0.0.1', '湖南省,岳阳市,岳阳县', 1525678041, 1, 1533114449, 1),
+(1, 'super', 'super@admin.com', '/avatars/image/20180614/152890601224415620.jpg', 'admin', 10, 'gKkLFMdB2pvIXOFNpF_Aeemvdf1j0YUM', '$2y$13$Nuf1mzDRoCMxrWI.rIjENu20QshJG41smdEeHFHxq0qdmS99YytHy', '5vLaPpUS-I-XxJaoGP-GZDk474WdnaK3_1469073015', 'BriM4BZIRi8mlVJ74rVmiVpvVbR3Xukp', 1532662856, 0, 0, 1533276876, '127.0.0.1', '湖南省,岳阳市,岳阳县', 1525678041, 1, 1533276876, 1),
 (2, 'admin', 'admin@admin.com', '', 'admin', 10, 'tArp_Kv4z1JlzBUZYCL33N24AZL-_77p', '$2y$13$RNrJ7GK1A5iZRxBpho6sbeCJKfNRxzy5axCeRjZLqvA5W6RuVYBRW', 'CgScbf1E96N3pqH01b0mVi_Z58j8QsRV_1501916190', '', 0, 0, 0, 1525678041, '127.0.0.1', '湖南省,岳阳市,岳阳县', 1525678041, 1, 1525678041, 1),
 (3, 'feeling515', 'test@test.com', '', 'menu_editor', 10, '7kaT_2heHfFPOGiASRIYWZVh7xkf10X3', '$2y$13$7wtV4r4YPg65GG.jIW5dZupKvQ7vGMcemO2qgAPxE.nSzyeh1K4am', '7rUwl7cfvDv7Ph06w1uVRLdRJf_wAxpM_1532586198', '', 0, 0, 0, 1533009122, '110.184.144.249', '', 1525961352, 1, 1533009122, 3),
 (4, 'test', 'test@test123.com', '', 'admin', 10, 'hCAsj5qx8HNvPlyyOGKvCQ7cTKcAcmmP', '$2y$13$IvTIE.J/QUfCD4tyLb6FcOTsC/mILvH.fv61rxKXedM1vNQIV26dS', 'tQL-qFx7dYDuXtJBeiECJ7n4dYeSyCLg_1532673226', '', 0, 0, 0, 0, '', '', 1528980583, 1, 1532673226, 1);
@@ -688,9 +701,13 @@ INSERT INTO `cw_auth_item` (`id`, `name`, `type`, `description`, `rule_name`, `d
 (77, 'uploads/main/search', 2, '上传管理-文件搜索', NULL, NULL, 1527579075, 1527579075),
 (79, 'uploads/main/uploads', 2, '上传管理-文件上传', NULL, NULL, 1527655294, 1527657267),
 (90, 'wechat/main/create', 2, '公众号管理 - 数据添加', NULL, NULL, 1533094203, 1533094214),
-(88, 'wechat/main/index', 2, '微信公众号管理-公众号列表', NULL, NULL, 1533017306, 1533017306),
+(92, 'wechat/main/delete', 2, '公众号管理 - 数据删除', NULL, NULL, 1533180196, 1533180196),
+(88, 'wechat/main/index', 2, '公众号管理-公众号列表', NULL, NULL, 1533017306, 1533189652),
 (89, 'wechat/main/search', 2, '公众号管理 - 数据查询', NULL, NULL, 1533089442, 1533089442),
-(87, 'wechat/menu/index', 2, '微信自定义菜单-菜单列表', NULL, NULL, 1532684818, 1532684818);
+(91, 'wechat/main/update', 2, '公众号管理 - 数据修改', NULL, NULL, 1533180152, 1533180152),
+(93, 'wechat/menu/create', 2, '自定义菜单 - 添加菜单', NULL, NULL, 1533189587, 1533189587),
+(87, 'wechat/menu/index', 2, '自定义菜单-菜单列表', NULL, NULL, 1532684818, 1533189663),
+(94, 'wechat/menu/search', 2, '自定义菜单 - 搜索菜单', NULL, NULL, 1533189641, 1533189641);
 
 -- --------------------------------------------------------
 
@@ -843,9 +860,13 @@ INSERT INTO `cw_auth_item_child` (`parent`, `child`) VALUES
 ('administrator', 'uploads/main/uploads'),
 ('tester', 'uploads/main/uploads'),
 ('administrator', 'wechat/main/create'),
+('administrator', 'wechat/main/delete'),
 ('administrator', 'wechat/main/index'),
 ('administrator', 'wechat/main/search'),
-('administrator', 'wechat/menu/index');
+('administrator', 'wechat/main/update'),
+('administrator', 'wechat/menu/create'),
+('administrator', 'wechat/menu/index'),
+('administrator', 'wechat/menu/search');
 
 -- --------------------------------------------------------
 
@@ -942,10 +963,18 @@ CREATE TABLE `cw_wechat` (
   `appsecret` varchar(40) COLLATE utf8_unicode_ci NOT NULL COMMENT '应用密匙',
   `token` varchar(20) COLLATE utf8_unicode_ci NOT NULL COMMENT '令牌',
   `aeskey` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT '消息加密密钥',
-  `isdefault` tinyint(1) UNSIGNED NOT NULL DEFAULT '0' COMMENT '是否是默认 1：默认 0：不默认',
-  `crreated_at` int(10) NOT NULL COMMENT '创建时间',
+  `status` tinyint(1) UNSIGNED NOT NULL DEFAULT '0' COMMENT '状态 1：启用 2：禁用',
+  `created_at` int(10) NOT NULL COMMENT '创建时间',
   `updated_at` int(10) NOT NULL COMMENT '更新时间'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- 转存表中的数据 `cw_wechat`
+--
+
+INSERT INTO `cw_wechat` (`id`, `mpname`, `mptype`, `appid`, `appsecret`, `token`, `aeskey`, `status`, `created_at`, `updated_at`) VALUES
+(1, '勤为科技', 0, 'wxcbcea616249faa7a', '4c84f0d1a90afa468c9b3c82ce62137f', 'casewill', 'I3Pu7Z2yodWCZRsxZuAPfUQek6nfvLYnsGuM26mGpTb', 1, 1533175377, 1533283088),
+(2, '阿斯蒂芬', 1, '14123412341234', '阿是大法师的', '阿是大法师的', 'I3Pu7Z2yodWCZRsxZuAPfUQek6nfvLYnsGuM26mGpTb', 1, 1533180304, 1533180304);
 
 -- --------------------------------------------------------
 
@@ -955,13 +984,14 @@ CREATE TABLE `cw_wechat` (
 
 CREATE TABLE `cw_wechat_menu` (
   `id` int(10) UNSIGNED NOT NULL COMMENT '菜单ID',
+  `mpid` int(10) UNSIGNED NOT NULL COMMENT '所属公众号ID',
   `pid` int(10) UNSIGNED NOT NULL COMMENT '父菜单ID',
   `name` varchar(10) COLLATE utf8_unicode_ci NOT NULL COMMENT '菜单名称',
   `type` varchar(20) COLLATE utf8_unicode_ci NOT NULL COMMENT '菜单类型',
   `mpkey` varchar(129) COLLATE utf8_unicode_ci NOT NULL COMMENT '菜单KEY值，用于消息接口推送，不超过128字节',
   `url` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT '网页链接，用户点击菜单可打开链接',
   `media_id` varchar(20) COLLATE utf8_unicode_ci NOT NULL COMMENT '素材id',
-  `crreated_at` int(11) NOT NULL COMMENT '创建时间',
+  `created_at` int(11) NOT NULL COMMENT '创建时间',
   `updated_at` int(11) NOT NULL COMMENT '更新时间'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -1078,7 +1108,7 @@ ALTER TABLE `cw_wechat_menu`
 -- 使用表AUTO_INCREMENT `cw_admin_log`
 --
 ALTER TABLE `cw_admin_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '日志ID', AUTO_INCREMENT=386;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '日志ID', AUTO_INCREMENT=399;
 
 --
 -- 使用表AUTO_INCREMENT `cw_admin_menu`
@@ -1114,7 +1144,7 @@ ALTER TABLE `cw_article_tags`
 -- 使用表AUTO_INCREMENT `cw_auth_item`
 --
 ALTER TABLE `cw_auth_item`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
 
 --
 -- 使用表AUTO_INCREMENT `cw_auth_rule`
@@ -1138,7 +1168,7 @@ ALTER TABLE `cw_uploads`
 -- 使用表AUTO_INCREMENT `cw_wechat`
 --
 ALTER TABLE `cw_wechat`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- 使用表AUTO_INCREMENT `cw_wechat_menu`

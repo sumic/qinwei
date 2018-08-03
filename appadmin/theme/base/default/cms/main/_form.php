@@ -127,7 +127,6 @@ $form = ActiveForm::begin([
 		<div class="widget-body" style="display: block;">
 			<div class="widget-main">
 				<div>
-					
 					<?= $form->field($model, 'cid', $chosenOptions)->label(false)->dropDownList($options,['prompt' => '选择文章分类...','class'=>'chosen-select','encode'=>false]); ?>
 				</div>
 			</div>

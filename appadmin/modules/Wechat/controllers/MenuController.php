@@ -18,7 +18,8 @@ use appadmin\modules\AppadminController;
 class MenuController extends AppadminController{
     
     public function actionIndex(){
-        return $this->render($this->action->id);
+        $data = $this->getBlock()->getLastData();
+        return $this->render($this->action->id,$data['params']);
     }
     
 }

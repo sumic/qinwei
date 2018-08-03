@@ -57,7 +57,7 @@ class Base extends ActiveRecord
             [['mpname', 'mptype', 'appid', 'appsecret', 'token', 'aeskey'], 'required'],
             [['created_at', 'updated_at'], 'safe'],
             [['mpname', 'appid', 'token'], 'string', 'max' => 20],
-            [['mptype', 'isdefault'], 'string', 'max' => 1],
+            [['mptype', 'status'], 'string', 'max' => 1],
             [['appsecret'], 'string', 'max' => 40],
             [['aeskey'], 'string', 'max' => 100],
         ];
@@ -76,7 +76,7 @@ class Base extends ActiveRecord
             'appsecret' => '应用密匙',
             'token' => '令牌',
             'aeskey' => '消息加密密钥',
-            'isdefault' => '是否是默认 1：默认 0：不默认',
+            'status' => '是否是默认 1：默认 0：不默认',
             'created_at' => '创建时间',
             'updated_at' => '更新时间',
         ];
