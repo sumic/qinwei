@@ -33,6 +33,8 @@ use yii\behaviors\TimestampBehavior;
  */
 class Menu extends ActiveRecord
 {
+    const BUTTON_VIEW  = 1;
+    const BUTTON_CLICK = 2;
     /**
      * @inheritdoc
      */
@@ -41,19 +43,23 @@ class Menu extends ActiveRecord
         return '{{%wechat_menu}}';
     }
     
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::className()
+        ];
+    }
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['mpid', 'pid', 'name', 'type', 'mpkey', 'url', 'media_id'], 'required'],
-            [['mpid', 'pid', 'created_at', 'updated_at'], 'integer'],
+            [['mpid', 'pid', 'name'], 'required'],
+            [['mpid', 'pid', 'type','created_at', 'updated_at'], 'integer'],
             [['name'], 'string', 'max' => 10],
             [['created_at', 'updated_at'],'safe'],
-            [['type', 'media_id'], 'string', 'max' => 20],
-            [['mpkey'], 'string', 'max' => 129],
-            [['url'], 'string', 'max' => 255],
+            [['message'], 'string', 'max' => 255],
         ];
     }
     
@@ -68,9 +74,7 @@ class Menu extends ActiveRecord
             'pid' => '父菜单ID',
             'name' => '菜单名称',
             'type' => '菜单类型',
-            'mpkey' => '菜单KEY值，用于消息接口推送，不超过128字节',
-            'url' => '网页链接，用户点击菜单可打开链接',
-            'media_id' => '素材id',
+            'message' => '返回消息',
             'created_at' => '创建时间',
             'updated_at' => '更新时间',
         ];

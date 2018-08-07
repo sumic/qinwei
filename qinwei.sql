@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: 2018-08-03 17:42:58
+-- Generation Time: 2018-08-07 17:48:00
 -- 服务器版本： 5.7.23-0ubuntu0.18.04.1
 -- PHP Version: 7.2.7-0ubuntu0.18.04.2
 
@@ -417,7 +417,12 @@ INSERT INTO `cw_admin_log` (`id`, `type`, `controller`, `action`, `url`, `index`
 (395, 2, 'roleitem/main', 'update', '/roleitem/main/update', 'id=', '{\"type\":\"2\",\"id\":\"87\",\"name\":\"wechat/menu/index\",\"newName\":\"wechat/menu/index\",\"description\":\"自定义菜单-菜单列表\"}', 1533189663, 1),
 (396, 2, 'wechat/main', 'update', '/wechat/main/update', 'id=', '[]', 1533283045, 1),
 (397, 2, 'wechat/main', 'update', '/wechat/main/update', 'id=1', '{\"id\":\"1\",\"mpname\":\"凯思威尔2\",\"mptype\":\"0\",\"appid\":\"wxcbcea616249faa7a\",\"appsecret\":\"4c84f0d1a90afa468c9b3c82ce62137f\",\"token\":\"casewill\",\"aeskey\":\"I3Pu7Z2yodWCZRsxZuAPfUQek6nfvLYnsGuM26mGpTb\",\"status\":\"1\"}', 1533283071, 1),
-(398, 2, 'wechat/main', 'update', '/wechat/main/update', 'id=1', '{\"id\":\"1\",\"mpname\":\"勤为科技\",\"mptype\":\"0\",\"appid\":\"wxcbcea616249faa7a\",\"appsecret\":\"4c84f0d1a90afa468c9b3c82ce62137f\",\"token\":\"casewill\",\"aeskey\":\"I3Pu7Z2yodWCZRsxZuAPfUQek6nfvLYnsGuM26mGpTb\",\"status\":\"1\"}', 1533283088, 1);
+(398, 2, 'wechat/main', 'update', '/wechat/main/update', 'id=1', '{\"id\":\"1\",\"mpname\":\"勤为科技\",\"mptype\":\"0\",\"appid\":\"wxcbcea616249faa7a\",\"appsecret\":\"4c84f0d1a90afa468c9b3c82ce62137f\",\"token\":\"casewill\",\"aeskey\":\"I3Pu7Z2yodWCZRsxZuAPfUQek6nfvLYnsGuM26mGpTb\",\"status\":\"1\"}', 1533283088, 1),
+(399, 1, 'wechat/menu', 'create', '/wechat/menu/create', 'id=', '{\"newv\":\"{\\\"button\\\":[{\\\"name\\\":\\\"菜单名称\\\",\\\"type\\\":1,\\\"act_list\\\":[],\\\"sub_button\\\":[{\\\"name\\\":\\\"子菜单名称\\\",\\\"type\\\":1,\\\"act_list\\\":[],\\\"sub_button\\\":[]}]}]}\",\"mpid\":\"1\"}', 1533545767, 1),
+(400, 1, 'wechat/menu', 'create', '/wechat/menu/create', 'id=', '{\"newv\":\"{\\\"button\\\":[{\\\"name\\\":\\\"A\\\",\\\"type\\\":\\\"2\\\",\\\"act_list\\\":[],\\\"sub_button\\\":[{\\\"name\\\":\\\"A1\\\",\\\"type\\\":\\\"2\\\",\\\"act_list\\\":[{\\\"type\\\":2,\\\"value\\\":\\\"weibo.cn\\\"}],\\\"sub_button\\\":[],\\\"key\\\":\\\"1533546172190KEY\\\"}],\\\"key\\\":\\\"1533546150333KEY\\\"}]}\",\"mpid\":\"1\"}', 1533546172, 1),
+(401, 1, 'wechat/menu', 'create', '/wechat/menu/create', 'id=', '{\"newv\":\"{\\\"button\\\":[{\\\"name\\\":\\\"社交网络\\\",\\\"type\\\":\\\"1\\\",\\\"act_list\\\":[],\\\"sub_button\\\":[{\\\"name\\\":\\\"新浪微博\\\",\\\"type\\\":\\\"2\\\",\\\"act_list\\\":[{\\\"type\\\":2,\\\"value\\\":\\\"weibo.com\\\"}],\\\"sub_button\\\":[],\\\"key\\\":\\\"1533546787894KEY\\\"},{\\\"name\\\":\\\"脸书\\\",\\\"type\\\":\\\"2\\\",\\\"act_list\\\":[{\\\"type\\\":2,\\\"value\\\":\\\"facebook.com\\\"}],\\\"sub_button\\\":[],\\\"key\\\":\\\"1533546920741KEY\\\"},{\\\"name\\\":\\\"腾讯微博\\\",\\\"type\\\":\\\"2\\\",\\\"act_list\\\":[{\\\"type\\\":2,\\\"value\\\":\\\"\\\"}],\\\"sub_button\\\":[],\\\"key\\\":\\\"1533546932171KEY\\\"}],\\\"key\\\":\\\"1533546768134KEY\\\"},{\\\"name\\\":\\\"经典游戏\\\",\\\"type\\\":\\\"1\\\",\\\"act_list\\\":[],\\\"sub_button\\\":[{\\\"name\\\":\\\"守望先锋\\\",\\\"type\\\":\\\"2\\\",\\\"act_list\\\":[{\\\"type\\\":2,\\\"value\\\":\\\"ow.com\\\"}],\\\"sub_button\\\":[],\\\"key\\\":\\\"1533546843634KEY\\\"},{\\\"name\\\":\\\"暗黑破坏神之大闹江湖\\\",\\\"type\\\":\\\"2\\\",\\\"act_list\\\":[{\\\"type\\\":2,\\\"value\\\":\\\"diable.com\\\"}],\\\"sub_button\\\":[],\\\"key\\\":\\\"1533546874464KEY\\\"}],\\\"key\\\":\\\"1533546832136KEY\\\"},{\\\"name\\\":\\\"电影下载\\\",\\\"type\\\":\\\"1\\\",\\\"act_list\\\":[],\\\"sub_button\\\":[{\\\"name\\\":\\\"高清蓝光\\\",\\\"type\\\":\\\"2\\\",\\\"act_list\\\":[{\\\"type\\\":2,\\\"value\\\":\\\"gaoqing.fm\\\"}],\\\"sub_button\\\":[],\\\"key\\\":\\\"1533546903703KEY\\\"}],\\\"key\\\":\\\"1533546885454KEY\\\"}]}\",\"mpid\":\"1\"}', 1533546933, 1),
+(402, 1, 'wechat/menu', 'create', '/wechat/menu/create', 'id=', '{\"newv\":\"{\\\"button\\\":[{\\\"name\\\":\\\"社交网络\\\",\\\"type\\\":\\\"1\\\",\\\"act_list\\\":[],\\\"sub_button\\\":[{\\\"name\\\":\\\"新浪微博\\\",\\\"type\\\":\\\"2\\\",\\\"act_list\\\":[{\\\"type\\\":2,\\\"value\\\":\\\"weibo.com\\\"}],\\\"sub_button\\\":[],\\\"key\\\":\\\"1533546787894KEY\\\"},{\\\"name\\\":\\\"脸书\\\",\\\"type\\\":\\\"2\\\",\\\"act_list\\\":[{\\\"type\\\":2,\\\"value\\\":\\\"facebook.com\\\"}],\\\"sub_button\\\":[],\\\"key\\\":\\\"1533546920741KEY\\\"},{\\\"name\\\":\\\"腾讯微博\\\",\\\"type\\\":\\\"2\\\",\\\"act_list\\\":[{\\\"type\\\":2,\\\"value\\\":\\\"\\\"}],\\\"sub_button\\\":[],\\\"key\\\":\\\"1533546932171KEY\\\"}],\\\"key\\\":\\\"1533546768134KEY\\\"},{\\\"name\\\":\\\"经典游戏\\\",\\\"type\\\":\\\"1\\\",\\\"act_list\\\":[],\\\"sub_button\\\":[{\\\"name\\\":\\\"守望先锋\\\",\\\"type\\\":\\\"2\\\",\\\"act_list\\\":[{\\\"type\\\":2,\\\"value\\\":\\\"ow.com\\\"}],\\\"sub_button\\\":[],\\\"key\\\":\\\"1533546843634KEY\\\"},{\\\"name\\\":\\\"暗黑破坏神之大闹江湖\\\",\\\"type\\\":\\\"2\\\",\\\"act_list\\\":[{\\\"type\\\":2,\\\"value\\\":\\\"diable.com\\\"}],\\\"sub_button\\\":[],\\\"key\\\":\\\"1533546874464KEY\\\"}],\\\"key\\\":\\\"1533546832136KEY\\\"},{\\\"name\\\":\\\"电影下载\\\",\\\"type\\\":\\\"1\\\",\\\"act_list\\\":[],\\\"sub_button\\\":[{\\\"name\\\":\\\"高清蓝光\\\",\\\"type\\\":\\\"2\\\",\\\"act_list\\\":[{\\\"type\\\":2,\\\"value\\\":\\\"gaoqing.fm\\\"}],\\\"sub_button\\\":[],\\\"key\\\":\\\"1533546903703KEY\\\"}],\\\"key\\\":\\\"1533546885454KEY\\\"}]}\",\"mpid\":\"1\"}', 1533547160, 1),
+(403, 1, 'wechat/menu', 'create', '/wechat/menu/create', 'id=', '{\"newv\":\"{\\\"button\\\":[{\\\"name\\\":\\\"游戏入口\\\",\\\"type\\\":\\\"2\\\",\\\"act_list\\\":[{\\\"type\\\":2,\\\"value\\\":\\\"rukou.com\\\"}],\\\"sub_button\\\":[],\\\"key\\\":\\\"1533633572928KEY\\\"}]}\",\"mpid\":\"2\"}', 1533633611, 1);
 
 -- --------------------------------------------------------
 
@@ -985,15 +990,29 @@ INSERT INTO `cw_wechat` (`id`, `mpname`, `mptype`, `appid`, `appsecret`, `token`
 CREATE TABLE `cw_wechat_menu` (
   `id` int(10) UNSIGNED NOT NULL COMMENT '菜单ID',
   `mpid` int(10) UNSIGNED NOT NULL COMMENT '所属公众号ID',
-  `pid` int(10) UNSIGNED NOT NULL COMMENT '父菜单ID',
+  `pid` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT '父菜单ID',
   `name` varchar(10) COLLATE utf8_unicode_ci NOT NULL COMMENT '菜单名称',
-  `type` varchar(20) COLLATE utf8_unicode_ci NOT NULL COMMENT '菜单类型',
-  `mpkey` varchar(129) COLLATE utf8_unicode_ci NOT NULL COMMENT '菜单KEY值，用于消息接口推送，不超过128字节',
-  `url` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT '网页链接，用户点击菜单可打开链接',
-  `media_id` varchar(20) COLLATE utf8_unicode_ci NOT NULL COMMENT '素材id',
+  `type` tinyint(1) NOT NULL COMMENT '菜单类型 1：view  2:click',
+  `message` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '菜单响应数据',
   `created_at` int(11) NOT NULL COMMENT '创建时间',
   `updated_at` int(11) NOT NULL COMMENT '更新时间'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- 转存表中的数据 `cw_wechat_menu`
+--
+
+INSERT INTO `cw_wechat_menu` (`id`, `mpid`, `pid`, `name`, `type`, `message`, `created_at`, `updated_at`) VALUES
+(13, 1, 0, '社交网络', 1, NULL, 1533547160, 1533547160),
+(14, 1, 13, '新浪微博', 2, 'weibo.com', 1533547160, 1533547160),
+(15, 1, 13, '脸书', 2, 'facebook.com', 1533547160, 1533547160),
+(16, 1, 13, '腾讯微博', 2, '', 1533547160, 1533547160),
+(17, 1, 0, '经典游戏', 1, NULL, 1533547160, 1533547160),
+(18, 1, 17, '守望先锋', 2, 'ow.com', 1533547160, 1533547160),
+(19, 1, 17, '暗黑破坏神之大闹江湖', 2, 'diable.com', 1533547160, 1533547160),
+(20, 1, 0, '电影下载', 1, NULL, 1533547160, 1533547160),
+(21, 1, 20, '高清蓝光', 2, 'gaoqing.fm', 1533547160, 1533547160),
+(22, 2, 0, '游戏入口', 2, NULL, 1533633611, 1533633611);
 
 --
 -- Indexes for dumped tables
@@ -1108,7 +1127,7 @@ ALTER TABLE `cw_wechat_menu`
 -- 使用表AUTO_INCREMENT `cw_admin_log`
 --
 ALTER TABLE `cw_admin_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '日志ID', AUTO_INCREMENT=399;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '日志ID', AUTO_INCREMENT=404;
 
 --
 -- 使用表AUTO_INCREMENT `cw_admin_menu`
@@ -1174,7 +1193,7 @@ ALTER TABLE `cw_wechat`
 -- 使用表AUTO_INCREMENT `cw_wechat_menu`
 --
 ALTER TABLE `cw_wechat_menu`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '菜单ID';
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '菜单ID', AUTO_INCREMENT=23;
 
 --
 -- 限制导出的表

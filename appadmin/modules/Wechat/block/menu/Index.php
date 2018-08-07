@@ -19,6 +19,7 @@ class Index extends AppadminBlock implements AppadminBlockInterface{
     
     public function init()
     {
+        $this->_param['orderDirection'] = 'asc';
         parent::init();
     }
     
@@ -71,8 +72,8 @@ class Index extends AppadminBlock implements AppadminBlockInterface{
             ],
             [
                 'type' => 'textInput',
-                'name' => 'appid',
-                'columns_type' =>'string'
+                'name' => 'mpid',
+                'columns_type' =>'ini'
             ],
         ];
     }
@@ -94,7 +95,12 @@ class Index extends AppadminBlock implements AppadminBlockInterface{
         $filler = $this->initFiller();
         #return data
         $result = \Yii::$service->search->getColl($filler,$this->_model);
-        $data = $this->_display->handleResponse($result['coll'],$result['total'],$params);
+        #return button tree array
+        $treeParam['data'] = $result['coll'];
+        $treeParam['parentIdName'] = 'pid';
+        $treeParam['childrenName'] = 'sub_button';
+        $buttons['button'] = \Yii::$service->helper->tree->setParam($treeParam)->getTreeArray(0);
+        $data = $this->_display->handleResponse($buttons,$result['total'],$params);
         return $data;
     }
 }

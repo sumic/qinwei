@@ -53,12 +53,12 @@ function hsAddSecoundMenu(abtn) {
  * 2块儿编辑的显示问题
  */
 function hsMRPShowOrHide() {
-    var eVal = arguments[0] ? arguments[0] : $('[name=nnn]:checked').val();
+    var eVal = arguments[0] ? arguments[0] : $('[name=menu_type]:checked').val();
     $('.hs-menuright-panel').hide();
     $('.hs-mrp' + eVal).show();
-    $('[name=nnn]').removeAttr('checked').filter('[value=' + eVal + ']').attr('checked', 'checked');
+    $('[name=menu_type]').removeAttr('checked').filter('[value=' + eVal + ']').attr('checked', 'checked');
     $('.hs-ico-radio').removeClass('hs-selected');
-    $('[name=nnn]').filter('[value=' + eVal + ']').siblings('.hs-ico-radio').addClass('hs-selected');
+    $('[name=menu_type]').filter('[value=' + eVal + ']').siblings('.hs-ico-radio').addClass('hs-selected');
 }
 /**
  * 检测公众号选择
@@ -136,7 +136,7 @@ $(function () {
      * 初始化编辑块儿
      */
     //hsMRPShowOrHide(1);
-    $(document).on('click', '[name=nnn]', function () {
+    $(document).on('click', '[name=menu_type]', function () {
         hsMRPShowOrHide();
     })
 
@@ -185,7 +185,6 @@ $(function () {
  * @param {Object}
  */
 function hsInitMenu(menuData) {
-	console.log(menuData);
     try {
         if (!menuData) {
         	$('.hs-menu-item').remove();
@@ -260,8 +259,8 @@ function hsInitMenu(menuData) {
  * @param {Object}
  */
 function hsInitMenuRight(onebtn) {
+	console.log(onebtn);
     try {
-
         if (!onebtn) {
             console.error('param onebtn can not null');
             return false;
@@ -282,15 +281,13 @@ function hsInitMenuRight(onebtn) {
         $('#newssed').hide();
         $('#newssed').html('');
         //如果有值
-        if (onebtn.act_list.length > 0) {
-            var tmp = onebtn.act_list[0];
-            console.log(tmp);
+        if (onebtn.sub_button.length <= 0) {
             switch (Number(onebtn.type)) {
                 case 1:
                     //todo
                     //hsUpdateCurrentData({ act_list:[ { type:'news', value:36 } ] })
                     //console.log(tmp);
-                    switch (tmp.type) {
+                    /*switch (tmp.type) {
                         case "news":
                             $.ajax({
                                 url: "/admin/mpbase/getmaterial/id/" + tmp.value,
@@ -319,10 +316,10 @@ function hsInitMenuRight(onebtn) {
                                 }
                             })
                             break;
-                    }
+                    }*/
                     break;
                 case 2:
-                    $ID('hsUrlValue').value = tmp.value;
+                    $ID('hsUrlValue').value = onebtn.message;
                     break;
             }
         }
@@ -337,6 +334,7 @@ function hsInitMenuRight(onebtn) {
 
         hsMRPShowOrHide(onebtn.type); //显示编辑块儿
     } catch (e) {
+    	console.log(e);
         console.error('function hsInitMenuRight has error');
     }
 }
@@ -369,7 +367,7 @@ function hsGetRightValue() {
     //设定key值
     var key = (new Date().getTime()) + "KEY";
     //取type值
-    var type = $('[name=nnn]').filter('[checked]').val();
+    var type = $('[name=menu_type]').filter('[checked]').val();
     //取act_list
     var actList = [];
 
@@ -382,7 +380,6 @@ function hsGetRightValue() {
         var navActiveValue = navActive.attr('jstab-target');
         switch (navActiveValue) {
             case 'newsArea':
-
                 break;
         }
     }
@@ -421,7 +418,10 @@ function hsUpdateCurrentData() {
  * 返回当前整个菜单数据
  */
 function hsGetCurrentAllData() {
-    var currAllData = {version: new Date().getTime(), button: []};
+    var currAllData = {
+    		//version: new Date().getTime(), 
+    		button: []
+    };
     $('.hs-menu-item > .hs-menu-a').each(function (i, o) {
         var tmp = $(o).data('currData');
         // console.log(tmp);
@@ -438,6 +438,5 @@ function hsGetCurrentAllData() {
             })
         }
     })
-    console.log(currAllData);
     return currAllData;
 }

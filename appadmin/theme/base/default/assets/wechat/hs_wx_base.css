@@ -822,6 +822,6 @@ body{ font-size: 14px; font-family: "微软雅黑"; }
 /* 自定义菜单个性筛选条件 end */
 li[class*=item-] {
     border: 0px solid #DDD;
-    border-left-width: 0px;
+    border-left-width: 1px;
 }
 /* 自定义菜单  end*/

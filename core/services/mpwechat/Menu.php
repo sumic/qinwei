@@ -67,29 +67,81 @@ class Menu extends Service
     
     public function save($param,$scenario = 'default')
     {
-        var_dump($param);
-        var_dump(json_decode($param['newv']));
-        exit;
-        $primaryVal = isset($param[$this->getPrimaryKey()]) ? $param[$this->getPrimaryKey()] : '';
-        if ($primaryVal) {
-            //更新数据
-            $model = $this->getByPrimaryKey($primaryVal);
-            if (!$model) {
-                Yii::$service->helper->errors->add($this->getPrimaryKey().' 不存在');
+        $buttons = json_decode($param['newv'],TRUE);
+        $mpid = $param['mpid'];
+        if($mpid && $buttons['button']){
+            //$primaryVal = isset($param[$this->getPrimaryKey()]) ? $param[$this->getPrimaryKey()] : '';
+            $innerTransaction = Yii::$app->db->beginTransaction();
+            $model = new $this->_model;
+            try {
+                foreach ($buttons['button'] as $v)
+                {
+                    //添加一级菜单
+                    $data['id']   = !empty($v['id']) ? $v['id'] : '';
+                    $data['mpid'] = $mpid;
+                    $data['name'] = $v['name'];
+                    $data['type'] = $v['type'];
+                    $data['pid']  = 0;
+                    //保存数据
+                    $topMenu = $this->saveOne($data, $scenario);
+                    if(!$topMenu){
+                        throw new \UnexpectedValueException(Yii::$service->helper->errors->get()[0]);
+                    }
+                    //添加二级菜单
+                    $pid = Yii::$app->db->getLastInsertID();
+                    if($topMenu && is_array($v['sub_button']) && !empty($v['sub_button'])){
+                        foreach ($v['sub_button'] as $v1){
+                            $sub['id']   = empty($v1['id']) ? '' : $v1['id'];
+                            $sub['mpid'] = $mpid;
+                            $sub['pid']  = empty($v1['id']) ? $pid : $v1['id'];
+                            $sub['name'] = $v1['name'];
+                            $sub['type'] = $v1['type'];
+                            $sub['message'] = !empty($v1['act_list'][0]['value']) ? $v1['act_list'][0]['value'] : '';
+                            //保存submenu
+                            $subMenu = $this->saveOne($sub,$scenario);
+                            if(!$subMenu){
+                                throw new \UnexpectedValueException(Yii::$service->helper->errors->get()[0]);
+                            }
+                        }
+                    }
+                }
+                $innerTransaction->commit();
+                return $model;
+            }catch (\Exception $e){
+                Yii::$service->helper->errors->add($e->getMessage()."事务已回滚");
+                $innerTransaction->rollBack();
                 return false;
             }
-        } else {
-            //新建数据
-            $model = new $this->_model();
+        }else{
+            Yii::$service->helper->errors->add('没有菜单添加。');
+            return false;
         }
-        // 判断是否存在指定的验证场景，有则使用，没有默认
+    }
+    
+    public function saveOne($data,$scenario)
+    {
+        $model = new $this->_model;
+        //验证场景
         $arrScenarios = $model->scenarios();
         if (isset($arrScenarios[$scenario])) {
             $model->scenario = $scenario;
         }
-        return Yii::$service->helper->ar->save($model, $param);
+        //读取wechat menu表数据
+        if (!$model->load($data,''))
+        {
+            Yii::$service->helper->errors->addByModelErrors($model->getErrors());
+            return false;
+        }
+        //验证写入wechat menu表
+        if($model->validate())
+        {
+            $menu = $model->save();
+            return true;
+        }else{
+            Yii::$service->helper->errors->addByModelErrors($model->getErrors());
+            return false;
+        }
     }
-    
     //根据ID删除数据，使用了事务
     public function remove($ids)
     {
@@ -124,7 +176,6 @@ class Menu extends Service
                 $innerTransaction->rollBack();
                 return false;
             }
-            $this->aftetSave();
             return $model;
         } else {
             Yii::$service->helper->errors->add("ID $id 不存在.");

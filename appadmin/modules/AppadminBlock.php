@@ -96,7 +96,7 @@ class AppadminBlock extends BaseObject
         #获得查询的字段
         $param = $this->_display->getRequest();
         $this->_primaryKey = $this->_service->getPrimaryKey();
-        
+        //var_dump($param);exit;
         if (empty($param['offset'])) {
             $param['offset'] = $this->_offset;
         }

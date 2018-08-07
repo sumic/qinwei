@@ -121,12 +121,9 @@ class Tree extends Service
     {
         $array = [];
         if (is_array($this->array)) {
-            //var_dump($this->array);
-            //$this->array = ArrayHelper::multisort($this->array, 'sort');
-            //var_dump($this->array);exit;
             foreach ($this->array as $key => $value) {
                 if ($value[$this->parentIdName] == $id) {
-                    $array[$key] = $value;
+                    $array[] = $value;
                 }
             }
         }
@@ -293,12 +290,12 @@ class Tree extends Service
         // 一级数组
         $children = $this->getChild($id);
         if (is_array($children)) {
-            foreach ($children as $child) {
+            foreach ($children as $k => $child) {
                 $child['_level'] = $level;
-                $returnArray[$child['id']] = $child;
+                $returnArray[$k] = $child;
                 if ($maxLevel === 0 || ($maxLevel !== 0 && $maxLevel > $level)) {
                     $mLevel = $level + 1;
-                    $returnArray[$child['id']][$this->childrenName] = $this->getTreeArray($child['id'], $maxLevel, $mLevel);
+                    $returnArray[$k][$this->childrenName] = $this->getTreeArray($child['id'], $maxLevel, $mLevel);
                 }
             }
         }

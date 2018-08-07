@@ -1,9 +1,12 @@
 <?php
 use appadmin\assets\WechatAsset;
+use appadmin\assets\NotifyAsset;
 use core\widgets\JsBlock;
 use yii\bootstrap\Html;
 use yii\helpers\ArrayHelper;
 WechatAsset::register($this);
+NotifyAsset::register($this);
+
 $this->title = '自定义菜单管理';
 $chosenOptions = [
     'options' => [
@@ -85,10 +88,10 @@ $chosenOptions = [
 								<label class="hs-menuright-mlabel">菜单内容</label>
 								<div class="hs-menuright-mlabelr">
 									<label class=""> <input class="hs-ico-control" type="radio"
-										name="nnn" value="1" checked="checked" /> <i
+										name="menu_type" value="1" checked="checked" /> <i
 										class="hs-ico-radio hs-selected"></i> <span>发送消息</span>
 									</label> <label class=""> <input class="hs-ico-control"
-										type="radio" name="nnn" value="2" /> <i class="hs-ico-radio"></i>
+										type="radio" name="menu_type" value="2" /> <i class="hs-ico-radio"></i>
 										<span>跳转网页</span>
 									</label>
 								</div>
@@ -245,11 +248,44 @@ $chosenOptions = [
 </div>
 <?php JsBlock::begin()?>
 <script>
-    var data = null;
-    var mpid = $('#mpid').val();
-    hsInitMenu(data);
-
+	$.notifyDefaults({
+		icon: 'fa fa-bell',
+		placement: {from: "top",align: "center"},
+		template : '<div data-notify="container" class="col-xs-11 col-sm-3 alert alert-{0} alert-with-icon alert-rose" role="alert">'+
+		'<button type="button" aria-hidden="true" class="close" data-notify="dismiss">×</button>'+
+		'<i data-notify="icon"></i>'+
+		'<span data-notify="title">{1}</span>'+
+		'<span data-notify="message">{2}</span>'+
+		'<div class="progress" data-notify="progressbar">'+
+		'	<div class="progress-bar progress-bar-{0}" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>'+
+		'</div>'+
+		'<a href="{3}" target="{4}" data-notify="url"></a>'+
+	'</div>',
+	})
     $(function(){
+        //选择公众号后初始化
+    	$('#mpid').change(function(){
+        	var mpid = $('#mpid').val();
+        	console.log(this.text());
+        
+        	hsInitMenu(null);
+        	$.post('/wechat/menu/search',
+                    {
+                		"params" : {"mpid":mpid},
+                		"sSortDir_0":"asc"
+                    },
+                    function(result){
+                        if(result.errCode == 0 && result.data.iTotalDisplayRecords > 0){
+                        	$.notify({icon: 'fa fa-bell',message: "菜单信息已刷新"},{type: "success"});
+                        	var menudata = JSON.stringify(result.data.aaData);
+                        	hsInitMenu(menudata);
+                        }else{
+                        	$.notify({icon: 'fa fa-bell',message: "获取菜单数据失败"},{type: "danger"});
+                        	hsInitMenu(null);
+                        }
+                    }
+                );
+        	})
     	$('.chosen-select').chosen({
 			allow_single_deselect:false,
 			no_results_text: "没有找到相关栏目",
@@ -304,10 +340,11 @@ $chosenOptions = [
                     mpid : mpid
                 },
                 function(data){
-                    if(data.errno == 0){
-                        toastr.success(data.data.name);
+                    console.log(data);
+                    if(data.errCode == 0){
+                    	swal("保存成功", '点击生成微信菜单提交。',"success")
                     }else{
-                        toastr.error(data.errmsg);
+                    	swal("错误！", data.errMsg,"error")
                     }
                 }
             );
