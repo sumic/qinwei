@@ -65,7 +65,6 @@ class Wechat extends Service
                     throw new HttpException(500, 'Fail to get access_token from wechat server.');
                 }
                 $result['expire'] = $time + $result['expires_in'];
-                $this->trigger(self::EVENT_AFTER_ACCESS_TOKEN_UPDATE, new Event(['data' => $result]));
                 $this->setCache('access_token', $result, $result['expires_in']);
             }
             $this->setAccessToken($result);

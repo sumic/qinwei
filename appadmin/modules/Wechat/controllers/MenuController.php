@@ -22,4 +22,9 @@ class MenuController extends AppadminController{
         return $this->render($this->action->id,$data['params']);
     }
     
+    public function actionAsyncwxmenu()
+    {
+        $data = $this->getBlock('async')->menu();
+        return $data;
+    }
 }

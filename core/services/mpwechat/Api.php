@@ -5,21 +5,24 @@ use Yii;
 use yii\base\InvalidConfigException;
 use core\services\Wechat;
 /**
- * 微信公众号操作SDK
+ * 微信公众号操作Api
  * 注:部分功能因API的整体和功能性, 拆分为单独的类调用请查看compoents/mp文件夹
- * @package calmez\wechat\sdk
  */
-class Sdk extends Wechat 
+class Api extends Wechat 
 {
     /**
      * 微信接口基本地址
      */
     const WECHAT_BASE_URL = 'https://api.weixin.qq.com';
     /**
+     * MPID 公众号ID,必须设置
+     */
+    public $mpid;
+    /**
      * 数据缓存前缀
      * @var string
      */
-    public $cachePrefix = 'cache_wechat_sdk_mp';
+    public $cachePrefix = 'cache_wechat_api_mp';
     /**
      * 公众号appId
      * @var string
@@ -47,6 +50,19 @@ class Sdk extends Wechat
      */
     public function init()
     {
+        $this->mpid = (int)\Yii::$app->request->post('mpid') ? (int)\Yii::$app->request->post('mpid') : (int)\Yii::$app->request->get('mpid');
+        if ($this->mpid === 0) {
+            throw new InvalidConfigException('The "mpid" property must be set.');
+        } else{
+            $mpwechat = \Yii::$service->mpwechat->base->getByPrimaryKey($this->mpid);
+        }
+        if($mpwechat === null){
+            throw new InvalidConfigException('The "mpid" does not exists.');
+        }
+        $this->appId = $mpwechat->appid;
+        $this->appSecret = $mpwechat->appsecret;
+        $this->token = $mpwechat->token;
+        $this->encodingAesKey = $mpwechat->aeskey;
         if ($this->appId === null) {
             throw new InvalidConfigException('The "appId" property must be set.');
         } elseif ($this->appSecret === null) {
@@ -946,7 +962,7 @@ class Sdk extends Wechat
         ], [
             'access_token' => $this->getAccessToken()
         ]);
-        return isset($result['errmsg']) && $result['errmsg'] == 'ok';
+        return $result;
     }
     
     /**

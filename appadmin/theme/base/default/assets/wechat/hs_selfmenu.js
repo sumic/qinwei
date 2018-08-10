@@ -2,6 +2,7 @@
  * 添加一级菜单
  */
 function hsAddFirstMenu() {
+	$('#needsave').val('true');
     $(".hs-ph-edit").removeClass("hide")
     var abtn = $('.hs-menu-li.hs-menu-item-add');
     var mli = $(".hs-menu-item");//当前菜单个数
@@ -37,6 +38,7 @@ function hsAddFirstMenu() {
  */
 function hsAddSecoundMenu(abtn) {
     //var sli = abtn.siblings('li');
+	$('#needsave').val('true');
     $(".hs-menu-a").removeClass("hs-current");//移除所有的选择状态
     var sdom = ['<li class="hs-menu-sub-li">',
         '	<a class="hs-menu-a hs-current" href="javascript:void(0)">',
@@ -94,7 +96,7 @@ $(function () {
         /* 数据操作 start */
         var currData = $(this).data('currData');
         if (!currData) {
-            currData = {name: '菜单名称', type: 1, act_list: [], sub_button: []};
+            currData = {name: '菜单名称', type: 1, sub_button: []};
             $(this).data('currData', currData);
         }
         hsInitMenuRight(currData);
@@ -123,7 +125,7 @@ $(function () {
         var parentData = pFirstEl.data('currData');
         var currData = parentData.sub_button[thisIndex];
         if (!currData) {
-            currData = {name: '子菜单名称', type: 1, act_list: [], sub_button: []};
+            currData = {name: '子菜单名称', type: 1, sub_button: []};
             //更新当前菜单数据
             parentData.sub_button[thisIndex] = currData;
             pFirstEl.data('currData', parentData);
@@ -152,6 +154,7 @@ $(function () {
      *
      */
     $(".hs-menuright-del").click(function () {
+    	
         swal({
             title: "删除确认?",
             text: "删除后“子菜单名称”菜单下设置的内容将被删除!",
@@ -162,7 +165,7 @@ $(function () {
             closeOnConfirm: false
         }, function () {
             var index = $(".hs-current").parent().index();
-            //console.log(index);
+            console.log(index);
             var data = hsGetCurrentAllData
             var currData = $(".hs-current-edit").data('currData');
             currData.sub_button.splice(index, 1);
@@ -242,6 +245,7 @@ function hsInitMenu(menuData) {
             $('.hs-menu-item-add').before(fli);
         }
     } catch (e) {
+    	console.log(e);
         console.log('function hsInitMenu has error');
     }
 }
@@ -386,7 +390,7 @@ function hsGetRightValue() {
     console.log(value);
     actList.push(value);
     //console.log(type);
-    return {name: name, key: key, type: type, act_list: actList};
+    return {name: name, key: key, type: type, message: $("#hsUrlValue").val()};
 }
 
 /**
@@ -395,6 +399,8 @@ function hsGetRightValue() {
  */
 function hsUpdateCurrentData() {
     var targetData = arguments[0] || hsGetRightValue();
+    //更新状态
+    $("#needsave").val('true');
     //判断当前是2级菜单还是 1级菜单
     console.log(targetData);
     var currEl = $('.hs-current');
@@ -432,11 +438,12 @@ function hsGetCurrentAllData() {
     $.each(currAllData.button, function (i, v) {
         //console.log(v.sub_button.length);
         if (v.sub_button.length > 0) {
-            v.act_list = []
+            //v.act_list = []
             $.each(v.sub_button, function (m, n) {
-                console.log(n);
+                //console.log(n);
             })
         }
     })
     return currAllData;
 }
+

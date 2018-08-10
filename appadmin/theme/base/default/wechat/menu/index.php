@@ -30,6 +30,7 @@ $chosenOptions = [
 		<div class="widget-body" style="display: block;min-height:530px">
 			<div class="widget-main clearfix">
 				<div style="margin-bottom:10px">
+				<input type="hidden" id="needsave" name='needsave' value=''/>
 					<?= Html::dropDownList('mpid',
 					    $currentMp,
 					    ArrayHelper::map($mpbase, 'id', 'mpname'),
@@ -265,27 +266,8 @@ $chosenOptions = [
     $(function(){
         //选择公众号后初始化
     	$('#mpid').change(function(){
-        	var mpid = $('#mpid').val();
-        	console.log(this.text());
-        
-        	hsInitMenu(null);
-        	$.post('/wechat/menu/search',
-                    {
-                		"params" : {"mpid":mpid},
-                		"sSortDir_0":"asc"
-                    },
-                    function(result){
-                        if(result.errCode == 0 && result.data.iTotalDisplayRecords > 0){
-                        	$.notify({icon: 'fa fa-bell',message: "菜单信息已刷新"},{type: "success"});
-                        	var menudata = JSON.stringify(result.data.aaData);
-                        	hsInitMenu(menudata);
-                        }else{
-                        	$.notify({icon: 'fa fa-bell',message: "获取菜单数据失败"},{type: "danger"});
-                        	hsInitMenu(null);
-                        }
-                    }
-                );
-        	})
+        	getMenuData();
+        	});
     	$('.chosen-select').chosen({
 			allow_single_deselect:false,
 			no_results_text: "没有找到相关栏目",
@@ -332,7 +314,6 @@ $chosenOptions = [
         $(document).on('click', '#hsSubmitSave', function(){
             var newv = JSON.stringify(hsGetCurrentAllData());
             var mpid = $('#mpid').val();
-            console.log(JSON.stringify(newv));
 
             $.post('/wechat/menu/create',
                 {
@@ -340,9 +321,10 @@ $chosenOptions = [
                     mpid : mpid
                 },
                 function(data){
-                    console.log(data);
                     if(data.errCode == 0){
-                    	swal("保存成功", '点击生成微信菜单提交。',"success")
+                    	swal("保存成功", '点击生成微信菜单提交。',"success");
+                    	$("#needsave").val('false');
+                    	getMenuData();
                     }else{
                     	swal("错误！", data.errMsg,"error")
                     }
@@ -352,18 +334,50 @@ $chosenOptions = [
         
         //生成微信菜单
         $(document).on('click', '#hsSubmitSyncWx', function(){
-
-            $.post('/admin/mpbase/asyncwxmenu',
-                {},
-                function(data){
-                    if(data.errno == 0){
-                        toastr.success(data.data.name);
-                    }else{
-                        toastr.error(data.errmsg);
+        	if($("#mpid").val() == ''){
+    			swal('错误','请选择要生成的公众号','error');
+    		}
+        	if($("#needsave").val() == 'true'){
+    			swal('错误','菜单更新后还未保存，请保存后再提交','error');
+    		}
+    		
+        	$.post('/wechat/menu/asyncwxmenu',
+                    {
+                		mpid:$("#mpid").val(),
+                	},
+                    function(data){
+                        if(data.errno == 0){
+                            toastr.success(data.data.name);
+                        }else{
+                            toastr.error(data.errmsg);
+                        }
                     }
-                }
-            )
-        })
+                )
+        });
+
+        function getMenuData()
+        {
+        	var mpid = $('#mpid').val();
+        	var mptext =  $("#mpid option:selected").text();
+        	//init default blank menu
+        	$('.hs-menu-ul>.hs-menu-item').remove();
+        	$.post('/wechat/menu/search',
+                    {
+                		"params" : {"mpid":mpid},
+                		"sSortDir_0":"asc"
+                    },
+                    function(result){
+                        if(result.errCode == 0 && result.data.iTotalDisplayRecords > 0){
+                        	$.notify({icon: 'fa fa-bell',message: mptext+" 菜单信息已刷新"},{type: "success"});
+                        	var menudata = JSON.stringify(result.data.aaData);
+                        	hsInitMenu(menudata);
+                        }else{
+                        	$.notify({icon: 'fa fa-bell',message: mptext+" 获取菜单数据失败"},{type: "danger"});
+                        	hsInitMenu(null);
+                        }
+                    }
+                );
+            }
     })
 </script>
 <?php JsBlock::end();?>

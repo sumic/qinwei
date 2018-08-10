@@ -103,4 +103,9 @@ class Index extends AppadminBlock implements AppadminBlockInterface{
         $data = $this->_display->handleResponse($buttons,$result['total'],$params);
         return $data;
     }
+    
+    public function asyncWxmenu()
+    {
+        $mpid = \Yii::$app->request->post('mpid');
+    }
 }

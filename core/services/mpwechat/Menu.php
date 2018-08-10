@@ -65,14 +65,20 @@ class Menu extends Service
         }
     }
     
+    public function getByMpid($mpid)
+    {
+        if($mpid){
+            return $this->_model->find()->where(["mpid" => $mpid])->asArray()->all();
+        }
+    }
     public function save($param,$scenario = 'default')
     {
         $buttons = json_decode($param['newv'],TRUE);
+        var_dump($buttons);exit;
         $mpid = $param['mpid'];
         if($mpid && $buttons['button']){
             //$primaryVal = isset($param[$this->getPrimaryKey()]) ? $param[$this->getPrimaryKey()] : '';
             $innerTransaction = Yii::$app->db->beginTransaction();
-            $model = new $this->_model;
             try {
                 foreach ($buttons['button'] as $v)
                 {
@@ -82,21 +88,23 @@ class Menu extends Service
                     $data['name'] = $v['name'];
                     $data['type'] = $v['type'];
                     $data['pid']  = 0;
+                    $data['message'] = $v['message'];
                     //保存数据
                     $topMenu = $this->saveOne($data, $scenario);
                     if(!$topMenu){
                         throw new \UnexpectedValueException(Yii::$service->helper->errors->get()[0]);
                     }
                     //添加二级菜单
-                    $pid = Yii::$app->db->getLastInsertID();
+                    //更新数据时候需要指定父菜单ID
+                    $pid = $topMenu->isNewRecord ? Yii::$app->db->getLastInsertID() : $data['id'];
                     if($topMenu && is_array($v['sub_button']) && !empty($v['sub_button'])){
                         foreach ($v['sub_button'] as $v1){
                             $sub['id']   = empty($v1['id']) ? '' : $v1['id'];
                             $sub['mpid'] = $mpid;
-                            $sub['pid']  = empty($v1['id']) ? $pid : $v1['id'];
+                            $sub['pid']  = $pid;
                             $sub['name'] = $v1['name'];
                             $sub['type'] = $v1['type'];
-                            $sub['message'] = !empty($v1['act_list'][0]['value']) ? $v1['act_list'][0]['value'] : '';
+                            $sub['message'] = $v1['message'];
                             //保存submenu
                             $subMenu = $this->saveOne($sub,$scenario);
                             if(!$subMenu){
@@ -106,7 +114,7 @@ class Menu extends Service
                     }
                 }
                 $innerTransaction->commit();
-                return $model;
+                return true;
             }catch (\Exception $e){
                 Yii::$service->helper->errors->add($e->getMessage()."事务已回滚");
                 $innerTransaction->rollBack();
@@ -120,7 +128,18 @@ class Menu extends Service
     
     public function saveOne($data,$scenario)
     {
-        $model = new $this->_model;
+        $primaryVal = isset($data[$this->getPrimaryKey()]) ? $data[$this->getPrimaryKey()] : '';
+        if ($primaryVal) {
+            //更新数据
+            $model = $this->getByPrimaryKey($primaryVal);
+            if (!$model) {
+                Yii::$service->helper->errors->add($this->getPrimaryKey().' 不存在');
+                return false;
+            }
+        } else {
+            //新建数据
+            $model = new $this->_model();
+        }
         //验证场景
         $arrScenarios = $model->scenarios();
         if (isset($arrScenarios[$scenario])) {
@@ -133,10 +152,9 @@ class Menu extends Service
             return false;
         }
         //验证写入wechat menu表
-        if($model->validate())
+        if($model->validate() && $model->save())
         {
-            $menu = $model->save();
-            return true;
+            return $model;
         }else{
             Yii::$service->helper->errors->addByModelErrors($model->getErrors());
             return false;

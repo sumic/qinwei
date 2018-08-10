@@ -14,8 +14,8 @@ return [
         'class' => 'core\services\Wechat',
         // 子服务
         'childService' => [
-	         'sdk' => [
-                'class'  => 'core\services\mpwechat\Sdk',
+	         'api' => [
+                'class'  => 'core\services\mpwechat\Api',
             ],
             'base' => [
                 'class'  => 'core\services\mpwechat\Base',
