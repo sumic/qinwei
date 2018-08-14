@@ -166,7 +166,7 @@ $(function () {
         }, function () {
             var index = $(".hs-current").parent().index();
             console.log(index);
-            var data = hsGetCurrentAllData
+            var data = hsGetCurrentAllData;
             var currData = $(".hs-current-edit").data('currData');
             currData.sub_button.splice(index, 1);
             $(".hs-current").parent().remove();
@@ -175,6 +175,7 @@ $(function () {
             } else {
                 $(".hs-ph-edit").addClass("hide")
             }
+            
             swal("操作成功!", "你选择的菜单已经被删除", "success");
         });
 
@@ -278,7 +279,8 @@ function hsInitMenuRight(onebtn) {
         //初始化编辑值
         var currentMenuNameEle = $ID('hsCurrentMenuName');
         currentMenuNameEle.value = onebtn.name; //菜单名称赋值
-        $(".hs-menutitle").text(onebtn.name)
+        $(".hs-menutitle").text(onebtn.name);
+        $(".hs-menuright-del").attr('menu_id',onebtn.id);
         //console.log(onebtn.act_list.length);
         $ID('hsUrlValue').value = "";
         $('#newsxz').show();

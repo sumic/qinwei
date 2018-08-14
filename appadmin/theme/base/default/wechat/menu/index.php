@@ -346,10 +346,10 @@ $chosenOptions = [
                 		mpid:$("#mpid").val(),
                 	},
                     function(data){
-                        if(data.errno == 0){
-                            toastr.success(data.data.name);
+                        if(data.errCode == 0){
+                            swal("成功", data.errMsg,"success");
                         }else{
-                            toastr.error(data.errmsg);
+                        	swal("错误！", data.errMsg,"error")
                         }
                     }
                 )
@@ -364,7 +364,8 @@ $chosenOptions = [
         	$.post('/wechat/menu/search',
                     {
                 		"params" : {"mpid":mpid},
-                		"sSortDir_0":"asc"
+                		"sSortDir_0":"asc",
+                		"iDisplayLength":"25"
                     },
                     function(result){
                         if(result.errCode == 0 && result.data.iTotalDisplayRecords > 0){

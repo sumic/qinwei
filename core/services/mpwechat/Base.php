@@ -121,7 +121,8 @@ class Base extends Service
                 $innerTransaction->rollBack();
                 return false;
             }
-            $this->aftetSave();
+            //删除公众号下的菜单
+            \Yii::$service->mpwechat->menu->removeByMpid($id);
             return $model;
         } else {
             Yii::$service->helper->errors->add("ID $id 不存在.");

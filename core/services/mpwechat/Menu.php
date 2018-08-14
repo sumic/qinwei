@@ -74,10 +74,25 @@ class Menu extends Service
     public function save($param,$scenario = 'default')
     {
         $buttons = json_decode($param['newv'],TRUE);
-        var_dump($buttons);exit;
         $mpid = $param['mpid'];
         if($mpid && $buttons['button']){
-            //$primaryVal = isset($param[$this->getPrimaryKey()]) ? $param[$this->getPrimaryKey()] : '';
+            /**
+             * 判断是否有删除的菜单
+             */
+            //获得一级菜单
+            $ids = ArrayHelper::getColumn($buttons['button'], 'id');
+            //获得子菜单并移除新增的
+            foreach ($buttons['button'] as $v){
+                $ids = array_filter(ArrayHelper::merge($ids, ArrayHelper::getColumn($v['sub_button'], 'id')));
+            }
+            //获得旧的菜单id;
+            $oldIds = $this->_model->find()->select('id')->where(['mpid'=>$mpid])->asArray(true)->all();
+            //计算新旧菜单差值
+            $needDel = array_diff(ArrayHelper::getColumn($oldIds, 'id'),$ids);
+            //删除菜单
+            if(!empty($needDel)){
+                $doDel = $this->remove($needDel);
+            }
             $innerTransaction = Yii::$app->db->beginTransaction();
             try {
                 foreach ($buttons['button'] as $v)
@@ -198,6 +213,13 @@ class Menu extends Service
         } else {
             Yii::$service->helper->errors->add("ID $id 不存在.");
             return false;
+        }
+    }
+    
+    public function removeByMpid($mpid)
+    {
+        if(!empty($mpid)){
+            $this->_model->deleteAll(['mpid'=>$mpid]);
         }
     }
 }

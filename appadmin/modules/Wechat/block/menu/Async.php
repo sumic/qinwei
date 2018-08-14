@@ -46,11 +46,10 @@ class Async
             } */
             //同步微信服务器
             $result = \Yii::$service->mpwechat->api->createMenu($buttons);
-            var_dump($result);exit;
-            if($result){
+            if($result['errcode'] == 0){
                 return \Yii::$service->helper->json->success();
             }else{
-                return \Yii::$service->helper->json->error(1004, '同步微信菜单失败');
+                return \Yii::$service->helper->json->error(1004, $result['errcode']);
             }
         }else{
             return \Yii::$service->helper->json->error(1004, '未找到数据');
