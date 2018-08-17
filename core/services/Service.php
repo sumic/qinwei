@@ -60,10 +60,8 @@ class Service extends BaseObject
      */
     public function getChildService($childServiceName)
     {
-        //var_dump($this->childService['xunSearch']);exit;
         if (!$this->_childService[$childServiceName]) {
             
-            //var_dump($this->_childService['theme']);exit;
             $childService = $this->childService;
             if (isset($childService[$childServiceName])) {
                 $service = $childService[$childServiceName];
