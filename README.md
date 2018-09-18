@@ -2,7 +2,7 @@
 talefun-framework
 
 ## 介绍
-##### talefun-framework基于thinkjs3.x创建,为便于团队协同请使用ts进行开发。此template由thinkjs-cli命令创建,并集成了相关代码以供参考。同时针对使用有进行了一些定制。使用中要注意model service等模块的调用方式与thinkjs原生API不同。
+##### talefun-framework基于thinkjs3.x创建,为便于团队协同请使用ts进行开发。此template由thinkjs-cli命令创建,并集成了相关代码以供参考。同时针对使用有进行了一些定制。使用中要注意model service等模块的调用方式与thinkjs原生API不同。
 
 ###
 新开项目直接从本template中fork再改名即可。如果framework有更新也可以拉新。
@@ -131,7 +131,7 @@ this.flush();
 {"errno":0,"data":{"userInfo":{"userId":1234},"abc":"fuck","aaaa":"fuck3"}}
 ```
 #### flush()仅能在crontroller中调用。appendOut可以在BaseModel和BaseService的子类中调用。
-需要注意的是 在原本thinkjs的设计理念中 contex(请求上下文)在service model是不能访问的。我们通过Base*基类将ctx传入了对应的service model(thinkjs中 service model实例均由请求创建)。但需要注意的是尽量减少在model service中调用ctx。
+需要注意的是 在原本thinkjs的设计理念中 contex(请求上下文)在service model是不能访问的。我们通过Base*基类将ctx传入了对应的service model(thinkjs中 service model实例均由请求创建)。但需要注意的是尽量减少在model service中调用ctx。
 
 flush()调用后将输出缓冲，并清空。
 
@@ -169,7 +169,7 @@ async userTestFunc3() {
 }
 ```
 
-##### 对于缓存应遵循原则:针对同一缓存条目的创建,更新,销毁的方法必须存在于同一个类中，以便于后续管理。controller层不见议使用缓存。最好在service,model层封装后在controller调用。
+##### 对于缓存应遵循原则:针对同一缓存条目的创建,更新,销毁的方法必须存在于同一个类中，以便于后续管理。controller层不见议使用缓存。最好在service,model层封装后在controller调用。
 
 ## 对于think结构不足和思考和调整
 ##### 对于复杂业务逻辑，经过多次封装后在一次用户请求中对同一缓存的读取可能会有多次，例如 getUserInfoFromCache(),但是数据无变动时取回的是相同的数据。会造成很多无用的内网流量，也会提高响应的等待时间。所以需要在缓存层上再封装一层基于内存的高速缓存。同时为了防止内存缓存被长期持有，把该缓存放在了用户请求的context中。
