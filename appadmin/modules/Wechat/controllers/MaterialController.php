@@ -17,9 +17,7 @@ class MaterialController extends AppadminController
 {
     public function actionIndex()
     {
-        //$data = $this->getBlock()->signature();
-        \Yii::$service->mpwechat->api->mpid = 3;
-        var_dump(\Yii::$service->mpwechat->api->getAccessToken);
-        return $this->render($this->action->id);
+        $data = $this->getBlock()->getLastData();
+        return $this->render($this->action->id,$data['params']);
     }
 }

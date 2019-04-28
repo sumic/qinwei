@@ -54,7 +54,6 @@
             this.table = null;
             this.action = "construct";
             var self = this;
-
             // 属性覆盖继承
             if (options !== undefined) {
                 if (options.ajaxRequest) {
@@ -96,7 +95,6 @@
 
                 this.extend({options: options});
             }
-
             // 请求地址
             if (this.options.ajaxRequest) {
                 if (!this.options.table.ajax.url) this.options.table.ajax.url = self.getUrl("search");

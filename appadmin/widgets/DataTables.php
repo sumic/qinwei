@@ -53,7 +53,7 @@ class DataTables implements BlockCache
         }
     }
     
-    public function getLastData()
+    public function getLastData($params)
     {
         $this->init();
         $options ['defaultOptions']= $this->defaultOptions;

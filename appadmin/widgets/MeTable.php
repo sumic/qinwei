@@ -48,7 +48,6 @@ class MeTable implements BlockCache
 
     public function init()
     {
-
         // 默认表格配置覆盖
         if ($this->table) {
             $this->defaultOptions = array_merge($this->defaultOptions, $this->table);
