@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: 2018-08-10 17:37:22
--- 服务器版本： 5.7.23-0ubuntu0.18.04.1
--- PHP Version: 7.2.7-0ubuntu0.18.04.2
+-- Generation Time: 2019-04-28 15:27:42
+-- 服务器版本： 5.7.25-0ubuntu0.18.04.2
+-- PHP Version: 7.2.17-0ubuntu0.18.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -451,7 +451,22 @@ INSERT INTO `cw_admin_log` (`id`, `type`, `controller`, `action`, `url`, `index`
 (428, 1, 'wechat/menu', 'create', '/wechat/menu/create', 'id=', '{\"newv\":\"{\\\"button\\\":[{\\\"id\\\":\\\"13\\\",\\\"mpid\\\":\\\"1\\\",\\\"pid\\\":\\\"0\\\",\\\"name\\\":\\\"社交网络\\\",\\\"type\\\":\\\"1\\\",\\\"message\\\":null,\\\"created_at\\\":\\\"1533547160\\\",\\\"updated_at\\\":\\\"1533884983\\\",\\\"_level\\\":1,\\\"sub_button\\\":[{\\\"id\\\":\\\"14\\\",\\\"mpid\\\":\\\"1\\\",\\\"pid\\\":\\\"13\\\",\\\"name\\\":\\\"新浪微博\\\",\\\"type\\\":\\\"2\\\",\\\"message\\\":\\\"\\\",\\\"created_at\\\":\\\"1533547160\\\",\\\"updated_at\\\":\\\"1533884983\\\",\\\"_level\\\":2,\\\"sub_button\\\":[],\\\"key\\\":\\\"1533884993099KEY\\\",\\\"act_list\\\":[{\\\"type\\\":2,\\\"value\\\":\\\"http://www.weibo.cn\\\"}]},{\\\"id\\\":\\\"15\\\",\\\"mpid\\\":\\\"1\\\",\\\"pid\\\":\\\"13\\\",\\\"name\\\":\\\"脸书\\\",\\\"type\\\":\\\"2\\\",\\\"message\\\":\\\"http://www.facebook.net\\\",\\\"created_at\\\":\\\"1533547160\\\",\\\"updated_at\\\":\\\"1533884983\\\",\\\"_level\\\":2,\\\"sub_button\\\":[]},{\\\"id\\\":\\\"16\\\",\\\"mpid\\\":\\\"1\\\",\\\"pid\\\":\\\"13\\\",\\\"name\\\":\\\"腾讯微博\\\",\\\"type\\\":\\\"2\\\",\\\"message\\\":\\\"\\\",\\\"created_at\\\":\\\"1533547160\\\",\\\"updated_at\\\":\\\"1533884983\\\",\\\"_level\\\":2,\\\"sub_button\\\":[]}],\\\"act_list\\\":[]},{\\\"id\\\":\\\"17\\\",\\\"mpid\\\":\\\"1\\\",\\\"pid\\\":\\\"0\\\",\\\"name\\\":\\\"经典游戏\\\",\\\"type\\\":\\\"1\\\",\\\"message\\\":null,\\\"created_at\\\":\\\"1533547160\\\",\\\"updated_at\\\":\\\"1533884983\\\",\\\"_level\\\":1,\\\"sub_button\\\":[{\\\"id\\\":\\\"18\\\",\\\"mpid\\\":\\\"1\\\",\\\"pid\\\":\\\"17\\\",\\\"name\\\":\\\"守望先锋\\\",\\\"type\\\":\\\"2\\\",\\\"message\\\":\\\"\\\",\\\"created_at\\\":\\\"1533547160\\\",\\\"updated_at\\\":\\\"1533884983\\\",\\\"_level\\\":2,\\\"sub_button\\\":[]},{\\\"id\\\":\\\"19\\\",\\\"mpid\\\":\\\"1\\\",\\\"pid\\\":\\\"17\\\",\\\"name\\\":\\\"暗黑破坏神之大闹江湖\\\",\\\"type\\\":\\\"2\\\",\\\"message\\\":\\\"\\\",\\\"created_at\\\":\\\"1533547160\\\",\\\"updated_at\\\":\\\"1533884983\\\",\\\"_level\\\":2,\\\"sub_button\\\":[]}],\\\"act_list\\\":[]},{\\\"id\\\":\\\"20\\\",\\\"mpid\\\":\\\"1\\\",\\\"pid\\\":\\\"0\\\",\\\"name\\\":\\\"电影下载\\\",\\\"type\\\":\\\"1\\\",\\\"message\\\":null,\\\"created_at\\\":\\\"1533547160\\\",\\\"updated_at\\\":\\\"1533884983\\\",\\\"_level\\\":1,\\\"sub_button\\\":[{\\\"id\\\":\\\"21\\\",\\\"mpid\\\":\\\"1\\\",\\\"pid\\\":\\\"20\\\",\\\"name\\\":\\\"高清蓝光\\\",\\\"type\\\":\\\"2\\\",\\\"message\\\":\\\"\\\",\\\"created_at\\\":\\\"1533547160\\\",\\\"updated_at\\\":\\\"1533884983\\\",\\\"_level\\\":2,\\\"sub_button\\\":[]},{\\\"id\\\":\\\"43\\\",\\\"mpid\\\":\\\"1\\\",\\\"pid\\\":\\\"20\\\",\\\"name\\\":\\\"电影天堂\\\",\\\"type\\\":\\\"2\\\",\\\"message\\\":\\\"\\\",\\\"created_at\\\":\\\"1533883155\\\",\\\"updated_at\\\":\\\"1533884983\\\",\\\"_level\\\":2,\\\"sub_button\\\":[]}],\\\"act_list\\\":[]}]}\",\"mpid\":\"1\"}', 1533884993, 1),
 (429, 1, 'wechat/menu', 'create', '/wechat/menu/create', 'id=', '{\"newv\":\"{\\\"button\\\":[{\\\"id\\\":\\\"13\\\",\\\"mpid\\\":\\\"1\\\",\\\"pid\\\":\\\"0\\\",\\\"name\\\":\\\"社交网络\\\",\\\"type\\\":\\\"1\\\",\\\"message\\\":null,\\\"created_at\\\":\\\"1533547160\\\",\\\"updated_at\\\":\\\"1533884993\\\",\\\"_level\\\":1,\\\"sub_button\\\":[{\\\"id\\\":\\\"14\\\",\\\"mpid\\\":\\\"1\\\",\\\"pid\\\":\\\"13\\\",\\\"name\\\":\\\"新浪微博\\\",\\\"type\\\":\\\"2\\\",\\\"message\\\":\\\"http://www.weibo.cn\\\",\\\"created_at\\\":\\\"1533547160\\\",\\\"updated_at\\\":\\\"1533884993\\\",\\\"_level\\\":2,\\\"sub_button\\\":[]},{\\\"id\\\":\\\"15\\\",\\\"mpid\\\":\\\"1\\\",\\\"pid\\\":\\\"13\\\",\\\"name\\\":\\\"脸书\\\",\\\"type\\\":\\\"2\\\",\\\"message\\\":\\\"\\\",\\\"created_at\\\":\\\"1533547160\\\",\\\"updated_at\\\":\\\"1533884993\\\",\\\"_level\\\":2,\\\"sub_button\\\":[],\\\"key\\\":\\\"1533885434002KEY\\\",\\\"act_list\\\":[{\\\"type\\\":2,\\\"value\\\":\\\"http://www.facebook.net\\\"}]},{\\\"id\\\":\\\"16\\\",\\\"mpid\\\":\\\"1\\\",\\\"pid\\\":\\\"13\\\",\\\"name\\\":\\\"腾讯微博\\\",\\\"type\\\":\\\"2\\\",\\\"message\\\":\\\"\\\",\\\"created_at\\\":\\\"1533547160\\\",\\\"updated_at\\\":\\\"1533884993\\\",\\\"_level\\\":2,\\\"sub_button\\\":[]}],\\\"act_list\\\":[]},{\\\"id\\\":\\\"17\\\",\\\"mpid\\\":\\\"1\\\",\\\"pid\\\":\\\"0\\\",\\\"name\\\":\\\"经典游戏\\\",\\\"type\\\":\\\"1\\\",\\\"message\\\":null,\\\"created_at\\\":\\\"1533547160\\\",\\\"updated_at\\\":\\\"1533884993\\\",\\\"_level\\\":1,\\\"sub_button\\\":[{\\\"id\\\":\\\"18\\\",\\\"mpid\\\":\\\"1\\\",\\\"pid\\\":\\\"17\\\",\\\"name\\\":\\\"守望先锋\\\",\\\"type\\\":\\\"2\\\",\\\"message\\\":\\\"\\\",\\\"created_at\\\":\\\"1533547160\\\",\\\"updated_at\\\":\\\"1533884993\\\",\\\"_level\\\":2,\\\"sub_button\\\":[]},{\\\"id\\\":\\\"19\\\",\\\"mpid\\\":\\\"1\\\",\\\"pid\\\":\\\"17\\\",\\\"name\\\":\\\"暗黑破坏神之大闹江湖\\\",\\\"type\\\":\\\"2\\\",\\\"message\\\":\\\"\\\",\\\"created_at\\\":\\\"1533547160\\\",\\\"updated_at\\\":\\\"1533884993\\\",\\\"_level\\\":2,\\\"sub_button\\\":[]}],\\\"act_list\\\":[]},{\\\"id\\\":\\\"20\\\",\\\"mpid\\\":\\\"1\\\",\\\"pid\\\":\\\"0\\\",\\\"name\\\":\\\"电影下载\\\",\\\"type\\\":\\\"1\\\",\\\"message\\\":null,\\\"created_at\\\":\\\"1533547160\\\",\\\"updated_at\\\":\\\"1533884993\\\",\\\"_level\\\":1,\\\"sub_button\\\":[{\\\"id\\\":\\\"21\\\",\\\"mpid\\\":\\\"1\\\",\\\"pid\\\":\\\"20\\\",\\\"name\\\":\\\"高清蓝光\\\",\\\"type\\\":\\\"2\\\",\\\"message\\\":\\\"\\\",\\\"created_at\\\":\\\"1533547160\\\",\\\"updated_at\\\":\\\"1533884993\\\",\\\"_level\\\":2,\\\"sub_button\\\":[]},{\\\"id\\\":\\\"43\\\",\\\"mpid\\\":\\\"1\\\",\\\"pid\\\":\\\"20\\\",\\\"name\\\":\\\"电影天堂\\\",\\\"type\\\":\\\"2\\\",\\\"message\\\":\\\"\\\",\\\"created_at\\\":\\\"1533883155\\\",\\\"updated_at\\\":\\\"1533884993\\\",\\\"_level\\\":2,\\\"sub_button\\\":[]}],\\\"act_list\\\":[]}]}\",\"mpid\":\"1\"}', 1533885434, 1),
 (430, 1, 'wechat/menu', 'create', '/wechat/menu/create', 'id=', '{\"newv\":\"{\\\"button\\\":[{\\\"id\\\":\\\"13\\\",\\\"mpid\\\":\\\"1\\\",\\\"pid\\\":\\\"0\\\",\\\"name\\\":\\\"社交网络\\\",\\\"type\\\":\\\"1\\\",\\\"message\\\":null,\\\"created_at\\\":\\\"1533547160\\\",\\\"updated_at\\\":\\\"1533885434\\\",\\\"_level\\\":1,\\\"sub_button\\\":[{\\\"id\\\":\\\"14\\\",\\\"mpid\\\":\\\"1\\\",\\\"pid\\\":\\\"13\\\",\\\"name\\\":\\\"新浪微博\\\",\\\"type\\\":\\\"2\\\",\\\"message\\\":\\\"\\\",\\\"created_at\\\":\\\"1533547160\\\",\\\"updated_at\\\":\\\"1533885434\\\",\\\"_level\\\":2,\\\"sub_button\\\":[],\\\"key\\\":\\\"1533885964819KEY\\\",\\\"act_list\\\":[{\\\"type\\\":2,\\\"value\\\":\\\"weibo.com\\\"}]},{\\\"id\\\":\\\"15\\\",\\\"mpid\\\":\\\"1\\\",\\\"pid\\\":\\\"13\\\",\\\"name\\\":\\\"脸书\\\",\\\"type\\\":\\\"2\\\",\\\"message\\\":\\\"http://www.facebook.net\\\",\\\"created_at\\\":\\\"1533547160\\\",\\\"updated_at\\\":\\\"1533885434\\\",\\\"_level\\\":2,\\\"sub_button\\\":[]},{\\\"id\\\":\\\"16\\\",\\\"mpid\\\":\\\"1\\\",\\\"pid\\\":\\\"13\\\",\\\"name\\\":\\\"腾讯微博\\\",\\\"type\\\":\\\"2\\\",\\\"message\\\":\\\"\\\",\\\"created_at\\\":\\\"1533547160\\\",\\\"updated_at\\\":\\\"1533885434\\\",\\\"_level\\\":2,\\\"sub_button\\\":[]}],\\\"act_list\\\":[]},{\\\"id\\\":\\\"17\\\",\\\"mpid\\\":\\\"1\\\",\\\"pid\\\":\\\"0\\\",\\\"name\\\":\\\"经典游戏\\\",\\\"type\\\":\\\"1\\\",\\\"message\\\":null,\\\"created_at\\\":\\\"1533547160\\\",\\\"updated_at\\\":\\\"1533885434\\\",\\\"_level\\\":1,\\\"sub_button\\\":[{\\\"id\\\":\\\"18\\\",\\\"mpid\\\":\\\"1\\\",\\\"pid\\\":\\\"17\\\",\\\"name\\\":\\\"守望先锋\\\",\\\"type\\\":\\\"2\\\",\\\"message\\\":\\\"\\\",\\\"created_at\\\":\\\"1533547160\\\",\\\"updated_at\\\":\\\"1533885434\\\",\\\"_level\\\":2,\\\"sub_button\\\":[]},{\\\"id\\\":\\\"19\\\",\\\"mpid\\\":\\\"1\\\",\\\"pid\\\":\\\"17\\\",\\\"name\\\":\\\"暗黑破坏神之大闹江湖\\\",\\\"type\\\":\\\"2\\\",\\\"message\\\":\\\"\\\",\\\"created_at\\\":\\\"1533547160\\\",\\\"updated_at\\\":\\\"1533885434\\\",\\\"_level\\\":2,\\\"sub_button\\\":[]}],\\\"act_list\\\":[]},{\\\"id\\\":\\\"20\\\",\\\"mpid\\\":\\\"1\\\",\\\"pid\\\":\\\"0\\\",\\\"name\\\":\\\"电影下载\\\",\\\"type\\\":\\\"1\\\",\\\"message\\\":null,\\\"created_at\\\":\\\"1533547160\\\",\\\"updated_at\\\":\\\"1533885434\\\",\\\"_level\\\":1,\\\"sub_button\\\":[{\\\"id\\\":\\\"21\\\",\\\"mpid\\\":\\\"1\\\",\\\"pid\\\":\\\"20\\\",\\\"name\\\":\\\"高清蓝光\\\",\\\"type\\\":\\\"2\\\",\\\"message\\\":\\\"\\\",\\\"created_at\\\":\\\"1533547160\\\",\\\"updated_at\\\":\\\"1533885434\\\",\\\"_level\\\":2,\\\"sub_button\\\":[]},{\\\"id\\\":\\\"43\\\",\\\"mpid\\\":\\\"1\\\",\\\"pid\\\":\\\"20\\\",\\\"name\\\":\\\"电影天堂\\\",\\\"type\\\":\\\"2\\\",\\\"message\\\":\\\"\\\",\\\"created_at\\\":\\\"1533883155\\\",\\\"updated_at\\\":\\\"1533885434\\\",\\\"_level\\\":2,\\\"sub_button\\\":[]}],\\\"act_list\\\":[]}]}\",\"mpid\":\"1\"}', 1533885965, 1),
-(431, 1, 'wechat/menu', 'create', '/wechat/menu/create', 'id=', '{\"newv\":\"{\\\"button\\\":[{\\\"id\\\":\\\"22\\\",\\\"mpid\\\":\\\"2\\\",\\\"pid\\\":\\\"0\\\",\\\"name\\\":\\\"游戏入口2\\\",\\\"type\\\":\\\"2\\\",\\\"message\\\":null,\\\"created_at\\\":\\\"1533633611\\\",\\\"updated_at\\\":\\\"1533719830\\\",\\\"_level\\\":1,\\\"sub_button\\\":[{\\\"id\\\":\\\"41\\\",\\\"mpid\\\":\\\"2\\\",\\\"pid\\\":\\\"22\\\",\\\"name\\\":\\\"asdf\\\",\\\"type\\\":\\\"2\\\",\\\"message\\\":\\\"\\\",\\\"created_at\\\":\\\"1533719729\\\",\\\"updated_at\\\":\\\"1533719830\\\",\\\"_level\\\":2,\\\"sub_button\\\":[],\\\"key\\\":\\\"1533886017457KEY\\\",\\\"act_list\\\":[{\\\"type\\\":2,\\\"value\\\":\\\"http://www.gaoqing.fm\\\"}]},{\\\"id\\\":\\\"42\\\",\\\"mpid\\\":\\\"2\\\",\\\"pid\\\":\\\"22\\\",\\\"name\\\":\\\"qwer123123\\\",\\\"type\\\":\\\"2\\\",\\\"message\\\":\\\"\\\",\\\"created_at\\\":\\\"1533719740\\\",\\\"updated_at\\\":\\\"1533719830\\\",\\\"_level\\\":2,\\\"sub_button\\\":[],\\\"key\\\":\\\"1533886027506KEY\\\",\\\"act_list\\\":[{\\\"type\\\":2,\\\"value\\\":\\\"weibo.com\\\"}]}],\\\"act_list\\\":[]},{\\\"id\\\":\\\"24\\\",\\\"mpid\\\":\\\"2\\\",\\\"pid\\\":\\\"0\\\",\\\"name\\\":\\\"嘿嘿嘿\\\",\\\"type\\\":\\\"2\\\",\\\"message\\\":null,\\\"created_at\\\":\\\"1533710286\\\",\\\"updated_at\\\":\\\"1533719830\\\",\\\"_level\\\":1,\\\"sub_button\\\":[]}]}\",\"mpid\":\"2\"}', 1533886027, 1);
+(431, 1, 'wechat/menu', 'create', '/wechat/menu/create', 'id=', '{\"newv\":\"{\\\"button\\\":[{\\\"id\\\":\\\"22\\\",\\\"mpid\\\":\\\"2\\\",\\\"pid\\\":\\\"0\\\",\\\"name\\\":\\\"游戏入口2\\\",\\\"type\\\":\\\"2\\\",\\\"message\\\":null,\\\"created_at\\\":\\\"1533633611\\\",\\\"updated_at\\\":\\\"1533719830\\\",\\\"_level\\\":1,\\\"sub_button\\\":[{\\\"id\\\":\\\"41\\\",\\\"mpid\\\":\\\"2\\\",\\\"pid\\\":\\\"22\\\",\\\"name\\\":\\\"asdf\\\",\\\"type\\\":\\\"2\\\",\\\"message\\\":\\\"\\\",\\\"created_at\\\":\\\"1533719729\\\",\\\"updated_at\\\":\\\"1533719830\\\",\\\"_level\\\":2,\\\"sub_button\\\":[],\\\"key\\\":\\\"1533886017457KEY\\\",\\\"act_list\\\":[{\\\"type\\\":2,\\\"value\\\":\\\"http://www.gaoqing.fm\\\"}]},{\\\"id\\\":\\\"42\\\",\\\"mpid\\\":\\\"2\\\",\\\"pid\\\":\\\"22\\\",\\\"name\\\":\\\"qwer123123\\\",\\\"type\\\":\\\"2\\\",\\\"message\\\":\\\"\\\",\\\"created_at\\\":\\\"1533719740\\\",\\\"updated_at\\\":\\\"1533719830\\\",\\\"_level\\\":2,\\\"sub_button\\\":[],\\\"key\\\":\\\"1533886027506KEY\\\",\\\"act_list\\\":[{\\\"type\\\":2,\\\"value\\\":\\\"weibo.com\\\"}]}],\\\"act_list\\\":[]},{\\\"id\\\":\\\"24\\\",\\\"mpid\\\":\\\"2\\\",\\\"pid\\\":\\\"0\\\",\\\"name\\\":\\\"嘿嘿嘿\\\",\\\"type\\\":\\\"2\\\",\\\"message\\\":null,\\\"created_at\\\":\\\"1533710286\\\",\\\"updated_at\\\":\\\"1533719830\\\",\\\"_level\\\":1,\\\"sub_button\\\":[]}]}\",\"mpid\":\"2\"}', 1533886027, 1),
+(432, 1, 'wechat/menu', 'create', '/wechat/menu/create', 'id=', '{\"newv\":\"{\\\"button\\\":[{\\\"id\\\":\\\"22\\\",\\\"mpid\\\":\\\"2\\\",\\\"pid\\\":\\\"0\\\",\\\"name\\\":\\\"游戏入口2\\\",\\\"type\\\":\\\"2\\\",\\\"message\\\":null,\\\"created_at\\\":\\\"1533633611\\\",\\\"updated_at\\\":\\\"1533886027\\\",\\\"_level\\\":1,\\\"sub_button\\\":[{\\\"id\\\":\\\"42\\\",\\\"mpid\\\":\\\"2\\\",\\\"pid\\\":\\\"22\\\",\\\"name\\\":\\\"qwer123123\\\",\\\"type\\\":\\\"2\\\",\\\"message\\\":\\\"weibo.com\\\",\\\"created_at\\\":\\\"1533719740\\\",\\\"updated_at\\\":\\\"1533886027\\\",\\\"_level\\\":2,\\\"sub_button\\\":[]}]},{\\\"id\\\":\\\"24\\\",\\\"mpid\\\":\\\"2\\\",\\\"pid\\\":\\\"0\\\",\\\"name\\\":\\\"嘿嘿嘿\\\",\\\"type\\\":\\\"2\\\",\\\"message\\\":null,\\\"created_at\\\":\\\"1533710286\\\",\\\"updated_at\\\":\\\"1533886027\\\",\\\"_level\\\":1,\\\"sub_button\\\":[]}]}\",\"mpid\":\"2\"}', 1534226768, 1),
+(433, 1, 'wechat/menu', 'create', '/wechat/menu/create', 'id=', '{\"newv\":\"{\\\"button\\\":[{\\\"id\\\":\\\"22\\\",\\\"mpid\\\":\\\"2\\\",\\\"pid\\\":\\\"0\\\",\\\"name\\\":\\\"游戏入口2\\\",\\\"type\\\":\\\"2\\\",\\\"message\\\":null,\\\"created_at\\\":\\\"1533633611\\\",\\\"updated_at\\\":\\\"1534226768\\\",\\\"_level\\\":1,\\\"sub_button\\\":[{\\\"name\\\":\\\"传奇\\\",\\\"type\\\":\\\"1\\\",\\\"sub_button\\\":[],\\\"key\\\":\\\"1534226794004KEY\\\",\\\"message\\\":\\\"\\\"}]},{\\\"id\\\":\\\"24\\\",\\\"mpid\\\":\\\"2\\\",\\\"pid\\\":\\\"0\\\",\\\"name\\\":\\\"嘿嘿嘿\\\",\\\"type\\\":\\\"2\\\",\\\"message\\\":null,\\\"created_at\\\":\\\"1533710286\\\",\\\"updated_at\\\":\\\"1534226768\\\",\\\"_level\\\":1,\\\"sub_button\\\":[]},{\\\"name\\\":\\\"星际争霸\\\",\\\"type\\\":\\\"1\\\",\\\"sub_button\\\":[],\\\"key\\\":\\\"1534226801086KEY\\\",\\\"message\\\":\\\"\\\"}]}\",\"mpid\":\"2\"}', 1534226801, 1),
+(434, 1, 'wechat/menu', 'create', '/wechat/menu/create', 'id=', '{\"newv\":\"{\\\"button\\\":[{\\\"id\\\":\\\"22\\\",\\\"mpid\\\":\\\"2\\\",\\\"pid\\\":\\\"0\\\",\\\"name\\\":\\\"游戏入口2\\\",\\\"type\\\":\\\"2\\\",\\\"message\\\":null,\\\"created_at\\\":\\\"1533633611\\\",\\\"updated_at\\\":\\\"1534226801\\\",\\\"_level\\\":1,\\\"sub_button\\\":[{\\\"id\\\":\\\"45\\\",\\\"mpid\\\":\\\"2\\\",\\\"pid\\\":\\\"22\\\",\\\"name\\\":\\\"传奇\\\",\\\"type\\\":\\\"1\\\",\\\"message\\\":\\\"\\\",\\\"created_at\\\":\\\"1534226801\\\",\\\"updated_at\\\":\\\"1534226801\\\",\\\"_level\\\":2,\\\"sub_button\\\":[]}]},{\\\"id\\\":\\\"24\\\",\\\"mpid\\\":\\\"2\\\",\\\"pid\\\":\\\"0\\\",\\\"name\\\":\\\"嘿嘿嘿\\\",\\\"type\\\":\\\"2\\\",\\\"message\\\":null,\\\"created_at\\\":\\\"1533710286\\\",\\\"updated_at\\\":\\\"1534226801\\\",\\\"_level\\\":1,\\\"sub_button\\\":[]},{\\\"id\\\":\\\"46\\\",\\\"mpid\\\":\\\"2\\\",\\\"pid\\\":\\\"0\\\",\\\"name\\\":\\\"星际争霸\\\",\\\"type\\\":\\\"1\\\",\\\"message\\\":\\\"\\\",\\\"created_at\\\":\\\"1534226801\\\",\\\"updated_at\\\":\\\"1534226801\\\",\\\"_level\\\":1,\\\"sub_button\\\":[{\\\"name\\\":\\\"暗黑\\\",\\\"type\\\":\\\"1\\\",\\\"sub_button\\\":[],\\\"key\\\":\\\"1534226823606KEY\\\",\\\"message\\\":\\\"\\\"},{\\\"name\\\":\\\"暗黑2\\\",\\\"type\\\":\\\"1\\\",\\\"sub_button\\\":[],\\\"key\\\":\\\"1534226828774KEY\\\",\\\"message\\\":\\\"\\\"},{\\\"name\\\":\\\"暗黑3\\\",\\\"type\\\":\\\"1\\\",\\\"sub_button\\\":[],\\\"key\\\":\\\"1534226836197KEY\\\",\\\"message\\\":\\\"\\\"}]}]}\",\"mpid\":\"2\"}', 1534226837, 1),
+(435, 1, 'wechat/menu', 'create', '/wechat/menu/create', 'id=', '{\"newv\":\"{\\\"button\\\":[{\\\"id\\\":\\\"22\\\",\\\"mpid\\\":\\\"2\\\",\\\"pid\\\":\\\"0\\\",\\\"name\\\":\\\"游戏入口2\\\",\\\"type\\\":\\\"2\\\",\\\"message\\\":null,\\\"created_at\\\":\\\"1533633611\\\",\\\"updated_at\\\":\\\"1534226837\\\",\\\"_level\\\":1,\\\"sub_button\\\":[{\\\"id\\\":\\\"45\\\",\\\"mpid\\\":\\\"2\\\",\\\"pid\\\":\\\"22\\\",\\\"name\\\":\\\"传奇\\\",\\\"type\\\":\\\"1\\\",\\\"message\\\":\\\"\\\",\\\"created_at\\\":\\\"1534226801\\\",\\\"updated_at\\\":\\\"1534226837\\\",\\\"_level\\\":2,\\\"sub_button\\\":[]}]},{\\\"id\\\":\\\"24\\\",\\\"mpid\\\":\\\"2\\\",\\\"pid\\\":\\\"0\\\",\\\"name\\\":\\\"嘿嘿嘿\\\",\\\"type\\\":\\\"2\\\",\\\"message\\\":null,\\\"created_at\\\":\\\"1533710286\\\",\\\"updated_at\\\":\\\"1534226837\\\",\\\"_level\\\":1,\\\"sub_button\\\":[]},{\\\"id\\\":\\\"46\\\",\\\"mpid\\\":\\\"2\\\",\\\"pid\\\":\\\"0\\\",\\\"name\\\":\\\"星际争霸\\\",\\\"type\\\":\\\"1\\\",\\\"message\\\":\\\"\\\",\\\"created_at\\\":\\\"1534226801\\\",\\\"updated_at\\\":\\\"1534226837\\\",\\\"_level\\\":1,\\\"sub_button\\\":[{\\\"id\\\":\\\"47\\\",\\\"mpid\\\":\\\"2\\\",\\\"pid\\\":\\\"46\\\",\\\"name\\\":\\\"暗黑\\\",\\\"type\\\":\\\"2\\\",\\\"message\\\":\\\"dddddddddddddddddd\\\",\\\"created_at\\\":\\\"1534226837\\\",\\\"updated_at\\\":\\\"1534226837\\\",\\\"_level\\\":2,\\\"sub_button\\\":[],\\\"key\\\":\\\"1534226866798KEY\\\"},{\\\"id\\\":\\\"48\\\",\\\"mpid\\\":\\\"2\\\",\\\"pid\\\":\\\"46\\\",\\\"name\\\":\\\"暗黑2\\\",\\\"type\\\":\\\"2\\\",\\\"message\\\":\\\"cccccccccccccccccc\\\",\\\"created_at\\\":\\\"1534226837\\\",\\\"updated_at\\\":\\\"1534226837\\\",\\\"_level\\\":2,\\\"sub_button\\\":[],\\\"key\\\":\\\"1534226862360KEY\\\"},{\\\"id\\\":\\\"49\\\",\\\"mpid\\\":\\\"2\\\",\\\"pid\\\":\\\"46\\\",\\\"name\\\":\\\"暗黑3\\\",\\\"type\\\":\\\"2\\\",\\\"message\\\":\\\"bbbbbbb\\\",\\\"created_at\\\":\\\"1534226837\\\",\\\"updated_at\\\":\\\"1534226837\\\",\\\"_level\\\":2,\\\"sub_button\\\":[],\\\"key\\\":\\\"1534226858613KEY\\\"}]}]}\",\"mpid\":\"2\"}', 1534226866, 1),
+(436, 1, 'wechat/menu', 'create', '/wechat/menu/create', 'id=', '{\"newv\":\"{\\\"button\\\":[{\\\"id\\\":\\\"22\\\",\\\"mpid\\\":\\\"2\\\",\\\"pid\\\":\\\"0\\\",\\\"name\\\":\\\"游戏入口2\\\",\\\"type\\\":\\\"2\\\",\\\"message\\\":null,\\\"created_at\\\":\\\"1533633611\\\",\\\"updated_at\\\":\\\"1534226866\\\",\\\"_level\\\":1,\\\"sub_button\\\":[{\\\"id\\\":\\\"45\\\",\\\"mpid\\\":\\\"2\\\",\\\"pid\\\":\\\"22\\\",\\\"name\\\":\\\"传奇\\\",\\\"type\\\":\\\"1\\\",\\\"message\\\":\\\"\\\",\\\"created_at\\\":\\\"1534226801\\\",\\\"updated_at\\\":\\\"1534226866\\\",\\\"_level\\\":2,\\\"sub_button\\\":[]}]},{\\\"id\\\":\\\"24\\\",\\\"mpid\\\":\\\"2\\\",\\\"pid\\\":\\\"0\\\",\\\"name\\\":\\\"嘿嘿嘿\\\",\\\"type\\\":\\\"2\\\",\\\"message\\\":null,\\\"created_at\\\":\\\"1533710286\\\",\\\"updated_at\\\":\\\"1534226866\\\",\\\"_level\\\":1,\\\"sub_button\\\":[]},{\\\"id\\\":\\\"46\\\",\\\"mpid\\\":\\\"2\\\",\\\"pid\\\":\\\"0\\\",\\\"name\\\":\\\"星际争霸\\\",\\\"type\\\":\\\"1\\\",\\\"message\\\":\\\"\\\",\\\"created_at\\\":\\\"1534226801\\\",\\\"updated_at\\\":\\\"1534226866\\\",\\\"_level\\\":1,\\\"sub_button\\\":[{\\\"id\\\":\\\"47\\\",\\\"mpid\\\":\\\"2\\\",\\\"pid\\\":\\\"46\\\",\\\"name\\\":\\\"暗黑\\\",\\\"type\\\":\\\"2\\\",\\\"message\\\":\\\"dddddddddddddddddd\\\",\\\"created_at\\\":\\\"1534226837\\\",\\\"updated_at\\\":\\\"1534226866\\\",\\\"_level\\\":2,\\\"sub_button\\\":[]},{\\\"id\\\":\\\"49\\\",\\\"mpid\\\":\\\"2\\\",\\\"pid\\\":\\\"46\\\",\\\"name\\\":\\\"暗黑3\\\",\\\"type\\\":\\\"2\\\",\\\"message\\\":\\\"bbbbbbb\\\",\\\"created_at\\\":\\\"1534226837\\\",\\\"updated_at\\\":\\\"1534226866\\\",\\\"_level\\\":2,\\\"sub_button\\\":[]}]}]}\",\"mpid\":\"2\"}', 1534226905, 1),
+(437, 1, 'wechat/menu', 'create', '/wechat/menu/create', 'id=', '{\"newv\":\"{\\\"button\\\":[{\\\"id\\\":\\\"22\\\",\\\"mpid\\\":\\\"2\\\",\\\"pid\\\":\\\"0\\\",\\\"name\\\":\\\"游戏入口2\\\",\\\"type\\\":\\\"2\\\",\\\"message\\\":null,\\\"created_at\\\":\\\"1533633611\\\",\\\"updated_at\\\":\\\"1534226905\\\",\\\"_level\\\":1,\\\"sub_button\\\":[{\\\"id\\\":\\\"45\\\",\\\"mpid\\\":\\\"2\\\",\\\"pid\\\":\\\"22\\\",\\\"name\\\":\\\"传奇\\\",\\\"type\\\":\\\"1\\\",\\\"message\\\":\\\"\\\",\\\"created_at\\\":\\\"1534226801\\\",\\\"updated_at\\\":\\\"1534226905\\\",\\\"_level\\\":2,\\\"sub_button\\\":[]}]},{\\\"id\\\":\\\"24\\\",\\\"mpid\\\":\\\"2\\\",\\\"pid\\\":\\\"0\\\",\\\"name\\\":\\\"嘿嘿嘿\\\",\\\"type\\\":\\\"2\\\",\\\"message\\\":null,\\\"created_at\\\":\\\"1533710286\\\",\\\"updated_at\\\":\\\"1534226905\\\",\\\"_level\\\":1,\\\"sub_button\\\":[]}]}\",\"mpid\":\"2\"}', 1534226920, 1),
+(438, 3, 'wechat/main', 'delete', '/wechat/main/delete', 'id=1', '{\"id\":\"1\",\"mpname\":\"勤为科技\",\"mptype\":\"0\",\"appid\":\"wxcbcea616249faa7a\",\"appsecret\":\"4c84f0d1a90afa468c9b3c82ce62137f\",\"token\":\"casewill\",\"aeskey\":\"I3Pu7Z2yodWCZRsxZuAPfUQek6nfvLYnsGuM26mGpTb\",\"status\":\"1\",\"created_at\":\"1533175377\",\"updated_at\":\"1533283088\"}', 1534228920, 1),
+(439, 1, 'wechat/main', 'create', '/wechat/main/create', 'id=3', '{\"id\":\"\",\"mpname\":\"凯思威尔\",\"mptype\":\"0\",\"appid\":\"wxcbcea616249faa7a\",\"appsecret\":\"4c84f0d1a90afa468c9b3c82ce62137f\",\"token\":\"casewill\",\"aeskey\":\"I3Pu7Z2yodWCZRsxZuAPfUQek6nfvLYnsGuM26mGpTb\",\"status\":\"1\"}', 1534230130, 1),
+(440, 1, 'wechat/menu', 'create', '/wechat/menu/create', 'id=', '{\"newv\":\"{\\\"button\\\":[{\\\"name\\\":\\\"网易新闻\\\",\\\"type\\\":\\\"2\\\",\\\"sub_button\\\":[],\\\"key\\\":\\\"1534230745893KEY\\\",\\\"message\\\":\\\"http://www.163.com\\\"},{\\\"name\\\":\\\"油管\\\",\\\"type\\\":\\\"2\\\",\\\"sub_button\\\":[],\\\"key\\\":\\\"1534230767951KEY\\\",\\\"message\\\":\\\"http://www.youtube.com\\\"}]}\",\"mpid\":\"3\"}', 1534230769, 1),
+(441, 1, 'wechat/menu', 'create', '/wechat/menu/create', 'id=', '{\"newv\":\"{\\\"button\\\":[{\\\"id\\\":\\\"50\\\",\\\"mpid\\\":\\\"3\\\",\\\"pid\\\":\\\"0\\\",\\\"name\\\":\\\"网易新闻\\\",\\\"type\\\":\\\"2\\\",\\\"message\\\":\\\"http://www.163.com\\\",\\\"created_at\\\":\\\"1534230769\\\",\\\"updated_at\\\":\\\"1534230769\\\",\\\"_level\\\":1,\\\"sub_button\\\":[]},{\\\"id\\\":\\\"51\\\",\\\"mpid\\\":\\\"3\\\",\\\"pid\\\":\\\"0\\\",\\\"name\\\":\\\"油管\\\",\\\"type\\\":\\\"2\\\",\\\"message\\\":\\\"http://www.youtube.com\\\",\\\"created_at\\\":\\\"1534230769\\\",\\\"updated_at\\\":\\\"1534230769\\\",\\\"_level\\\":1,\\\"sub_button\\\":[]},{\\\"name\\\":\\\"蔡鹏\\\",\\\"type\\\":\\\"2\\\",\\\"sub_button\\\":[],\\\"key\\\":\\\"1534231256155KEY\\\",\\\"message\\\":\\\"http://www.gaoqing.fm\\\"}]}\",\"mpid\":\"3\"}', 1534231259, 1),
+(442, 1, 'roleitem/main', 'create', '/roleitem/main/create', 'id=', '{\"type\":\"2\",\"id\":\"\",\"name\":\"\",\"newName\":\"wechat/material/index\",\"description\":\"公众号管理 - 素材管理\",\"rule_name\":\"\"}', 1534323479, 1),
+(443, 2, 'roleitem/main', 'update', '/roleitem/main/update', 'id=', '{\"type\":\"2\",\"id\":\"95\",\"name\":\"wechat/menu/asyncwxmenu\",\"newName\":\"wechat/menu/asyncwxmenu\",\"description\":\"自定义菜单 - 同步菜单\"}', 1534323492, 1),
+(444, 2, 'roleitem/main', 'update', '/roleitem/main/update', 'id=', '{\"type\":\"2\",\"id\":\"88\",\"name\":\"wechat/main/index\",\"newName\":\"wechat/main/index\",\"description\":\"公众号管理 - 公众号列表 \"}', 1534323513, 1),
+(445, 2, 'roleitem/main', 'update', '/roleitem/main/update', 'id=', '{\"type\":\"2\",\"id\":\"87\",\"name\":\"wechat/menu/index\",\"newName\":\"wechat/menu/index\",\"description\":\"自定义菜单 - 菜单列表\"}', 1534323520, 1),
+(446, 2, 'roleitem/main', 'update', '/roleitem/main/update', 'id=', '{\"type\":\"2\",\"id\":\"96\",\"name\":\"wechat/material/index\",\"newName\":\"wechat/material/index\",\"description\":\"素材管理 - 数据列表\"}', 1534323562, 1);
 
 -- --------------------------------------------------------
 
@@ -536,7 +551,7 @@ CREATE TABLE `cw_admin_user` (
 --
 
 INSERT INTO `cw_admin_user` (`id`, `username`, `email`, `face`, `role`, `status`, `auth_key`, `password_hash`, `password_reset_token`, `access_token`, `access_token_created_at`, `allowance`, `allowance_updated_at`, `last_time`, `last_ip`, `address`, `created_at`, `created_id`, `updated_at`, `updated_id`) VALUES
-(1, 'super', 'super@admin.com', '/avatars/image/20180614/152890601224415620.jpg', 'admin', 10, 'gKkLFMdB2pvIXOFNpF_Aeemvdf1j0YUM', '$2y$13$Nuf1mzDRoCMxrWI.rIjENu20QshJG41smdEeHFHxq0qdmS99YytHy', '5vLaPpUS-I-XxJaoGP-GZDk474WdnaK3_1469073015', 'BriM4BZIRi8mlVJ74rVmiVpvVbR3Xukp', 1532662856, 0, 0, 1533805708, '222.211.136.249', '湖南省,岳阳市,岳阳县', 1525678041, 1, 1533805708, 1),
+(1, 'super', 'super@admin.com', '/avatars/image/20180614/152890601224415620.jpg', 'admin', 10, 'gKkLFMdB2pvIXOFNpF_Aeemvdf1j0YUM', '$2y$13$Nuf1mzDRoCMxrWI.rIjENu20QshJG41smdEeHFHxq0qdmS99YytHy', '5vLaPpUS-I-XxJaoGP-GZDk474WdnaK3_1469073015', 'BriM4BZIRi8mlVJ74rVmiVpvVbR3Xukp', 1532662856, 0, 0, 1555318287, '127.0.0.1', '湖南省,岳阳市,岳阳县', 1525678041, 1, 1555318287, 1),
 (2, 'admin', 'admin@admin.com', '', 'admin', 10, 'tArp_Kv4z1JlzBUZYCL33N24AZL-_77p', '$2y$13$RNrJ7GK1A5iZRxBpho6sbeCJKfNRxzy5axCeRjZLqvA5W6RuVYBRW', 'CgScbf1E96N3pqH01b0mVi_Z58j8QsRV_1501916190', '', 0, 0, 0, 1525678041, '127.0.0.1', '湖南省,岳阳市,岳阳县', 1525678041, 1, 1525678041, 1),
 (3, 'feeling515', 'test@test.com', '', 'menu_editor', 10, '7kaT_2heHfFPOGiASRIYWZVh7xkf10X3', '$2y$13$7wtV4r4YPg65GG.jIW5dZupKvQ7vGMcemO2qgAPxE.nSzyeh1K4am', '7rUwl7cfvDv7Ph06w1uVRLdRJf_wAxpM_1532586198', '', 0, 0, 0, 1533009122, '110.184.144.249', '', 1525961352, 1, 1533009122, 3),
 (4, 'test', 'test@test123.com', '', 'admin', 10, 'hCAsj5qx8HNvPlyyOGKvCQ7cTKcAcmmP', '$2y$13$IvTIE.J/QUfCD4tyLb6FcOTsC/mILvH.fv61rxKXedM1vNQIV26dS', 'tQL-qFx7dYDuXtJBeiECJ7n4dYeSyCLg_1532673226', '', 0, 0, 0, 0, '', '', 1528980583, 1, 1532673226, 1);
@@ -736,12 +751,13 @@ INSERT INTO `cw_auth_item` (`id`, `name`, `type`, `description`, `rule_name`, `d
 (79, 'uploads/main/uploads', 2, '上传管理-文件上传', NULL, NULL, 1527655294, 1527657267),
 (90, 'wechat/main/create', 2, '公众号管理 - 数据添加', NULL, NULL, 1533094203, 1533094214),
 (92, 'wechat/main/delete', 2, '公众号管理 - 数据删除', NULL, NULL, 1533180196, 1533180196),
-(88, 'wechat/main/index', 2, '公众号管理-公众号列表', NULL, NULL, 1533017306, 1533189652),
+(88, 'wechat/main/index', 2, '公众号管理 - 公众号列表', NULL, NULL, 1533017306, 1534323513),
 (89, 'wechat/main/search', 2, '公众号管理 - 数据查询', NULL, NULL, 1533089442, 1533089442),
 (91, 'wechat/main/update', 2, '公众号管理 - 数据修改', NULL, NULL, 1533180152, 1533180152),
-(95, 'wechat/menu/asyncwxmenu', 2, '自定义菜单-同步菜单', NULL, NULL, 1533867851, 1533867889),
+(96, 'wechat/material/index', 2, '素材管理 - 数据列表', NULL, NULL, 1534323479, 1534323562),
+(95, 'wechat/menu/asyncwxmenu', 2, '自定义菜单 - 同步菜单', NULL, NULL, 1533867851, 1534323492),
 (93, 'wechat/menu/create', 2, '自定义菜单 - 添加菜单', NULL, NULL, 1533189587, 1533189587),
-(87, 'wechat/menu/index', 2, '自定义菜单-菜单列表', NULL, NULL, 1532684818, 1533189663),
+(87, 'wechat/menu/index', 2, '自定义菜单 - 菜单列表', NULL, NULL, 1532684818, 1534323520),
 (94, 'wechat/menu/search', 2, '自定义菜单 - 搜索菜单', NULL, NULL, 1533189641, 1533189641);
 
 -- --------------------------------------------------------
@@ -899,6 +915,7 @@ INSERT INTO `cw_auth_item_child` (`parent`, `child`) VALUES
 ('administrator', 'wechat/main/index'),
 ('administrator', 'wechat/main/search'),
 ('administrator', 'wechat/main/update'),
+('administrator', 'wechat/material/index'),
 ('administrator', 'wechat/menu/asyncwxmenu'),
 ('administrator', 'wechat/menu/create'),
 ('administrator', 'wechat/menu/index'),
@@ -963,6 +980,7 @@ INSERT INTO `cw_category` (`id`, `pid`, `name`, `url`, `status`, `sort`, `create
 CREATE TABLE `cw_uploads` (
   `id` int(10) UNSIGNED NOT NULL COMMENT '文件ID',
   `name` char(255) NOT NULL DEFAULT '' COMMENT '原始文件名',
+  `type` tinyint(4) NOT NULL COMMENT '媒体类型:1 图片（image）、2 语音（voice）、3视频（video）、4 缩略图（thumb）',
   `savename` char(200) NOT NULL DEFAULT '' COMMENT '保存名称',
   `savepath` char(30) NOT NULL DEFAULT '' COMMENT '文件保存路径',
   `ext` char(5) NOT NULL DEFAULT '' COMMENT '文件后缀',
@@ -982,8 +1000,8 @@ CREATE TABLE `cw_uploads` (
 -- 转存表中的数据 `cw_uploads`
 --
 
-INSERT INTO `cw_uploads` (`id`, `name`, `savename`, `savepath`, `ext`, `mime`, `size`, `md5`, `sha1`, `location`, `url`, `created_at`, `created_id`, `updated_at`, `updated_id`) VALUES
-(83, 'aaa.jpeg', '152899574863808244.jpeg', '/image/20180615', 'jpeg', 'image/jpeg', 7676, '439871a9e715705a1feaa60b29e1c8ce', 'a6340374a9f4a3eccc5cca0691b878513a509988', 0, '/image/20180615/152899574863808244.jpeg', 1528995748, 1, 1528995748, 1);
+INSERT INTO `cw_uploads` (`id`, `name`, `type`, `savename`, `savepath`, `ext`, `mime`, `size`, `md5`, `sha1`, `location`, `url`, `created_at`, `created_id`, `updated_at`, `updated_id`) VALUES
+(83, 'aaa.jpeg', 0, '152899574863808244.jpeg', '/image/20180615', 'jpeg', 'image/jpeg', 7676, '439871a9e715705a1feaa60b29e1c8ce', 'a6340374a9f4a3eccc5cca0691b878513a509988', 0, '/image/20180615/152899574863808244.jpeg', 1528995748, 1, 1528995748, 1);
 
 -- --------------------------------------------------------
 
@@ -1009,8 +1027,32 @@ CREATE TABLE `cw_wechat` (
 --
 
 INSERT INTO `cw_wechat` (`id`, `mpname`, `mptype`, `appid`, `appsecret`, `token`, `aeskey`, `status`, `created_at`, `updated_at`) VALUES
-(1, '勤为科技', 0, 'wxcbcea616249faa7a', '4c84f0d1a90afa468c9b3c82ce62137f', 'casewill', 'I3Pu7Z2yodWCZRsxZuAPfUQek6nfvLYnsGuM26mGpTb', 1, 1533175377, 1533283088),
-(2, '阿斯蒂芬', 1, '14123412341234', '阿是大法师的', '阿是大法师的', 'I3Pu7Z2yodWCZRsxZuAPfUQek6nfvLYnsGuM26mGpTb', 1, 1533180304, 1533180304);
+(2, '阿斯蒂芬', 1, '14123412341234', '阿是大法师的', '阿是大法师的', 'I3Pu7Z2yodWCZRsxZuAPfUQek6nfvLYnsGuM26mGpTb', 1, 1533180304, 1533180304),
+(3, '凯思威尔', 0, 'wxcbcea616249faa7a', '4c84f0d1a90afa468c9b3c82ce62137f', 'casewill', 'I3Pu7Z2yodWCZRsxZuAPfUQek6nfvLYnsGuM26mGpTb', 1, 1534230130, 1534230130);
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `cw_wechat_material`
+--
+
+CREATE TABLE `cw_wechat_material` (
+  `id` int(10) UNSIGNED NOT NULL COMMENT '文件ID',
+  `name` char(255) NOT NULL DEFAULT '' COMMENT '原始文件名',
+  `savename` char(200) NOT NULL DEFAULT '' COMMENT '保存名称',
+  `savepath` char(30) NOT NULL DEFAULT '' COMMENT '文件保存路径',
+  `ext` char(5) NOT NULL DEFAULT '' COMMENT '文件后缀',
+  `mime` char(40) NOT NULL DEFAULT '' COMMENT '文件mime类型',
+  `size` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT '文件大小',
+  `md5` char(32) NOT NULL DEFAULT '' COMMENT '文件md5',
+  `sha1` char(40) NOT NULL DEFAULT '' COMMENT '文件 sha1编码',
+  `location` tinyint(3) UNSIGNED NOT NULL DEFAULT '0' COMMENT '文件保存位置',
+  `url` varchar(255) NOT NULL DEFAULT '' COMMENT '远程地址',
+  `created_at` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT '上传时间',
+  `created_id` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT '用户id',
+  `updated_at` int(10) UNSIGNED NOT NULL COMMENT '更新时间',
+  `updated_id` int(10) NOT NULL COMMENT '更新用户id'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='文件表';
 
 -- --------------------------------------------------------
 
@@ -1034,21 +1076,12 @@ CREATE TABLE `cw_wechat_menu` (
 --
 
 INSERT INTO `cw_wechat_menu` (`id`, `mpid`, `pid`, `name`, `type`, `message`, `created_at`, `updated_at`) VALUES
-(13, 1, 0, '社交网络', 1, NULL, 1533547160, 1533885965),
-(14, 1, 13, '新浪微博', 2, 'weibo.com', 1533547160, 1533885965),
-(15, 1, 13, '脸书', 2, '', 1533547160, 1533885965),
-(16, 1, 13, '腾讯微博', 2, '', 1533547160, 1533885965),
-(17, 1, 0, '经典游戏', 1, NULL, 1533547160, 1533885965),
-(18, 1, 17, '守望先锋', 2, '', 1533547160, 1533885965),
-(19, 1, 17, '暗黑破坏神之大闹江湖', 2, '', 1533547160, 1533885965),
-(20, 1, 0, '电影下载', 1, NULL, 1533547160, 1533885965),
-(21, 1, 20, '高清蓝光', 2, '', 1533547160, 1533885965),
-(22, 2, 0, '游戏入口2', 2, NULL, 1533633611, 1533886027),
-(24, 2, 0, '嘿嘿嘿', 2, NULL, 1533710286, 1533886027),
-(41, 2, 22, 'asdf', 2, 'http://www.gaoqing.fm', 1533719729, 1533886027),
-(42, 2, 22, 'qwer123123', 2, 'weibo.com', 1533719740, 1533886027),
-(43, 1, 20, '电影天堂', 2, '', 1533883155, 1533885965),
-(44, 1, 17, '反恐精英', 2, 'http://www.csgo.com.cn', 1533883452, 1533883452);
+(22, 2, 0, '游戏入口2', 2, NULL, 1533633611, 1534226920),
+(24, 2, 0, '嘿嘿嘿', 2, NULL, 1533710286, 1534226920),
+(45, 2, 22, '传奇', 1, '', 1534226801, 1534226920),
+(50, 3, 0, '网易新闻', 2, 'http://www.163.com', 1534230769, 1534231259),
+(51, 3, 0, '油管', 2, 'http://www.youtube.com', 1534230769, 1534231259),
+(52, 3, 0, '蔡鹏', 2, 'http://www.gaoqing.fm', 1534231259, 1534231259);
 
 --
 -- Indexes for dumped tables
@@ -1150,6 +1183,14 @@ ALTER TABLE `cw_wechat`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `cw_wechat_material`
+--
+ALTER TABLE `cw_wechat_material`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `uk_md5` (`md5`),
+  ADD KEY `created_id` (`created_id`);
+
+--
 -- Indexes for table `cw_wechat_menu`
 --
 ALTER TABLE `cw_wechat_menu`
@@ -1163,7 +1204,7 @@ ALTER TABLE `cw_wechat_menu`
 -- 使用表AUTO_INCREMENT `cw_admin_log`
 --
 ALTER TABLE `cw_admin_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '日志ID', AUTO_INCREMENT=432;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '日志ID', AUTO_INCREMENT=447;
 
 --
 -- 使用表AUTO_INCREMENT `cw_admin_menu`
@@ -1199,7 +1240,7 @@ ALTER TABLE `cw_article_tags`
 -- 使用表AUTO_INCREMENT `cw_auth_item`
 --
 ALTER TABLE `cw_auth_item`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
 
 --
 -- 使用表AUTO_INCREMENT `cw_auth_rule`
@@ -1223,13 +1264,19 @@ ALTER TABLE `cw_uploads`
 -- 使用表AUTO_INCREMENT `cw_wechat`
 --
 ALTER TABLE `cw_wechat`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- 使用表AUTO_INCREMENT `cw_wechat_material`
+--
+ALTER TABLE `cw_wechat_material`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '文件ID';
 
 --
 -- 使用表AUTO_INCREMENT `cw_wechat_menu`
 --
 ALTER TABLE `cw_wechat_menu`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '菜单ID', AUTO_INCREMENT=45;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '菜单ID', AUTO_INCREMENT=53;
 
 --
 -- 限制导出的表
