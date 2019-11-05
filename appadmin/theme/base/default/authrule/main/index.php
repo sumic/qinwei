@@ -16,6 +16,7 @@ $this->title = '规则管理';
     var m = meTables({
         title: "<?=$this->title?>",
         pk: "id",
+        number: false,
         buttons: <?=Json::encode($buttons['buttons'])?>,
         operations: {
             buttons: <?=Json::encode($buttons['operations'])?>
@@ -31,7 +32,7 @@ $this->title = '规则管理';
             deleteAll: '<?=Url::toRoute('delete');?>',
         },
         table: {
-            "aoColumns": [
+            "columns": [
             	{
                     "title": "ID",
                     "data": "id",
@@ -53,13 +54,13 @@ $this->title = '规则管理';
                 },
                 {"title": "对应规则类", "data": "data", "sName": "data",
                     "edit": {"type": "text", "required": true, "rangelength": "[2, 100]"}, "bSortable": false},
-                {"title": "创建时间", "data": "created_at", "sName": "created_at", "createdCell" : meTables.dateTimeString},
-                {"title": "修改时间", "data": "updated_at", "sName": "updated_at", "createdCell" : meTables.dateTimeString}
+                {"title": "创建时间", "data": "created_at", "sName": "created_at", "createdCell" : MeTables.dateTimeString},
+                {"title": "修改时间", "data": "updated_at", "sName": "updated_at", "createdCell" : MeTables.dateTimeString}
             ]       
         }
     });
 
-    meTables.fn.extend({
+    $.extend(m,{
         beforeShow: function(data) {
             if (this.action === "update") {
                 data.newName = data.name;

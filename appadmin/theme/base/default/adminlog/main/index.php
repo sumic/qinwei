@@ -23,6 +23,7 @@ $this->title = '操作日志';
                 buttons: <?=Json::encode($buttons['operations'])?>
             },
             bViewFull: true,
+            number: false,
             url: {
                 search: '<?=Url::toRoute('search');?>',
                 create: '<?=Url::toRoute('create');?>',
@@ -34,18 +35,16 @@ $this->title = '操作日志';
                 deleteAll: '<?=Url::toRoute('delete');?>',
             },
             table: {
-                "aoColumns": [
+                "columns": [
                     {
                         "title": "操作人",
                         "data": "created_id",
-                        "sName": "created_id",
                         "edit": {"type": "text", "required": true, "number": true},
-                        "createdCell": mt.adminString
+                        "createdCell": MeTables.adminString
                     },
                     {
                         "title": "类型",
                         "data": "type",
-                        "sName": "type",
                         "edit": {"type": "text", "required": true, "number": true},
                         "value": oTypes,
                         "search": {"type": "select"},
@@ -57,7 +56,6 @@ $this->title = '操作日志';
                     {
                         "title": "操作模块/控制器",
                         "data": "controller",
-                        "sName": "controller",
                         "edit": {"type": "text", "required": true, "rangelength": "[2, 32]"},
                         "search": {"type": "text"},
                         "bSortable": false
@@ -65,7 +63,6 @@ $this->title = '操作日志';
                     {
                         "title": "操作方法",
                         "data": "action",
-                        "sName": "action",
                         "edit": {"type": "text", "required": true, "rangelength": "[2, 32]"},
                         "search": {"type": "text"},
                         "bSortable": false
@@ -73,7 +70,6 @@ $this->title = '操作日志';
                     {
                         "title": "请求URL",
                         "data": "url",
-                        "sName": "url",
                         "edit": {"type": "text", "required": true, "rangelength": "[2, 64]"},
                         "search": {"type": "text"},
                         "bSortable": false
@@ -81,14 +77,12 @@ $this->title = '操作日志';
                     {
                         "title": "数据唯一标识",
                         "data": "index",
-                        "sName": "index",
                         "edit": {"type": "text"},
                         "bSortable": false
                     },
                     {
                         "title": "请求参数",
                         "data": "params",
-                        "sName": "params",
                         "edit": {"type": "text"},
                         "bSortable": false,
                         "isHide": true,
@@ -113,9 +107,8 @@ $this->title = '操作日志';
                     {
                         "title": "创建时间",
                         "data": "created_at",
-                        "sName": "created_at",
                         "edit": {"type": "text", "required": true, "number": true},
-                        "createdCell": meTables.dateTimeString,
+                        "createdCell": MeTables.dateTimeString,
                         "defaultOrder": "desc"
                     }
                 ]

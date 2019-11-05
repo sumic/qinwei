@@ -76,7 +76,8 @@ class Index extends AppadminBlock implements AppadminBlockInterface{
         $params['buttons']  = $this->_tableButton;
         #搜索后反序列化data字段
         $this->afterSearch($result['coll']);
-        $data = $this->_display->handleResponse($result['coll'],$result['total'],$params);
+        $data['tables'] = $this->_display->handleResponse($result['coll'],$result['total'],$params);
+        $data['params'] = $params;
         return $data;
     }
     

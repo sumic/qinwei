@@ -20,21 +20,21 @@ $this->title = 'TAG 管理';
             $(td).html(aParents[data] ? aParents[data] : '顶级分类');
         }
         
-        meTables.extend({
+        $.extend(MeTables,{
             selectOptionsCreate: function (params) {
-                return '<select ' + mt.handleParams(params) + '><option value="0">顶级分类</option><?=$options?></select>';
+                return '<select ' + this.handleParams(params) + '><option value="0">顶级分类</option><?=$options?></select>';
             },
             selectOptionsSearchMiddleCreate: function (params) {
                 delete params.type;
                 params.id = "search-" + params.name;
-                return '<label for="' + params.id + '"> ' + params.title + ': <select ' + mt.handleParams(params) + '>' +
+                return '<label for="' + params.id + '"> ' + params.title + ': <select ' + this.handleParams(params) + '>' +
                     '<option value="All">请选择</option>' +
                     '<option value="0">顶级分类</option>' +
                     '<?=$options?>'   +
                     '</select></label>';
             }
         });
-        var m = mt({
+        var m = meTables({
             title: '<?=$this->title?>',
             buttons: <?=Json::encode($buttons['buttons'])?>,
             operations: {
@@ -81,13 +81,13 @@ $this->title = 'TAG 管理';
                         "bSortable": false
                     },
                     // 公共属性字段信息
-                    {"data": "created_at", "sName": "created_at", "title": "创建时间", "createdCell": mt.dateTimeString},
+                    {"data": "created_at", "sName": "created_at", "title": "创建时间", "createdCell": MeTables.dateTimeString},
                 ]
             }
         });
 
         // 添加之前之后处理
-        mt.fn.extend({
+        $.extend(m,{
             beforeShow: function (data) {
                 $("#select-options option").prop("disabled", false);
                 return true;

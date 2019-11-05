@@ -1,5 +1,4 @@
 <?php
-
 use yii\helpers\Json;
 use \backend\models\Auth;
 use core\widgets\JsBlock;
@@ -19,7 +18,7 @@ $this->title = '公众号管理';
             $(td).html(aMptype[data] ? aMptype[data] : '未选择');
         }
         
-        meTables.extend({
+        $.extend(meTables,{
             selectOptionsCreate: function (params) {
                 return '<select ' + mt.handleParams(params) + '><option value="">请选择</option><?=$options?></select>';
             },
@@ -120,7 +119,7 @@ $this->title = '公众号管理';
         });
 
         // 添加之前之后处理
-        mt.fn.extend({
+        $.extend(m,{
             beforeShow: function (data) {
                 $("#select-options option").prop("disabled", false);
                 return true;

@@ -92,27 +92,22 @@ AssignViewAsset::register($this);
             deleteAll: '<?=Url::toRoute('delete');?>',
         },
         pk:'user_id',
+        number:false,
         table: {
-            "aoColumns": [
+            "columns": [
                 {
                     "title": "管理员", 
                     "data": "user_id", 
-                    "sName": "user_id",
                     "value": aAdmins,
                     "edit": {"type": "select", "required": true},
                     "bSortable": false,
-                    "createdCell": mt.adminString,
-//                    "search": {
-//                        "type": "select",
-//                        "multiple": true,
-//                        "id": "search-select",
-//                        "class": "chosen-select"
-//                    }
+                     render: function (data) {
+                            return $.getValue(aAdmins, data, data);
+                        }
                 },
                 {
                     "title": "对应角色", 
                     "data": "item_name", 
-                    "sName": "item_name",
                     "value": roles,
                     "edit": {
                         "type": "select",
@@ -137,7 +132,7 @@ AssignViewAsset::register($this);
                     "title": "最初分配时间", 
                     "data": "created_at", 
                     "sName": "created_at",
-                    "createdCell" : meTables.dateTimeString
+                    "createdCell" : MeTables.dateTimeString
                 }
             ]       
         }
@@ -145,7 +140,7 @@ AssignViewAsset::register($this);
 
     var $select = null;
 
-    meTables.fn.extend({
+    $.extend(m,{
         // 显示的前置和后置操作
         beforeShow: function(data, child) {
             $("#select-multiple").val([]).trigger("chosen:updated").next().css({'width': "100%"});
@@ -155,7 +150,6 @@ AssignViewAsset::register($this);
 
      $(function(){
          m.init();
-
          // 选择表
          $select = $(".chosen-select").chosen({
              allow_single_deselect: false,

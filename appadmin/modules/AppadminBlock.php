@@ -49,7 +49,7 @@ class AppadminBlock extends BaseObject
     /**
      * collection default number displayed.
      */
-    public $_numPerPage = 10;
+    public $_limit = 10;
     /**
      * collection primary key.
      */
@@ -62,7 +62,7 @@ class AppadminBlock extends BaseObject
     /**
      * collection sort field , the default value is primary key.
      */
-    public $_orderField;
+    public $_orderBy;
     /**
      * search as array.
      */
@@ -91,8 +91,7 @@ class AppadminBlock extends BaseObject
         #设置显示类型
         $this->setDisplay();
         #设置datatables的可用按键
-        $rotename = \Yii::$app->controller->module->id . '/' .\Yii::$app->controller->id;
-        $this->_tableButton = \Yii::$service->admin->role->getDataTableAuth($rotename);
+        $this->_tableButton = \Yii::$service->admin->role->getDataTableAuth('user');
         #获得查询的字段
         $param = $this->_display->getRequest();
         $this->_primaryKey = $this->_service->getPrimaryKey();
@@ -100,14 +99,14 @@ class AppadminBlock extends BaseObject
         if (empty($param['offset'])) {
             $param['offset'] = $this->_offset;
         }
-        if (empty($param['numPerPage'])) {
-            $param['numPerPage'] = $this->_numPerPage;
+        if (empty($param['limit'])) {
+            $param['limit'] = $this->_limit;
         }
-        if (empty($param['orderField'])) {
-            $param['orderField'] = $this->_primaryKey;
+        if (empty($param['orderBy'])) {
+            $param['orderBy'] = $this->_primaryKey;
         }
         if (empty($param['orderDirection'])) {
-            $param['sortDirection'] = $this->_sortDirection;
+            $param['orderDirection'] = $this->_orderDirection;
         }
         if (empty($param['asArray'])) {
             $param['asArray'] = $this->_asArray;
@@ -124,20 +123,20 @@ class AppadminBlock extends BaseObject
             $type = $field['type'];
             $name = $field['name'];
             $columns_type = isset($field['columns_type']) ? $field['columns_type'] : '';
-            if(isset($this->_param['params'][$name])){
+            if(isset($this->_param['filters'][$name])){
                 if($type == 'textInput' || $type == 'select' || $type == 'chosen_select'){
                     if($columns_type == 'string'){
-                       $where[] = ['like', $name, $this->_param['params'][$name]];
+                       $where[] = ['like', $name, $this->_param['filters'][$name]];
                     }else if($columns_type == 'int'){
-                       $where[] = [$name => (int)$this->_param['params'][$name]];
+                       $where[] = [$name => (int)$this->_param['filters'][$name]];
                     }else if($columns_type == 'float'){
-                       $where[] = [$name => (float)$this->_param['params'][$name]];
+                       $where[] = [$name => (float)$this->_param['filters'][$name]];
                     }else if($columns_type == 'date'){
-                       $where[] = [$name => $this->_param['params'][$name]];
+                       $where[] = [$name => $this->_param['filters'][$name]];
                     }else if($columns_type == 'inArray'){
-                        $where[] = ['in',$name , $this->_param['params'][$name]];
+                        $where[] = ['in',$name , $this->_param['filters'][$name]];
                     }else{
-                       $where[] = [$name => $this->_param['params'][$name]];
+                       $where[] = [$name => $this->_param['filters'][$name]];
                     }
                 }else if($type == 'inputdatefilter'){
                     $_gte 	= $this->_param[$name.'_gte'];
@@ -183,9 +182,9 @@ class AppadminBlock extends BaseObject
     public function initFiller()
     {
         return $filter = [
-            'numPerPage'     => $this->_param['numPerPage'],
+            'limit'          => $this->_param['limit'],
             'offset'         => $this->_param['offset'],
-            'orderBy'        => [$this->_param['orderField'] => (($this->_param['orderDirection'] == 'asc') ? SORT_ASC : SORT_DESC)],
+            'orderBy'        => $this->_param['orderBy'],
             'where'          => $this->initWhere($this->_searchFields),
             'asArray'        => $this->_asArray,
         ];

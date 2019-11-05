@@ -85,7 +85,8 @@ class Index extends AppadminBlock implements AppadminBlockInterface{
         $filler = $this->initFiller();
         #return data
         $result = \Yii::$service->search->getColl($filler,$this->_model);
-        $data = $this->_display->handleResponse($result['coll'],$result['total'],$params);
+        $data['tables'] = $this->_display->handleResponse($result['coll'],$result['total'],$params);
+        $data['params'] = $params;
         return $data;
     }
 }

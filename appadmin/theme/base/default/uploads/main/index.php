@@ -16,7 +16,7 @@ DropzoneAsset::register($this);
 <?php JsBlock::begin() ?>
 <script type="text/javascript">
 var myDropzone = null;
-meTables.extend({
+$.extend(MeTables, {
     /**
      * 定义编辑表单(函数后缀名Create)
      * 使用配置 edit: {"type": "email", "id": "user-email"}
@@ -47,11 +47,10 @@ var m = meTables({
         area: ['50%', 'auto']
     },
     table: {
-        "aoColumns": [
+        "columns": [
             {
                 "title": "Id",
                 "data": "id",
-                "sName": "id",
                 "defaultOrder": "desc",
                 "edit": {"type": "hidden"},
                 "bViews":false
@@ -59,66 +58,56 @@ var m = meTables({
             {
                 "title": "原始名称",
                 "data": "name",
-                "sName": "name",
                 "bSortable": false
             },
             {
                 "title": "保存名称",
                 "data": "savename",
-                "sName": "savename",
                 "bSortable": false,
                 "search": {"type": "text"},
             },
             {
                 "title": "保存路径",
                 "data": "savepath",
-                "sName": "savepath",
                 "bSortable": false,
                 "isHide":true,
             },
             {
                 "title": "文件后缀",
                 "data": "ext",
-                "sName": "ext",
                 "bSortable": false
             },
             {
                 "title": "MiMe类型",
                 "data": "mime",
-                "sName": "mime",
                 "bSortable": false
             },
             {
                 "title": "文件大小 Byte",
                 "data": "size",
-                "sName": "size",
                 "bSortable": true,
             },
             {
                 "title": "MD5",
                 "data": "md5",
-                "sName": "md5",
                 "bSortable": false,
                 "isHide":true,
             },
             {
                 "title": "SHA1",
                 "data": "sha1",
-                "sName": "sha1",
                 "bSortable": false,
                 "isHide":true,
             },
             {
                 "title": "Url地址",
                 "data": "url",
-                "sName": "rul",
                 "bSortable": false,
                 "isHide":true,
             },
             {
                 "title": "保存名称",
                 "data": "name",
-                "sName": "name",
                 "edit": {"type": "dropzone"},
                 "bSortable": false,
                 "isHide":true,
@@ -127,21 +116,19 @@ var m = meTables({
             {
                 "title": "上传时间",
                 "data": "created_at",
-                "sName": "created_at",
                 "createdCell": meTables.dateTimeString
             },
             {
                 "title": "上传者",
                 "data": "created_id",
-                "sName": "created_id",
-                "createdCell": mt.adminString
+                render: function (data) { return $.getValue(aAdmins, data, data); },
             },
         ]
     }
 });
 
 var $form = null;
-meTables.fn.extend({
+$.extend(m,{
     // 显示的前置和后置操作
     afterShow: function (data, child) {
         if (!$form) $form = $("#edit-form");

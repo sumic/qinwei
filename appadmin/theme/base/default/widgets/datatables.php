@@ -1,6 +1,8 @@
 <?php
+
 use yii\helpers\Html;
 use appadmin\assets\DataTablesAsset;
+
 DataTablesAsset::register($this);
 /**
  * =======================================================
@@ -13,5 +15,5 @@ DataTablesAsset::register($this);
  * @version: v1.0.0
  */
 ?>
-<p <?=Html::renderTagAttributes($defaultButtons)?>></p>
-								<table <?=Html::renderTagAttributes($defaultOptions)?>></table>
+<p <?= Html::renderTagAttributes($defaultButtons) ?>></p>
+<table <?= Html::renderTagAttributes($defaultOptions) ?>></table>

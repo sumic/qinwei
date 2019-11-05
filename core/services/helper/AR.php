@@ -17,7 +17,7 @@ use Yii;
 
 class AR extends Service
 {
-    public $numPerPage = 20;
+    public $limit = 20;
     public $offset = 0;
 
     /*
@@ -39,7 +39,7 @@ class AR extends Service
     {
         $select     = isset($filter['select']) ? $filter['select'] : '';
         $asArray    = isset($filter['asArray']) ? $filter['asArray'] : true;
-        $numPerPage = isset($filter['numPerPage']) ? $filter['numPerPage'] : $this->numPerPage;
+        $limit = isset($filter['limit']) ? $filter['limit'] : $this->numPerPage;
         $offset     = isset($filter['offset']) ? $filter['offset'] : $this->offset;
         $orderBy    = isset($filter['orderBy']) ? $filter['orderBy'] : '';
         $where      = isset($filter['where']) ? $filter['where'] : '';
@@ -62,7 +62,7 @@ class AR extends Service
                 }
             }
         }
-        $query->limit($numPerPage)->offset($offset);
+        $query->limit($limit)->offset($offset);
         if ($orderBy) {
             $query->orderBy($orderBy);
         }

@@ -25,7 +25,25 @@ class AdminRole extends Service
      * @var string 定义超级管理员角色
      */
     const SUPER_ADMIN_NAME = 'administrator';
+
+    /**
+     * @var array 默认的权限
+     */
+    public $array_default_auth = [
+        'index'      => '显示数据',
+        'search'     => '搜索数据',
+        'create'     => '添加数据',
+        'update'     => '修改数据',
+        'delete'     => '删除数据',
+        'delete-all' => '批量删除',
+        'export'     => '导出数据'
+    ];
     
+    /**
+     * @var array 权限信息
+     */
+    public $_permissions = [];
+
     public function init()
     {
         list($this->_roleItemModelName,$this->_roleItemModel) = \Yii::mapGet($this->_roleItemModelName);
@@ -306,43 +324,49 @@ class AdminRole extends Service
         ->count();
     }
     
-    /**
+       /**
      * 获取dataTable 表格需要的权限
-     * @param string $controller 权限对应的控制器名称
-     * @param string $join 链接字符串
+     *
+     * @param string $user 使用的用户名称
+     *
      * @return array
+     * @throws \yii\base\InvalidConfigException
      */
-    public static function getDataTableAuth($controller, $join = '/')
+    public static function getDataTableAuth($user = 'admin')
     {
-        $controller .= $join;
-        $arrReturn = [
-            'buttons' => [
-                'create' => [
-                    'bShow' => Yii::$app->user->can($controller . 'create')
-                ],
-                
-                'deleteAll' => [
-                    'bShow' => Yii::$app->user->can($controller . 'delete'),
-                ],
-                
-                'export' => [
-                    'bShow' => Yii::$app->user->can($controller . 'export')
-                ]
-            ],
-            'operations' => [
-                'delete' => [
-                    'bShow' => Yii::$app->user->can($controller . 'delete')
-                ]
-            ],
+        $controller = explode('/', Yii::$app->controller->action->getUniqueId());
+        array_pop($controller);
+        $controller = implode('/', $controller) . '/';
+        $arrReturn  = [
+            'buttons'    => ['create' => ['show' => true]],
+            'operations' => ['see' => ['show' => true]],
         ];
-        
-        // 修改
-        if (Yii::$app->user->can($controller . 'update')) {
-            $arrReturn['buttons']['updateAll'] = $arrReturn['operations']['update'] = ['bShow' => true];
-        } else {
-            $arrReturn['buttons']['updateAll'] = $arrReturn['operations']['update'] = ['bShow' => false];
+
+        // 添加
+        if (!Yii::$app->get($user)->can($controller . 'create')) {
+            $arrReturn['buttons']['create'] = null;
         }
-        
+
+        // 删除全部
+        if (!Yii::$app->get($user)->can($controller . 'delete-all')) {
+            $arrReturn['buttons']['deleteAll'] = null;
+        }
+
+        // 导出
+        if (!Yii::$app->get($user)->can($controller . 'export')) {
+            $arrReturn['buttons']['export'] = null;
+        }
+
+        // 删除
+        if (!Yii::$app->get($user)->can($controller . 'delete')) {
+            $arrReturn['operations']['delete'] = null;
+        }
+
+        // 修改
+        if (!Yii::$app->get($user)->can($controller . 'update')) {
+            $arrReturn['buttons']['updateAll'] = $arrReturn['operations']['update'] = null;
+        }
+
         return $arrReturn;
     }
 }

@@ -57,7 +57,7 @@ class AppadminController extends BaseController{
     public function actionSearch()
     {
         $data = $this->getBlock('index')->getLastData();
-        return \Yii::$service->helper->json->success($data);
+        return \Yii::$service->helper->json->success($data['tables']);
     }
     public function actionCreate()
     {

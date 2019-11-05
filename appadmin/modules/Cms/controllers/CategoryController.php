@@ -18,7 +18,7 @@ class CategoryController extends AppadminController{
     
     
     public function actionIndex(){
-        $data = $this->getBlock()->getLastData();
+        $data = $this->getBlock()->getLastdata();
         return $this->render($this->action->id,$data['params']);
     }
     

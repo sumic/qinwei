@@ -34,89 +34,68 @@ $this->title = '角色管理';
 
     var m = mt({
         title: "角色信息",
-        bCheckbox: false,
+        checkbox: false,
         buttons: oButtons,
         operations: {
             width: "200px",
             buttons: oOperationsButtons
         },
-        pk:'id',
-        url: {
-            search: '<?=Url::toRoute('search');?>',
-            create: '<?=Url::toRoute('create');?>',
-            update: '<?=Url::toRoute('update');?>',
-            delete: '<?=Url::toRoute('delete');?>',
-            export: "export",
-            upload: "upload",
-            editable: "editable",
-            deleteAll: '<?=Url::toRoute('delete');?>',
-        },
+        number: false,
         table: {
-            "aoColumns": [
+            columns: [
                 {
-                    "title": "类型",
-                    "data": "type",
-                    "sName": "type",
-                    "isHide": true,
-                    "isExport": false,
-                    "edit": {"type": "hidden", "value": iType}
+                    title: "类型",
+                    data: "type",
+                    hide: true,
+                    export: false,
+                    edit: {type: "hidden", value: iType}
                 },
                 {
-                    "title": "ID",
-                    "data": "id",
-                    "sName": "id",
-                    "isHide": false,
-                    "bViews":false,//详情页面是否显示
-                    "edit": {"type": "hidden"},
-                    "bSortable": true,
-                    "defaultOrder": "desc"
+                    title: "名称",
+                    data: "name",
+                    hide: true,
+                    edit: {type: "hidden"},
+                    search: {name: "name"}
                 },
                 {
-                    "title": "名称",
-                    "data": "name",
-                    "sName": "name",
-                    "isHide": true,
-                    "edit": {"type": "hidden"},
-                    "search": {"type": "text"}
-                },
-                {
-                    "title": "角色名称",
-                    "data": "name",
-                    "sName": "newName",
-                    "edit": {
-                        "type": "text",
-                        "required": true,
-                        "rangelength": "[2, 64]",
+                    title: "角色名称",
+                    data: "name",
+                    edit: {
+                        name: "newName",
+                        required: true,
+                        rangeLength: "[2, 64]",
                         placeholder: "请输入英文字母、数字、_、/等字符串"
                     },
-                    "bSortable": false
+                    sortable: false
                 },
                 {
-                    "title": "说明描述",
-                    "data": "description",
-                    "sName": "description",
-                    "edit": {
-                        "type": "text",
-                        "required": true,
-                        "rangelength": "[2, 255]",
+                    title: "说明描述",
+                    data: "description",
+                    edit: {
+                        type: "text",
+                        required: true,
+                        rangeLength: "[2, 255]",
                         placeholder: "请输入简单描述信息"
                     },
-                    "search": {"type": "text"},
-                    "bSortable": false
+                    search: {name: "description"},
+                    sortable: false
                 },
                 {
-                    "title": "创建时间",
-                    "data": "created_at",
-                    "sName": "created_at",
-                    "defaultOrder": "desc",
-                    "createdCell": mt.dateTimeString
+                    title: "创建时间",
+                    data: "created_at",
+                    defaultOrder: "desc",
+                    createdCell: MeTables.dateTimeString
                 },
-                {"title": "修改时间", "data": "updated_at", "sName": "updated_at", "createdCell": mt.dateTimeString}
+                {
+                    title: "修改时间",
+                    data: "updated_at",
+                    createdCell: MeTables.dateTimeString
+                }
             ]
         }
     });
 
-    mt.fn.extend({
+    $.extend(m, {
         beforeShow: function (data) {
             if (this.action === "update") {
                 data.newName = data.name;
@@ -159,23 +138,23 @@ $this->title = '角色管理';
         m.init();
 
         // 添加查看事件
-        $(document).on('click', '.role-see', function () {
-            var data = m.table.data()[$(this).attr('table-data')];
+        $(document).on('click', '.role-see-show-table', function () {
+            var data = $.getValue(m.table.data(), $(this).data('row'));
             if (data) {
                 layerOpen(
                     "查看" + data["name"] + "(" + data["description"] + ") 详情",
-                    "<?=Url::toRoute('view')?>?name=" + data['name']
+                    "<?=Url::toRoute(['role/view'])?>?name=" + data['name']
                 );
             }
         });
 
         // 添加修改权限事件
-        $(document).on('click', '.role-edit', function () {
-            var data = m.table.data()[$(this).attr('table-data')];
+        $(document).on('click', '.role-edit-show-table', function () {
+            var data = $.getValue(m.table.data(), $(this).data('row'));
             if (data) {
                 layerOpen(
                     "编辑" + data["name"] + "(" + data["description"] + ") 信息",
-                    "<?=Url::toRoute('edit')?>?name=" + data['name']
+                    "<?=Url::toRoute(['role/edit'])?>?name=" + data['name']
                 );
             }
         })

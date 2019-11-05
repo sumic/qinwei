@@ -103,15 +103,15 @@ $this->title = '路由管理';
                     "title": "创建时间",
                     "data": "created_at",
                     "sName": "created_at",
-                    "createdCell": mt.dateTimeString,
+                    "createdCell": MeTables.dateTimeString,
                     
                 },
-                {"title": "修改时间", "data": "updated_at", "sName": "updated_at", "createdCell": mt.dateTimeString}
+                {"title": "修改时间", "data": "updated_at", "sName": "updated_at", "createdCell": MeTables.dateTimeString}
             ]
         }
     });
 
-    meTables.fn.extend({
+    $.extend(m,{
         beforeShow: function(data) {
             if (this.action === "update") {
                 data.newName = data.name;

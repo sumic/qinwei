@@ -71,11 +71,7 @@ class Json extends Service
      */
     protected function actionSuccess($data = [], $message = '')
     {
-        return $this->returnJson([
-            'errCode' => 0,
-            'errMsg' => $message,
-            'data' => $data
-        ]);
+        return $this->returnJson($data);
     }
     
     /**
