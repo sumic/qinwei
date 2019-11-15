@@ -26,7 +26,7 @@ $this->title = '文章管理';
     };
     oButtons.other = {
         bShow: <?= Yii::$app->user->can('cms/main/edit') ? 'true' : 'false' ?>,
-        "title": "编辑权限",
+        "title": "编辑内容",
         "button-title": "编辑内容",
         "className": "btn-warning",
         "cClass": "role-edit",
@@ -38,21 +38,21 @@ $this->title = '文章管理';
         $(td).html(aParents[data] ? aParents[data] : '顶级分类');
     }
 
-    $.extend(meTables, {
+    $.extend(MeTables, {
         selectOptionsCreate: function(params) {
-            return '<select ' + mt.handleParams(params) + '><option value="0">顶级分类</option><?= $options ?></select>';
+            return '<select ' + this.handleParams(params) + '><option value="0">顶级分类</option><?= $options ?></select>';
         },
         selectOptionsSearchMiddleCreate: function(params) {
             delete params.type;
             params.id = "search-" + params.name;
-            return '<label for="' + params.id + '"> ' + params.title + ': <select ' + mt.handleParams(params) + '>' +
+            return '<label for="' + params.id + '"> ' + params.title + ': <select ' + this.handleParams(params) + '>' +
                 '<option value="All">请选择</option>' +
                 '<option value="0">顶级分类</option>' +
                 '<?= $options ?>' +
                 '</select></label>';
         }
     });
-    var m = mt({
+    var m = meTables({
         title: '<?= $this->title; ?>',
         buttons: <?= Json::encode($buttons['buttons']) ?>,
         operations: {
@@ -72,7 +72,6 @@ $this->title = '文章管理';
         table: {
             "aoColumns": [{
                     "data": "id",
-                    "sName": "id",
                     "title": "Id",
                     "defaultOrder": "desc",
                     "edit": {
@@ -81,7 +80,6 @@ $this->title = '文章管理';
                 },
                 {
                     "data": "cid",
-                    "sName": "cid",
                     "title": "分类",
                     "edit": {
                         "type": "selectOptions",
@@ -96,7 +94,6 @@ $this->title = '文章管理';
                 },
                 {
                     "data": "sort",
-                    "sName": "sort",
                     "title": "排序",
                     "edit": {
                         "required": 1,
@@ -105,17 +102,15 @@ $this->title = '文章管理';
                 },
                 {
                     "data": "title",
-                    "sName": "title",
                     "bViews": false,
                     "title": "标题",
                     "bSortable": false,
                     "createdCell": function(td, data) {
-                        $(td).html(mt.subString(data, 25));
+                       $(td).html(MeTables.subString(data, 25));
                     }
                 },
                 {
                     "data": "title",
-                    "sName": "title",
                     "title": "标题",
                     "edit": {
                         "rangelength": "[2, 50]"
@@ -128,7 +123,6 @@ $this->title = '文章管理';
                 },
                 {
                     "data": "sub_title",
-                    "sName": "sub_title",
                     "title": "副标题",
                     "edit": {
                         "rangelength": "[2, 50]"
@@ -138,12 +132,10 @@ $this->title = '文章管理';
                 },
                 {
                     "data": "author_name",
-                    "sName": "author_name",
                     "title": "作者",
                 },
                 {
                     "data": "thumb",
-                    "sName": "thumb",
                     "title": "图",
                     "bViews": false,
                     "createdCell": function(td, data) {
@@ -161,7 +153,6 @@ $this->title = '文章管理';
                 },
                 {
                     "data": "thumb",
-                    "sName": "thumb",
                     "title": "属性",
                     "bSortable": false,
                     "createdCell": function(td, data, rowData, row, col) {
@@ -177,7 +168,6 @@ $this->title = '文章管理';
                 },
                 {
                     "data": "status",
-                    "sName": "status",
                     "title": "状态",
                     "value": arrStatus,
                     "edit": {
@@ -195,7 +185,6 @@ $this->title = '文章管理';
                 },
                 {
                     "data": "flag_headline",
-                    "sName": "flag_headline",
                     "title": "头条",
                     "value": arrStatus2,
                     "edit": {
@@ -213,7 +202,6 @@ $this->title = '文章管理';
                 },
                 {
                     "data": "flag_recommend",
-                    "sName": "flag_recommend",
                     "title": "推荐",
                     "value": arrStatus2,
                     "edit": {
@@ -231,7 +219,6 @@ $this->title = '文章管理';
                 },
                 {
                     "data": "flag_slide_show",
-                    "sName": "flag_slide_show",
                     "title": "幻灯",
                     "value": arrStatus2,
                     "edit": {
@@ -249,7 +236,6 @@ $this->title = '文章管理';
                 },
                 {
                     "data": "flag_special_recommend",
-                    "sName": "flag_special_recommend",
                     "title": "特荐",
                     "value": arrStatus2,
                     "edit": {
@@ -267,7 +253,6 @@ $this->title = '文章管理';
                 },
                 {
                     "data": "flag_roll",
-                    "sName": "flag_roll",
                     "title": "滚动",
                     "value": arrStatus2,
                     "edit": {
@@ -285,7 +270,6 @@ $this->title = '文章管理';
                 },
                 {
                     "data": "flag_bold",
-                    "sName": "flag_bold",
                     "title": "加粗",
                     "value": arrStatus2,
                     "edit": {
@@ -303,7 +287,6 @@ $this->title = '文章管理';
                 },
                 {
                     "data": "flag_picture",
-                    "sName": "flag_picture",
                     "title": "图片",
                     "value": arrStatus2,
                     "edit": {
@@ -322,22 +305,20 @@ $this->title = '文章管理';
                 // 公共属性字段信息
                 {
                     "data": "created_at",
-                    "sName": "created_at",
                     "title": "创建时间",
-                    "createdCell": mt.dateTimeString
+                    "createdCell": MeTables.dateTimeString
                 },
                 {
                     "data": "updated_at",
-                    "sName": "updated_at",
                     "title": "修改时间",
-                    "createdCell": mt.dateTimeString
+                    "createdCell": MeTables.dateTimeString
                 },
             ]
         }
     });
 
     // 添加之前之后处理
-    $.extend(mt, {
+    $.extend(m, {
         beforeShow: function(data) {
             $("#select-options option").prop("disabled", false);
             return true;
@@ -378,7 +359,6 @@ $this->title = '文章管理';
 
     function layerClose() {
         layer.close(mixLayer);
-        console.log(mixLayer);
         mixLayer = null;
     }
 
@@ -399,15 +379,15 @@ $this->title = '文章管理';
                 }
             });
 
-            console.log(mixLayer);
         }
     }
     // 表单初始化
     $(function() {
         m.init();
         // 添加查看事件
-        $(document).on('click', '.role-see', function() {
-            var data = m.table.data()[$(this).attr('table-data')];
+        $(document).on('click', '.role-see-show-table', function() {
+            var data = $.getValue(m.table.data(), $(this).data('row'));
+
             if (data) {
                 layerOpen(
                     "查看文章",
@@ -416,9 +396,9 @@ $this->title = '文章管理';
             }
         });
 
-        // 添加修改权限事件
-        $(document).on('click', '.role-edit', function() {
-            var data = m.table.data()[$(this).attr('table-data')];
+        // 添加修改内容事件
+        $(document).on('click', '.role-edit-show-table', function() {
+            var data = $.getValue(m.table.data(), $(this).data('row'));
             if (data) {
                 layerOpen(
                     "编辑(" + data["title"] + ") 文章",
@@ -428,8 +408,6 @@ $this->title = '文章管理';
         })
     });
 
-    function changeStatus(data) {
-        alert(data);
-    }
+    
 </script>
 <?php JsBlock::end() ?>

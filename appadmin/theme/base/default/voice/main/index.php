@@ -9,7 +9,7 @@ use appadmin\assets\DropzoneAsset;
 //$auth = Auth::getDataTableAuth('auth-rule');
 
 // 定义标题和面包屑信息
-$this->title = '文件列表';
+$this->title = '录音列表';
 DropzoneAsset::register($this);
 ?>
 <?= Yii::$service->page->widget->render('metable'); ?>
@@ -28,11 +28,12 @@ DropzoneAsset::register($this);
     });
     var aAdmins = <?= Json::encode($adminUsers) ?>;
     var m = meTables({
-        title: "上传文件",
+        title: "录音文件",
         buttons: <?= Json::encode($buttons['buttons']) ?>,
         operations: {
             buttons: <?= Json::encode($buttons['operations']) ?>
         },
+        number:false,
         url: {
             search: '<?= Url::toRoute('search'); ?>',
             create: '<?= Url::toRoute('create'); ?>',
@@ -56,13 +57,9 @@ DropzoneAsset::register($this);
                     },
                     "bViews": false
                 },
+                
                 {
-                    "title": "原始名称",
-                    "data": "name",
-                    "bSortable": false
-                },
-                {
-                    "title": "保存名称",
+                    "title": "录音名称",
                     "data": "savename",
                     "bSortable": false,
                     "search": {

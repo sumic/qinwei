@@ -1,4 +1,5 @@
 <?php
+
 /**
  * =======================================================
  * @Description :admin uploads model
@@ -9,6 +10,7 @@
  * @date: 2018年5月6日
  * @version: v1.0.0
  */
+
 namespace core\models\mysqldb\uploads;
 
 use yii\db\ActiveRecord;
@@ -22,13 +24,14 @@ class Uploads extends ActiveRecord
     public $file;
     public $image;
     public $video;
-    
+
     public static function tableName()
     {
         return '{{%uploads}}';
     }
 
-    public function behaviors(){
+    public function behaviors()
+    {
         return [
             TimestampBehavior::className(),
             UpdateBehavior::className(),
@@ -40,7 +43,8 @@ class Uploads extends ActiveRecord
         return [
             'file' => ['file'],
             'image'   => ['image'],
-            'video' => ['video']
+            'video' => ['video'],
+            'playback' => ['playback']
         ];
     }
 
@@ -48,22 +52,35 @@ class Uploads extends ActiveRecord
     public function rules()
     {
         return [
-            [['file'], 'file', 
-                'extensions' => $this->config['fileAllowFiles'], 
-                'maxSize'=>$this->config['fileMaxSize'],
+            [
+                ['file'], 'file',
+                'extensions' => $this->config['fileAllowFiles'],
+                'maxSize' => $this->config['fileMaxSize'],
                 'wrongExtension' => '不支持的文件扩展名',
                 'checkExtensionByMimeType' => false,
-                'on' => 'file'],
-            [['image'], 'file', 
-                'extensions' => $this->config['imageAllowFiles'], 
-                'maxSize'=>$this->config['imageMaxSize'],
+                'on' => 'file'
+            ],
+            [
+                ['image'], 'file',
+                'extensions' => $this->config['imageAllowFiles'],
+                'maxSize' => $this->config['imageMaxSize'],
                 'wrongExtension' => '不支持的文件扩展名',
-                'on' => 'image'],
-            [['video'], 'file', 
-                'extensions' => $this->config['videoAllowFiles'], 
-                'maxSize'=>$this->config['videoMaxSize'],
+                'on' => 'image'
+            ],
+            [
+                ['video'], 'file',
+                'extensions' => $this->config['videoAllowFiles'],
+                'maxSize' => $this->config['videoMaxSize'],
                 'wrongExtension' => '不支持的文件扩展名',
-                'on' => 'video'],
+                'on' => 'video'
+            ],
+            [
+                ['playback'], 'file',
+                'extensions' => $this->config['playbackAllowFiles'],
+                'maxSize' => $this->config['playbackMaxSize'],
+                'wrongExtension' => '不支持的文件扩展名',
+                'on' => 'playback'
+            ],
             [['size', 'created_at', 'created_id'], 'integer'],
             [['name', 'savepath'], 'string', 'max' => 255],
             [['savename'], 'string', 'max' => 255],
@@ -75,7 +92,7 @@ class Uploads extends ActiveRecord
             [['md5'], 'unique'],
         ];
     }
-    
+
     public function attributeLabels()
     {
         return [

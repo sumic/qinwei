@@ -91,6 +91,8 @@ class Index extends AppadminBlock implements AppadminBlockInterface{
     {
         #状态
         $params['status'] = [1=>'启用',2=>'停用'];
+        #是否系统保留
+        $params['is_system'] = [1=>'用户', 2=>'系统'];
         #查询父级分类信息
         $params['parents'] = \Yii::$service->cms->category->getAll();
         #处理显示select

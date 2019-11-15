@@ -49,10 +49,10 @@ class Async
             if($result['errcode'] == 0){
                 return \Yii::$service->helper->json->success();
             }else{
-                return \Yii::$service->helper->json->error(1004, $result['errcode']);
+                return \Yii::$service->helper->json->error(0, $result['errcode']);
             }
         }else{
-            return \Yii::$service->helper->json->error(1004, '未找到数据');
+            return \Yii::$service->helper->json->error(0, '未找到数据');
         }
     }
 }

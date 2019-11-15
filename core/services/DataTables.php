@@ -40,9 +40,10 @@ class DataTables extends Service
     {
         return [
             'draw'            => $this->arrRequest['draw'], // 请求次数
-            'recordsTotal'    => count($data),                    // 数据总条数
+            'recordsTotal'    => (int)$total,                    // 数据总条数
             'recordsFiltered' => (int)$total,                    // 数据总条数
             'data'            => $data,                     // 数据信息
+            'params'          => $params
         ];
     }
 }

@@ -1,11 +1,7 @@
 <?php
-
 use yii\helpers\Json;
-use \backend\models\Auth;
 use core\widgets\JsBlock;
 use yii\helpers\Url;
-// 获取权限
-//$auth = Auth::getDataTableAuth('auth-rule');
 
 // 定义标题和面包屑信息
 $this->title = '操作日志';
@@ -40,7 +36,7 @@ $this->title = '操作日志';
                         "title": "操作人",
                         "data": "created_id",
                         "edit": {"type": "text", "required": true, "number": true},
-                        "createdCell": MeTables.adminString
+                        render: function (data) { return $.getValue(aAdmins, data, data); },
                     },
                     {
                         "title": "类型",

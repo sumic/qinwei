@@ -3,17 +3,15 @@
  * =======================================================
  * @Description :主控制器
  * =======================================================
- * @copyright Copyright (c) 2018 成都勤为科技有限公司
+ * @copyright Copyright (c) 2018 勤为科技有限公司
  * @link: http://www.qinweigroup.cn
  * @author: sumic <sumic515@gmail.com>
- * @date: 2018年4月15日
  * @version: v1.0.0
  */
 
-namespace appadmin\modules\AdminLog\controllers;
+namespace appadmin\modules\Voice\controllers;
 
 use appadmin\modules\AppadminController;
-use Yii;
 
 class MainController extends AppadminController{
     
@@ -21,8 +19,9 @@ class MainController extends AppadminController{
         $data = $this->getBlock()->getLastData();
         return $this->render($this->action->id,$data['params']);
     }
-
-    public function actionTest(){
-        return $this->renderPartial('test');
+    
+    public function actionUploads()
+    {
+        return $this->getBlock('index')->doUpload();
     }
 }

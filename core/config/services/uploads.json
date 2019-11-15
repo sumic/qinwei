@@ -38,6 +38,14 @@
         "ogg", "ogv", "mov", "wmv", "mp4", "webm", "mp3", "wav", "mid",
         "rar", "zip", "tar", "gz", "7z", "bz2", "cab", "iso",
         "doc", "docx", "xls", "xlsx", "ppt", "pptx", "pdf", "txt", "md", "xml"
-    ] /* 上传文件格式显示 */
+    ] ,
+    /* 上传文件格式显示 wav/flac/opus/m4a/mp3 */
+
+    "playbackPathFormat": "/playback/{yyyy}{mm}{dd}/{time}{rand:6}", /* 上传保存路径,可以自定义保存路径和文件名格式 */
+    "playbackUrlPrefix": "", /* 文件访问路径前缀 */
+    "playbackMaxSize": 51200000, /* 上传大小限制，单位B，默认50MB */
+    "playbackAllowFiles": [
+        "wav", "flac", "opus", "m4a", "mp3"
+    ] 
 
 }

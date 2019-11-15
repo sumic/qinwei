@@ -23,8 +23,8 @@ class Json extends Service
      * @var array
      */
     public $arrJson = [
-        'errCode' => 201,
-        'errMsg'  => '',
+        'code' => 201,
+        'msg'  => '',
         'data'    => [],
     ];
     
@@ -39,9 +39,9 @@ class Json extends Service
         if ($array) $this->arrJson = array_merge($this->arrJson, $array);
         
         // 没有错误信息使用code 确定错误信息
-        if (empty($this->arrJson['errMsg'])) {
-            $errCode = Yii::t('error', 'errCode');
-            $this->arrJson['errMsg'] = $errCode[$this->arrJson['errCode']];
+        if (empty($this->arrJson['msg'])) {
+            $errCode = Yii::t('error', 'error_code');
+            $this->arrJson['msg'] = $errCode[$this->arrJson['code']];
         }
         
         // 设置JSON返回
@@ -55,11 +55,11 @@ class Json extends Service
      * @param integer   $errCode  返回状态码
      * @param string  $errMsg   提示信息
      */
-    protected function actionHandleJson($data, $errCode = 0, $errMsg = '')
+    protected function actionHandleJson($data, $code = 0, $msg = '')
     {
-        $this->arrJson['errCode'] = $errCode;
+        $this->arrJson['code'] = $code;
         $this->arrJson['data']    = $data;
-        $this->arrJson['errMsg'] = $errMsg;
+        $this->arrJson['msg'] = $msg;
     }
     
     /**
@@ -69,9 +69,10 @@ class Json extends Service
      * @param string $message
      * @return mixed|string
      */
-    protected function actionSuccess($data = [], $message = '')
+    protected function actionSuccess($data = [], $msg = '操作成功')
     {
-        return $this->returnJson($data);
+        $code = 0;
+        return $this->returnJson(compact('code', 'msg', 'data'));
     }
     
     /**
@@ -81,11 +82,11 @@ class Json extends Service
      * @param string $message
      * @return mixed|string
      */
-    protected function actionError($code = 201, $message = '',$data=[])
+    protected function actionError($code = 201, $msg = '',$data=[])
     {
         return $this->returnJson([
-            'errCode' => $code,
-            'errMsg' => $message,
+            'code' => $code,
+            'msg' => $msg,
             'data' => $data
         ]);
     }
@@ -95,9 +96,9 @@ class Json extends Service
      *
      * @param int $errCode
      */
-    public function setCode($errCode = 201)
+    public function setCode($code = 201)
     {
-        $this->arrJson['errCode'] = $errCode;
+        $this->arrJson['code'] = $code;
     }
     
     /**
@@ -105,8 +106,8 @@ class Json extends Service
      *
      * @param string $message
      */
-    public function setMessage($message = '')
+    public function setMessage($msg = '')
     {
-        $this->arrJson['errMsg'] = $message;
+        $this->arrJson['msg'] = $msg;
     }
 }

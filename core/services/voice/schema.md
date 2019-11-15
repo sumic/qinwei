@@ -1,0 +1,13 @@
+|NAME|TYPE|LENGTH|EMPTY|DEFAULT|COMMIT|
+|:-|:-:|:-:|:-:|:-:|:-|
+|id|INT|10|NO||自增ID
+|fid|INT|10|NO||上传文件Uploads表ID，
+|cid|INT|10|NO||项目分类ID
+|taskid|CHAR|100|||任务ID
+|name|VARCHAR|255|NO||录音文件名称
+|status|TINYINT|1|||转写状态
+|marked|TINYINT|1|||是否标记包含关键字
+|content|TEXT||||转换内容
+|created_at|INT|10|NO||上传时间
+|created_id|INT|10|NO||上传用户ID
+|updated_at|INT|10|NO||最后更新时间

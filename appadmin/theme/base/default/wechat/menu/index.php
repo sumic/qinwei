@@ -347,9 +347,9 @@ $chosenOptions = [
                 	},
                     function(data){
                         if(data.errCode == 0){
-                            swal("成功", data.errMsg,"success");
+                            swal("成功", data.msg,"success");
                         }else{
-                        	swal("错误！", data.errMsg,"error")
+                        	swal("错误！", data.msg,"error")
                         }
                     }
                 )
@@ -361,16 +361,17 @@ $chosenOptions = [
         	var mptext =  $("#mpid option:selected").text();
         	//init default blank menu
         	$('.hs-menu-ul>.hs-menu-item').remove();
-        	$.post('/wechat/menu/search',
+        	$.get('/wechat/menu/search',
                     {
-                		"params" : {"mpid":mpid},
-                		"sSortDir_0":"asc",
-                		"iDisplayLength":"25"
+						"offset":"0",
+						"limit":"25",
+                		"filters" : {"mpid":mpid},
+                		"orderBy":"id asc"
                     },
                     function(result){
-                        if(result.errCode == 0 && result.data.iTotalDisplayRecords > 0){
+                        if(result.code !== 0 && result.recordsTotal > 0){
                         	$.notify({icon: 'fa fa-bell',message: mptext+" 菜单信息已刷新"},{type: "success"});
-                        	var menudata = JSON.stringify(result.data.aaData);
+							var menudata = JSON.stringify(result.data);
                         	hsInitMenu(menudata);
                         }else{
                         	$.notify({icon: 'fa fa-bell',message: mptext+" 获取菜单数据失败"},{type: "danger"});

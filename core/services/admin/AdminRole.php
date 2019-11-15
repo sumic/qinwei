@@ -245,7 +245,7 @@ class AdminRole extends Service
                     if(!$auth->remove($role)) throw new \Exception("删除角色失败: $role.");
                 }
             } catch (\Exception $e) {
-                Yii::$service->helper->errors->add($e->getMessage(). "事务已回滚");
+                Yii::$service->helper->errors->add($e->getMessage(). "删除事务已回滚");
                 $innerTransaction->rollBack();
                 return false;
             }

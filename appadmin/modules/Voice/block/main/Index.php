@@ -1,28 +1,27 @@
 <?php
 /**
  * =======================================================
- * @Description :uploads main block
+ * @Description :Voice main block
  * =======================================================
- * @copyright Copyright (c) 2018 成都勤为科技有限公司
+ * @copyright Copyright (c) 2018 勤为科技有限公司
  * @link: http://www.qinweigroup.cn
  * @author: sumic <sumic515@gmail.com>
- * @date: 2018年4月15日
+ * @date: 2019年11月12日
  * @version: v1.0.0
  */
-namespace appadmin\modules\Uploads\block\main;
+namespace appadmin\modules\Voice\block\main;
 
 use Yii;
 use appadmin\modules\AppadminBlock;
 use appadmin\interfaces\AppadminBlockInterface;
 use yii\helpers\ArrayHelper;
-use yii\helpers\Json;
 
 class Index extends AppadminBlock implements AppadminBlockInterface{
     
     /**
      * @var string 定义上传文件的目录
      */
-    public $uploadPath = '@uploads';
+    public $uploadPath = '@voices';
     /**
      * 缩略图设置
      * 默认不开启
@@ -109,10 +108,19 @@ class Index extends AppadminBlock implements AppadminBlockInterface{
         return [
             [
                 'type' => 'textInput',
-                'name' => 'savename',
+                'name' => 'username',
                 'columns_type' =>'string'
             ],
-            
+            [
+                'type' => 'textInput',
+                'name' => 'email',
+                'columns_type' =>'string'
+            ],
+            [
+                'type' => 'textInput',
+                'name' => 'id',
+                'columns_type' =>'int'
+            ],
         ];
     }
     public function getLastData()

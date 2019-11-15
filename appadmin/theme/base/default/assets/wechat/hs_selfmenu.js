@@ -196,7 +196,7 @@ function hsInitMenu(menuData) {
         } else {
             menuData = JSON.parse(menuData);
         }
-        var btnlist = menuData.button
+        var btnlist = menuData.buttonTree
         var nlist = btnlist.length;//一级菜单个数
 
         for (var i in btnlist) {
@@ -246,7 +246,6 @@ function hsInitMenu(menuData) {
             $('.hs-menu-item-add').before(fli);
         }
     } catch (e) {
-    	console.log(e);
         console.log('function hsInitMenu has error');
     }
 }
@@ -264,7 +263,6 @@ function hsInitMenu(menuData) {
  * @param {Object}
  */
 function hsInitMenuRight(onebtn) {
-	console.log(onebtn);
     try {
         if (!onebtn) {
             console.error('param onebtn can not null');

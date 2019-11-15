@@ -54,8 +54,9 @@ class Category extends ActiveRecord
     public function rules()
     {
         return [
-            [['pid', 'sort', 'created_at', 'updated_at'], 'integer'],
+            [['pid', 'sort', 'created_at', 'updated_at','is_system'], 'integer'],
             [['name'], 'required'],
+            [['is_system'], 'default', 'value' => 1],
             [['name', 'url'], 'string', 'max' => 64],
             [['status'], 'string', 'max' => 1],
         ];
@@ -73,6 +74,7 @@ class Category extends ActiveRecord
             'url' => '访问地址',
             'status' => '状态',
             'sort' => '排序',
+            'is_system' => '系统保留',
             'created_at' => '创建时间',
             'updated_at' => '修改时间',
         ];

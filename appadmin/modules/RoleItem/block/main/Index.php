@@ -84,7 +84,7 @@ class Index extends AppadminBlock implements AppadminBlockInterface{
     public function getLastData()
     {
         #初始化过滤器
-        $params['type'] = $this->_param['params']['type'] = $this->_model::TYPE_PERMISSION;
+        $params['type'] = $this->_param['filers']['type'] = $this->_model::TYPE_PERMISSION;
         $filler = $this->initFiller();
         #查出所有规则
         $rules = \Yii::$service->admin->rule->getAll();

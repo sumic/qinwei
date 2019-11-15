@@ -1,16 +1,16 @@
 <?php
 /**
  * =======================================================
- * @Description :todo
+ * @Description :Voice module
  * =======================================================
- * @copyright Copyright (c) 2018 成都勤为科技有限公司
+ * @copyright Copyright (c) 2019 勤为科技有限公司
  * @link: http://www.qinweigroup.cn
  * @author: sumic <sumic515@gmail.com>
- * @date: 2018年3月30日
+ * @date: 2019年11月12日
  * @version: v1.0.0
  *
  */
-namespace appadmin\modules\AdminLog;
+namespace appadmin\modules\Voice;
 
 use appadmin\modules\AppadminModule;
 use Yii;
@@ -36,7 +36,8 @@ class Module extends AppadminModule
             
         }
         //$this->_currentDir			= 	__DIR__ ;
-        //$this->_currentNameSpace	=   __NAMESPACE__;       
+        //$this->_currentNameSpace	=   __NAMESPACE__;
+        
         // 设置该模块的view(theme)的默认layout文件。
         //Yii::$service->page->theme->layoutFile = 'home.php';
         parent::init();

@@ -14,25 +14,8 @@ $this->title = '文章分类';
 <?php JsBlock::begin() ?>
 <script type="text/javascript">
     var aParents = <?= Json::encode($parents) ?>,
-        arrStatus = <?= Json::encode($status) ?>;
-
-    function parentStatus(td, data) {
-        $(td).html($.getValue(aParents, data, '顶级分类'));
-    }
-    $.extend(MeTables, {
-        selectOptionsCreate: function(params) {
-            return '<select ' + this.handleParams(params) + '><option value="0">顶级分类</option><?= $options ?></select>';
-        },
-        selectOptionsSearchMiddleCreate: function(params) {
-            delete params.type;
-            params.id = "search-" + params.name;
-            return '<label for="' + params.id + '"> ' + params.title + ': <select ' + this.handleParams(params) + '>' +
-                '<option value="All">请选择</option>' +
-                '<option value="0">顶级分类</option>' +
-                '<?= $options ?>' +
-                '</select></label>';
-        }
-    });
+        arrStatus = <?= Json::encode($status) ?>,
+        arrSystem = <?= Json::encode($is_system) ?>;
 
     var m = meTables({
         title: '<?= $this->title ?>',
@@ -63,6 +46,24 @@ $this->title = '文章分类';
                     "search": {
                         "type": "text"
                     }
+                },
+                {
+                    data: "is_system",
+                    title: "属性",
+                    value: arrSystem,
+                    edit: {
+                        type: "radio",
+                        "default": 1,
+                        required: 1,
+                        "number": 1
+                    },
+                    search: {
+                        type: "select"
+                    },
+                    "createdCell": function(td, data) {
+                        $(td).html('<span class="label label-' + (parseInt(data) === 1 ? 'success">用户' : 'danger">系统') + '</span>');
+                    },
+                    sortable: false
                 },
                 {
                     data: "pid",
@@ -116,6 +117,7 @@ $this->title = '文章分类';
                     createdCell: MeTables.statusString,
                     sortable: false
                 },
+                
                 {
                     "data": "sort",
                     "title": "排序",
@@ -140,23 +142,27 @@ $this->title = '文章分类';
             ]
         }
     });
-
-    $.extend(meTables, {
+   
+    function parentStatus(td, data) {
+        $(td).html($.getValue(aParents, data, '顶级分类'));
+    }
+    $.extend(MeTables, {
         selectOptionsCreate: function(params) {
-            return '<select ' + mt.handleParams(params) + '><option value="0">顶级分类</option><?= $options ?></select>';
+            return '<select ' + this.handleParams(params) + '><option value="0">顶级分类</option><?= $options ?></select>';
         },
         selectOptionsSearchMiddleCreate: function(params) {
             delete params.type;
             params.id = "search-" + params.name;
-            return '<label for="' + params.id + '"> ' + params.title + ': <select ' + mt.handleParams(params) + '>' +
+            return '<label for="' + params.id + '"> ' + params.title + ': <select ' + this.handleParams(params) + '>' +
                 '<option value="All">请选择</option>' +
                 '<option value="0">顶级分类</option>' +
                 '<?= $options ?>' +
                 '</select></label>';
         }
     });
+
     // 添加之前之后处理
-    $.extend(meTables, {
+    $.extend(m, {
         beforeShow: function(data) {
             $("#select-options option").prop("disabled", false);
             return true;

@@ -107,6 +107,15 @@ class Uploader extends Service
         "INVALID_IP" => "非法 IP"
     );
     
+    private $_fileType = array(
+        'image' => 1,
+        'voice' => 2,
+        'video' => 3,
+        'thumb' => 4,
+        'playback' => 5,
+        'file' => 9
+    );
+
     protected $_modelName = '\core\models\mysqldb\uploads\Uploads';
     protected $_model;
     
@@ -127,7 +136,7 @@ class Uploader extends Service
         ];
         //默认上传地址
         $this->uploadPath = \Yii::getAlias($this->uploadPath);
-        $this->config = $this->_model->config = $default + $this->config ;
+        $this->config = $this->_model->config = $this->config + $default ;
         if (! is_array($this->thumbnail)) {
             $this->thumbnail = false;
         }
@@ -164,10 +173,13 @@ class Uploader extends Service
         
         //确保文件上传后写入数据库，使用了事务
         //开始事务
+        $objFile = UploadedFile::getInstanceByName($strField);
         $innerTransaction = Yii::$app->db->beginTransaction();
         try {
+            //文件类型
+            $model->type = $this->_fileType[$scenario];
             // 上传文件
-            $objFile = $model->$scenario = UploadedFile::getInstanceByName($strField);
+            $objFile = UploadedFile::getInstanceByName($strField);
             $this->oriName = $objFile->baseName;
             $model->ext  = $this->fileType = $objFile->extension;
             $model->name = $objFile->baseName.'.'.$objFile->extension;
@@ -215,6 +227,7 @@ class Uploader extends Service
             $model->savename = $filename;
             //文件保存相对目录
             $model->savepath = $this->getSavePath($filepath);
+            
             //文件保存绝对目录，目录不存在那么创建
             $dirname = dirname($filepath);
             

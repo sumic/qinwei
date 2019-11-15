@@ -1,4 +1,5 @@
 <?php
+
 /**
  * =======================================================
  * @Description :cms article mysqldb model
@@ -59,7 +60,7 @@ class Article extends ActiveRecord
      * @var string
      */
     public $tag = '';
-    
+
     /**
      * @var null|string
      */
@@ -81,7 +82,7 @@ class Article extends ActiveRecord
     {
         return '{{%article}}';
     }
-    
+
     /**
      * @inheritdoc
      */
@@ -90,11 +91,11 @@ class Article extends ActiveRecord
         return [
             [['cid', 'type', 'status', 'sort', 'can_comment', 'visibility'], 'integer'],
             [['cid', 'sort'], 'compare', 'compareValue' => 0, 'operator' => '>='],
-            [['title', 'status','cid'], 'required'],
+            [['title', 'status', 'cid'], 'required'],
             [['can_comment', 'visibility'], 'default', 'value' => 1],
             [['sort'], 'default', 'value' => 0],
             [['content'], 'string'],
-            [['created_at', 'updated_at','created_id', 'updated_id'], 'safe'],
+            [['created_at', 'updated_at', 'created_id', 'updated_id'], 'safe'],
             [
                 [
                     'title',
@@ -125,13 +126,13 @@ class Article extends ActiveRecord
                 'in',
                 'range' => [0, 1]
             ],
-            [['visibility'], 'in', 'range' => [1,2,3,4]],
-            [['type'], 'default', 'value'=>self::ARTICLE, 'on'=>'article'],
-            [['type'], 'default', 'value'=>self::SINGLE_PAGE, 'on'=>'page'],
-            [['password'], 'string', 'max'=>20],
+            [['visibility'], 'in', 'range' => [1, 2, 3, 4]],
+            [['type'], 'default', 'value' => self::ARTICLE, 'on' => 'article'],
+            [['type'], 'default', 'value' => self::SINGLE_PAGE, 'on' => 'page'],
+            [['password'], 'string', 'max' => 20],
         ];
     }
-    
+
     public function scenarios()
     {
         return [
@@ -188,7 +189,7 @@ class Article extends ActiveRecord
             ],
         ];
     }
-    
+
     /**
      * @inheritdoc
      */
@@ -227,15 +228,15 @@ class Article extends ActiveRecord
             'updated_id' => '修改者',
         ];
     }
-    
+
     //关联文章内容
     public function getArticleContent()
     {
-        return $this->hasOne(ArticleContent::className(),['aid' => 'id'])->select('content');
+        return $this->hasOne(ArticleContent::className(), ['aid' => 'id'])->select('content');
     }
     //关联文章TAGS
     public function getArticleTags()
     {
-        return $this->hasMany(ArticleTags::className(),['aid' => 'id'])->select('name')->asArray(true);
+        return $this->hasMany(ArticleTags::className(), ['aid' => 'id'])->select('name')->asArray(true);
     }
 }

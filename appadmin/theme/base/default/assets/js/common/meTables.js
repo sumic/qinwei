@@ -5,6 +5,7 @@
 (function (window, $) {
   //notifiy
   var notifyconfig = $.notifyDefaults({
+    z_index: 1031,
     placement: {from: "top",align: "center"},
     type: "danger",
     template: '<div data-notify="container" class="col-xs-11 col-sm-3 alert alert-{0} alert-with-icon" role="alert">'+
@@ -316,7 +317,8 @@
         },
         function(isConfirm){ 
           if (isConfirm) { 
-          self.save(child ? self.childTable.data()[row] : self.table.data()[row], child);
+            console.log(self.table.data()[row]);
+            self.save(self.table.data()[row])
           } else { 
             swal(meTables.getLanguage("cancel"), meTables.getLanguage("cancelOperation"),"error"); 
           } 
@@ -369,8 +371,8 @@
         },
         function(isConfirm){ 
           if (isConfirm) { 
-            self.save({"ids": data.join(',')});
-            $(self.options.sTable + " input:checkbox:checked").prop("checked", false);
+            self.save({'id': data.join(',')})
+            $(self.options.sTable + ' input:checkbox:checked').prop('checked', false)
           } else { 
             swal(meTables.getLanguage("cancel"), meTables.getLanguage("cancelOperation"),"error"); 
           } 
@@ -414,8 +416,8 @@
 
       this.save = function (data) {
         // 第一步： 验证操作类型
-        if (!meTables.inArray(this.action, ['create', 'update', 'delete', 'deleteAll'])) {
-          layer.msg(meTables.getLanguage('operationError'))
+        if (!meTables.inArray(this.action, ['create', 'update', 'delete', 'deleteAll'])) {         
+          $.notify({icon:'fa fa-warning',message:"<strong>"+meTables.getLanguage("operationError")+"</<strong>"})
           return false
         }
 
@@ -430,7 +432,7 @@
 
         // 第三步：验证数据
         if ($.isEmptyObject(data)) {
-          layer.msg($.getValue(meTables.language, 'meTables.empty'))
+          $.notify({icon:'fa fa-warning',message:"<strong>"+$.getValue(meTables.language, 'meTables.empty')+"</<strong>"})
           return false
         }
 
@@ -448,21 +450,24 @@
           dataType: 'json',
         }).done(function (json) {
           // 提示
-          layer.msg(self.options.getMessage(json), {
+         /*  layer.msg(self.options.getMessage(json), {
             icon: self.options.isSuccess(json) ? 6 : 5,
-          })
+          }) */
 
           // 判断操作成功
           if (self.options.isSuccess(json)) {
             // 之后的操作
+            swal(meTables.getLanguage("operationSuccess"), json.msg,"success");
+
             if ($.isFunction(self.afterSave) && self.afterSave(json.data) === false) {
               return false
             }
-
             // 执行之后的数据处理
             self.table.draw(false)
             $(self).find('input:checkbox').prop('checked', false)
             $(self.options.sModal).modal('hide')
+          }else{
+            swal(meTables.getLanguage("operationFail"), json.msg,"error");
           }
         })
 
@@ -1403,6 +1408,18 @@
     return '<span class="' + defaultClass + ' ' + (color[value] ? color[value] : '') + '"> ' + (data[value] ? data[value] : value) + ' </span>'
   }
 
+  //截取字符串
+  meTables.subString = function(data, n){
+    var r=/[^\x00-\xff]/g;
+    var fullTitle = data;
+      if(data.replace(r,"mm").length<=n){return data;}
+      var m=Math.floor(n/2);
+      for(var i=m;i<data.length;i++){
+          if(data.substr(0,i).replace(r,"mm").length>=n){
+              return "<p title='"+fullTitle+"'>"+data.substr(0,i)+"...</p>";
+          }
+      }
+  }
   // 获取语言配置信息
   meTables.getLanguage = function () {
     if (arguments.length > 1 && $.getValue(meTables.language, arguments[0])) {
@@ -1462,6 +1479,8 @@
       'cancelOperation': '您取消了删除操作!',
       'noSelect': '没有选择需要操作的数据',
       'operationError': '操作有误',
+      'operationSuccess': '操作成功',
+      'operationFail': '操作失败',
       'search': '搜索',
       'create': '添加',
       'updateAll': '修改',
@@ -1621,9 +1640,12 @@
       'bDestroy': true,
       // "processing": true,		    // 是否使用加载进度条
       // "searching": false,
-      'sPaginationType': 'full_numbers',     // 分页样式
+      'sPaginationType': 'full_numbers',     //分页样式：simple,simple_numbers,full,full_numbers
       // "order": [[1, "desc"]]       // 默认排序，
       // sDom: "t<'row'<'col-xs-6'li><'col-xs-6'p>>"
+      "bInfo" : true, //是否显示页脚信息，DataTables插件左下角显示记录数  
+      "bFilter" : true, 
+
     },
 
     // 开启行处理

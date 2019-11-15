@@ -1,11 +1,7 @@
 <?php
 
 use yii\helpers\Json;
-use \backend\models\Auth;
 use core\widgets\JsBlock;
-use yii\helpers\Url;
-// 获取权限
-//$auth = Auth::getDataTableAuth('auth-rule');
 
 // 定义标题和面包屑信息
 $this->title = '管理员管理';
@@ -15,15 +11,15 @@ $this->title = '管理员管理';
 <script type="text/javascript">
     var aStatus = <?=Json::encode($status)?>,
         aStatusColor = <?=Json::encode($statusColor)?>,
-        aAdmins = <?=Json::encode($admins)?>,
+        aAdmins = <?=Json::encode($adminUsers)?>,
         aRoles = <?=Json::encode($roles)?>,
         bHide = <?=$isSuper ? 'false' : 'true'?>;
     m = meTables({
         title: "管理员信息",
         fileSelector: ["#file"],
-        buttons: <?=Json::encode($auth['buttons'])?>,
+        buttons: <?=Json::encode($buttons['buttons'])?>,
         operations: {
-            buttons: <?=Json::encode($auth['operations'])?>
+            buttons: <?=Json::encode($buttons['operations'])?>
         },
         number: false,
         table: {

@@ -79,9 +79,8 @@ class Index extends AppadminBlock implements AppadminBlockInterface{
     public function getLastData()
     {
         #初始化过滤器
-        $params['type'] = $this->_param['params']['type'] = $this->_model::TYPE_ROLE;
+        $params['type'] = $this->_param['filters']['type'] = $this->_model::TYPE_ROLE;
         $filler = $this->initFiller();
-        var_dump($this->_param);exit;
         #可用按钮
         $params['buttons']  = $this->_tableButton;
         #return data

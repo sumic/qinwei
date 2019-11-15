@@ -75,6 +75,12 @@ class BaseController extends Controller{
         return $this->renderContent($content);
     }
     
+    public function renderPartial($view, $params = [])
+    {
+        $viewFile = Yii::$service->page->theme->getViewFile($view);
+        //$this->layout = false;
+        return Yii::$app->view->renderFile($viewFile, $params, $this);
+    }
     /**
      * @property $view|string
      * Get current layoutFile absolute path from mutil theme dir by protity.

@@ -19,8 +19,8 @@ $this->title = '角色管理';
         oButtons = <?=Json::encode($buttons['buttons'])?>,
         oOperationsButtons = <?=Json::encode($buttons['operations'])?>;
 
-        oButtons.updateAll = {bShow: false};
-        oButtons.deleteAll = {bShow: false};
+        oButtons.updateAll = null;
+        oButtons.deleteAll = null;
         oOperationsButtons.see = {"cClass": "role-see"};
         oOperationsButtons.other = {
         bShow: <?=Yii::$app->user->can('role/main/update') ? 'true' : 'false' ?>,
@@ -143,7 +143,7 @@ $this->title = '角色管理';
             if (data) {
                 layerOpen(
                     "查看" + data["name"] + "(" + data["description"] + ") 详情",
-                    "<?=Url::toRoute(['role/view'])?>?name=" + data['name']
+                    "<?=Url::toRoute(['view'])?>?name=" + data['name']
                 );
             }
         });
@@ -154,7 +154,7 @@ $this->title = '角色管理';
             if (data) {
                 layerOpen(
                     "编辑" + data["name"] + "(" + data["description"] + ") 信息",
-                    "<?=Url::toRoute(['role/edit'])?>?name=" + data['name']
+                    "<?=Url::toRoute(['edit'])?>?name=" + data['name']
                 );
             }
         })

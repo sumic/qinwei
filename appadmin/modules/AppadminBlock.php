@@ -208,7 +208,7 @@ class AppadminBlock extends BaseObject
             $logs->save($logs::TYPE_DELETE, $param, $this->_primaryKey . '=' . $result[$this->_primaryKey]);
             return \Yii::$service->helper->json->success($ids,'删除成功');
         } else {
-            return \Yii::$service->helper->json->error(1004, $errors[0]);
+            return \Yii::$service->helper->json->error(201, $errors[0]);
         }
     }
     
@@ -226,7 +226,7 @@ class AppadminBlock extends BaseObject
              $logs->save($scenarios == 'create' ? $logs::TYPE_CREATE : $logs::TYPE_UPDATE, $param, $this->_primaryKey . '=' . $result[$this->_primaryKey]);
              return \Yii::$service->helper->json->success();
          } else {
-             return \Yii::$service->helper->json->error(1003, $errors[0]);
+             return \Yii::$service->helper->json->error(201, $errors[0]);
          }
     }
     

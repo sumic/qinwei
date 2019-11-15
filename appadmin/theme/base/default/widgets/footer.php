@@ -1,7 +1,7 @@
 					<div class="footer-content">
 						<span class="bigger-120">
 							<span class="blue bolder">Qinweigroup.cn</span>
-							成都勤为科技有限公司 &copy; 2003-2018
+							勤为科技有限公司 &copy; 2003-2018
 						</span>
 
 						&nbsp; &nbsp;

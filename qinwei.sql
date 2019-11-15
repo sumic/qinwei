@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: 2019-04-28 15:27:42
--- 服务器版本： 5.7.25-0ubuntu0.18.04.2
--- PHP Version: 7.2.17-0ubuntu0.18.04.1
+-- Generation Time: 2019-11-15 17:46:36
+-- 服务器版本： 5.7.27-0ubuntu0.18.04.1
+-- PHP Version: 7.2.24-0ubuntu0.18.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -466,7 +466,55 @@ INSERT INTO `cw_admin_log` (`id`, `type`, `controller`, `action`, `url`, `index`
 (443, 2, 'roleitem/main', 'update', '/roleitem/main/update', 'id=', '{\"type\":\"2\",\"id\":\"95\",\"name\":\"wechat/menu/asyncwxmenu\",\"newName\":\"wechat/menu/asyncwxmenu\",\"description\":\"自定义菜单 - 同步菜单\"}', 1534323492, 1),
 (444, 2, 'roleitem/main', 'update', '/roleitem/main/update', 'id=', '{\"type\":\"2\",\"id\":\"88\",\"name\":\"wechat/main/index\",\"newName\":\"wechat/main/index\",\"description\":\"公众号管理 - 公众号列表 \"}', 1534323513, 1),
 (445, 2, 'roleitem/main', 'update', '/roleitem/main/update', 'id=', '{\"type\":\"2\",\"id\":\"87\",\"name\":\"wechat/menu/index\",\"newName\":\"wechat/menu/index\",\"description\":\"自定义菜单 - 菜单列表\"}', 1534323520, 1),
-(446, 2, 'roleitem/main', 'update', '/roleitem/main/update', 'id=', '{\"type\":\"2\",\"id\":\"96\",\"name\":\"wechat/material/index\",\"newName\":\"wechat/material/index\",\"description\":\"素材管理 - 数据列表\"}', 1534323562, 1);
+(446, 2, 'roleitem/main', 'update', '/roleitem/main/update', 'id=', '{\"type\":\"2\",\"id\":\"96\",\"name\":\"wechat/material/index\",\"newName\":\"wechat/material/index\",\"description\":\"素材管理 - 数据列表\"}', 1534323562, 1),
+(447, 2, 'cms/category', 'update', '/cms/category/update', 'id=4', '{\"id\":\"4\",\"pid\":\"1\",\"name\":\"联系方式\",\"url\":\"lxfs\",\"status\":\"2\",\"sort\":\"100\"}', 1571627909, 1),
+(448, 2, 'cms/category', 'update', '/cms/category/update', 'id=4', '{\"id\":\"4\",\"pid\":\"1\",\"name\":\"联系方式\",\"url\":\"lxfs\",\"status\":\"2\",\"sort\":\"100\"}', 1571627917, 1),
+(449, 2, 'cms/category', 'update', '/cms/category/update', 'id=4', '{\"id\":\"4\",\"pid\":\"1\",\"name\":\"联系方式\",\"url\":\"lxfs\",\"status\":\"2\",\"sort\":\"100\"}', 1571627990, 1),
+(450, 2, 'cms/category', 'update', '/cms/category/update', 'id=1', '{\"id\":\"1\",\"pid\":\"0\",\"name\":\"关于我们\",\"url\":\"aboutus\",\"status\":\"1\",\"sort\":\"100\"}', 1571627995, 1),
+(451, 2, 'cms/category', 'update', '/cms/category/update', 'id=1', '{\"id\":\"1\",\"pid\":\"0\",\"name\":\"关于我们\",\"url\":\"aboutus\",\"status\":\"1\",\"sort\":\"100\"}', 1571628001, 1),
+(452, 2, 'cms/category', 'update', '/cms/category/update', 'id=1', '{\"id\":\"1\",\"pid\":\"0\",\"name\":\"关于我们\",\"url\":\"aboutus\",\"status\":\"1\",\"sort\":\"100\"}', 1571628005, 1),
+(453, 2, 'cms/category', 'update', '/cms/category/update', 'id=1', '{\"id\":\"1\",\"pid\":\"0\",\"name\":\"关于我们\",\"url\":\"aboutus\",\"status\":\"1\",\"sort\":\"100\"}', 1571628102, 1),
+(454, 2, 'cms/category', 'update', '/cms/category/update', 'id=1', '{\"id\":\"1\",\"pid\":\"0\",\"name\":\"关于我们\",\"url\":\"aboutus\",\"status\":\"1\",\"sort\":\"100\"}', 1571628109, 1),
+(455, 2, 'cms/category', 'update', '/cms/category/update', 'id=1', '{\"id\":\"1\",\"pid\":\"0\",\"name\":\"关于我们\",\"url\":\"aboutus\",\"status\":\"1\",\"sort\":\"100\"}', 1571628116, 1),
+(456, 2, 'cms/category', 'update', '/cms/category/update', 'id=4', '{\"id\":\"4\",\"pid\":\"1\",\"name\":\"联系方式\",\"url\":\"lxfs\",\"status\":\"2\",\"sort\":\"100\"}', 1571628158, 1),
+(457, 2, 'cms/category', 'update', '/cms/category/update', 'id=4', '{\"id\":\"4\",\"pid\":\"1\",\"name\":\"联系方式\",\"url\":\"lxfs\",\"status\":\"2\",\"sort\":\"100\"}', 1571628247, 1),
+(458, 2, 'admin/main', 'update', '/admin/main/update', 'id=4', '{\"id\":\"4\",\"username\":\"test\",\"password\":\"\",\"repassword\":\"\",\"face\":\"\",\"email\":\"test@test123.com\",\"role\":\"admin\",\"status\":\"20\"}', 1573092613, 1),
+(459, 2, 'admin/main', 'update', '/admin/main/update', 'id=4', '{\"id\":\"4\",\"username\":\"test\",\"password\":\"\",\"repassword\":\"\",\"face\":\"\",\"email\":\"test@test123.com\",\"role\":\"admin\",\"status\":\"20\"}', 1573092620, 1),
+(460, 2, 'admin/main', 'update', '/admin/main/update', 'id=4', '{\"id\":\"4\",\"username\":\"test\",\"password\":\"\",\"repassword\":\"\",\"face\":\"\",\"email\":\"test@test123.com\",\"role\":\"admin\",\"status\":\"20\"}', 1573092638, 1),
+(461, 2, 'admin/main', 'update', '/admin/main/update', 'id=4', '{\"id\":\"4\",\"username\":\"test\",\"password\":\"\",\"repassword\":\"\",\"face\":\"\",\"email\":\"test@test123.com\",\"role\":\"admin\",\"status\":\"20\"}', 1573092937, 1),
+(462, 2, 'admin/main', 'update', '/admin/main/update', 'id=4', '{\"id\":\"4\",\"username\":\"test\",\"password\":\"\",\"repassword\":\"\",\"face\":\"\",\"email\":\"test@test123.com\",\"role\":\"admin\",\"status\":\"20\"}', 1573092942, 1),
+(463, 2, 'admin/main', 'update', '/admin/main/update', 'id=4', '{\"id\":\"4\",\"username\":\"test\",\"password\":\"\",\"repassword\":\"\",\"face\":\"\",\"email\":\"test@test123.com\",\"role\":\"admin\",\"status\":\"20\"}', 1573092947, 1),
+(464, 2, 'admin/main', 'update', '/admin/main/update', 'id=4', '{\"id\":\"4\",\"username\":\"test\",\"password\":\"\",\"repassword\":\"\",\"face\":\"\",\"email\":\"test@test123.com\",\"role\":\"admin\",\"status\":\"20\"}', 1573092998, 1),
+(465, 2, 'admin/main', 'update', '/admin/main/update', 'id=4', '{\"id\":\"4\",\"username\":\"test\",\"password\":\"\",\"repassword\":\"\",\"face\":\"\",\"email\":\"test@test123.com\",\"role\":\"admin\",\"status\":\"10\"}', 1573093018, 1),
+(466, 2, 'admin/main', 'update', '/admin/main/update', 'id=4', '{\"id\":\"4\",\"username\":\"test\",\"password\":\"\",\"repassword\":\"\",\"face\":\"\",\"email\":\"test@test123.com\",\"role\":\"admin\",\"status\":\"10\"}', 1573093193, 1),
+(467, 2, 'admin/main', 'update', '/admin/main/update', 'id=4', '{\"id\":\"4\",\"username\":\"test\",\"password\":\"\",\"repassword\":\"\",\"face\":\"\",\"email\":\"test@test123.com\",\"role\":\"admin\",\"status\":\"20\"}', 1573093977, 1),
+(468, 2, 'admin/main', 'update', '/admin/main/update', 'id=4', '{\"id\":\"4\",\"username\":\"test\",\"password\":\"\",\"repassword\":\"\",\"face\":\"\",\"email\":\"test@test123.com\",\"role\":\"admin\",\"status\":\"10\"}', 1573094141, 1),
+(469, 2, 'admin/main', 'update', '/admin/main/update', 'id=4', '{\"id\":\"4\",\"username\":\"test\",\"password\":\"\",\"repassword\":\"\",\"face\":\"\",\"email\":\"test@test123.com\",\"role\":\"admin\",\"status\":\"20\"}', 1573094184, 1),
+(470, 2, 'admin/main', 'update', '/admin/main/update', 'id=4', '{\"id\":\"4\",\"username\":\"test\",\"password\":\"NIRVANA\",\"repassword\":\"NIRVANA\",\"face\":\"\",\"email\":\"test@test123.com\",\"role\":\"admin\",\"status\":\"10\"}', 1573094774, 1),
+(471, 2, 'admin/main', 'update', '/admin/main/update', 'id=1', '{\"id\":\"1\",\"username\":\"super\",\"password\":\"\",\"repassword\":\"\",\"face\":\"/avatars/image/20180614/152890601224415620.jpg\",\"email\":\"super@admin.com\",\"role\":\"admin\",\"status\":\"10\"}', 1573095630, 1),
+(472, 2, 'admin/main', 'update', '/admin/main/update', 'id=1', '{\"id\":\"1\",\"username\":\"super\",\"password\":\"nirvana\",\"repassword\":\"nirvana\",\"face\":\"/avatars/image/20180614/152890601224415620.jpg\",\"email\":\"super@admin.com\",\"role\":\"admin\",\"status\":\"10\"}', 1573095639, 1),
+(473, 2, 'cms/main', 'create', '/cms/main/create', 'id=4', '{\"id\":\"4\",\"title\":\"英拉他信兄妹赴美国\\\"故地重游\\\" 回忆往事感慨万千\",\"sub_title\":\"英拉他信赴美\\\"故地重游\\\"\",\"summary\":\"流亡海外的泰国前总理他信、英拉兄妹在美国游玩的照片再遭曝光。据悉，二人还在美国约见了一些政治人士和商业伙伴\",\"thumb\":\"/image/20180615/152899574863808244.jpeg\",\"content\":\"<p style=\\\"margin-top: 32px; margin-bottom: 0px; padding: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 18px; line-height: 32px; font-family: &quot;Microsoft Yahei&quot;; text-indent: 2em; color: rgb(64, 64, 64); text-align: justify; white-space: normal; background-color: rgb(255, 255, 255);\\\"><strong class=\\\"f_center\\\" style=\\\"text-align: center; text-indent: 0px;\\\"><img src=\\\"http://cms-bucket.nosdn.127.net/catchpic/5/54/543a8d2adacfc373dac7a83e7c058566.png?imageView&thumbnail=550x0\\\" title=\\\"1528672569495809.png\\\" alt=\\\"2a2b56072e735e98139d5ebc85e95250.png\\\" style=\\\"vertical-align: top; border: 0px; max-width: 545px; margin: 0px auto; display: block;\\\"/></strong></p><p style=\\\"margin-top: 32px; margin-bottom: 0px; padding: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 18px; line-height: 32px; font-family: &quot;Microsoft Yahei&quot;; text-indent: 2em; color: rgb(64, 64, 64); text-align: justify; white-space: normal; background-color: rgb(255, 255, 255);\\\"><strong>海外网6月11日电&nbsp;</strong>流亡海外的泰国前总理他信、英拉兄妹在美国游玩的照片再遭曝光。据悉，二人还在美国约见了一些政治人士和商业伙伴。</p><p style=\\\"margin-top: 32px; margin-bottom: 0px; padding: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 18px; line-height: 32px; font-family: &quot;Microsoft Yahei&quot;; text-indent: 2em; color: rgb(64, 64, 64); text-align: justify; white-space: normal; background-color: rgb(255, 255, 255);\\\">据泰国《民族报》报道，他信在社交平台Instagram上写道：“借此机会，我见到了一些学生时期认识的老朋友，还见了一位商业伙伴和一位政界人士。”他信还说：“去了那些我曾经生活过的地方，我感到莫名其妙地快乐。”。</p><p style=\\\"margin-top: 32px; margin-bottom: 0px; padding: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 18px; line-height: 32px; font-family: &quot;Microsoft Yahei&quot;; text-indent: 2em; color: rgb(64, 64, 64); text-align: justify; white-space: normal; background-color: rgb(255, 255, 255);\\\">报道称，英拉兄妹分别去了华盛顿特区、纽约市和肯塔基州，兄妹二人曾在美国攻读硕士学位，此次美国行可谓是“故地重游”。</p><p style=\\\"margin-top: 32px; margin-bottom: 0px; padding: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 18px; line-height: 32px; font-family: &quot;Microsoft Yahei&quot;; text-indent: 2em; color: rgb(64, 64, 64); text-align: justify; white-space: normal; background-color: rgb(255, 255, 255);\\\">据悉，他信曾于1973年获政府奖学金赴美国东肯塔基大学和休斯顿州立大学攻读犯罪学，先后获得刑事司法硕士学位和博士学位。英拉也在美国肯塔基州立大学取得了政治学硕士学位。</p><p class=\\\"f_center\\\" style=\\\"margin-top: 32px; margin-bottom: 0px; padding: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 18px; line-height: 32px; font-family: &quot;Microsoft Yahei&quot;; color: rgb(64, 64, 64); text-align: center; white-space: normal; background-color: rgb(255, 255, 255);\\\"><img src=\\\"http://cms-bucket.nosdn.127.net/catchpic/f/fd/fd05ab322771597b2961f6215fd8f74a.png?imageView&thumbnail=550x0\\\" title=\\\"1528672626380992.png\\\" alt=\\\"559fcd88550e4d2b00d75ec8ea2d8729.png\\\" style=\\\"vertical-align: top; border: 0px; max-width: 545px; margin: 0px auto; display: block;\\\"/><span style=\\\"text-align: justify;\\\">他信、英拉在肯德基快餐店拍摄的照片。（图片来源：泰国《民族报》）</span></p><p style=\\\"margin-top: 32px; margin-bottom: 0px; padding: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 18px; line-height: 32px; font-family: &quot;Microsoft Yahei&quot;; text-indent: 2em; color: rgb(64, 64, 64); text-align: justify; white-space: normal; background-color: rgb(255, 255, 255);\\\">他信的女儿萍通塔（Pintongta）在Instagram上写道：“父亲给我们发了一张他在肯塔基州肯德基快餐店拍摄的照片，他曾在那里做过兼职。”</p><p style=\\\"margin-top: 32px; margin-bottom: 0px; padding: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 18px; line-height: 32px; font-family: &quot;Microsoft Yahei&quot;; text-indent: 2em; color: rgb(64, 64, 64); text-align: justify; white-space: normal; background-color: rgb(255, 255, 255);\\\">尽管这已不是英拉自2017年逃离泰国后，他信英拉兄妹二人首次公开露面，但这是他信首次在社交媒体上发布自己与妹妹英拉的合照。他信很少在社交媒体上发布有关自己私生活的照片。不过，外界不时能通过他信三名子女的社交平台了解到这两位流亡外海的泰国前总理的动态。</p><p class=\\\"f_center\\\" style=\\\"margin-top: 32px; margin-bottom: 0px; padding: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 18px; line-height: 32px; font-family: &quot;Microsoft Yahei&quot;; color: rgb(64, 64, 64); text-align: center; white-space: normal; background-color: rgb(255, 255, 255);\\\"><img src=\\\"http://cms-bucket.nosdn.127.net/catchpic/2/2a/2af56b28a3a901e046aa4dc26875c84c.jpg?imageView&thumbnail=550x0\\\" title=\\\"1528672673894657.jpg\\\" alt=\\\"1527754207880239.jpg\\\" style=\\\"vertical-align: top; border: 0px; max-width: 545px; margin: 0px auto; display: block;\\\"/><span style=\\\"text-align: justify;\\\">英拉与他信在华盛顿林肯纪念堂前合影。</span></p><p style=\\\"margin-top: 32px; margin-bottom: 0px; padding: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 18px; line-height: 32px; font-family: &quot;Microsoft Yahei&quot;; text-indent: 2em; color: rgb(64, 64, 64); text-align: justify; white-space: normal; background-color: rgb(255, 255, 255);\\\"><br/></p><p style=\\\"margin-top: 32px; margin-bottom: 0px; padding: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 18px; line-height: 32px; font-family: &quot;Microsoft Yahei&quot;; text-indent: 2em; color: rgb(64, 64, 64); text-align: justify; white-space: normal; background-color: rgb(255, 255, 255);\\\">泰媒今年5月底曝光了英拉与他信在华盛顿游玩的照片。报道称，从照片可以看出，他信英拉兄妹是在位于华盛顿特区的林肯纪念堂前合影留念。据报道，二人将在美国停留一段时间，然后于6月返回欧洲。</p><p style=\\\"margin-top: 32px; margin-bottom: 0px; padding: 0px; font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 18px; line-height: 32px; font-family: &quot;Microsoft Yahei&quot;; text-indent: 2em; color: rgb(64, 64, 64); text-align: justify; white-space: normal; background-color: rgb(255, 255, 255);\\\">他信和英拉这两位泰国前总理下台后分别于2008年和2017年流亡国外，并遭到泰当局通缉，近几个月来，二人在英国、新加坡、日本等地频频现身，一直吸引着泰当局和外界的关注。泰当局表示，一直密切着关注英拉的去向，并采取了一切可能的法律程序，其中包括撤销英拉的4本护照。泰媒不久前援引英国广播公司（BBC）泰语频道报道称，知情人透露，英拉已经获得英国10年期签证，可在任何时候进出英国，每次停留时间不得超过6个月。</p><p><br/></p>\",\"cid\":\"3\",\"flag_headline\":\"1\",\"flag_recommend\":\"0\",\"flag_special_recommend\":\"0\",\"flag_slide_show\":\"1\",\"flag_roll\":\"0\",\"flag_bold\":\"0\",\"flag_picture\":\"0\",\"seo_title\":\"英拉他信兄妹赴美国\",\"seo_keywords\":\"英拉,他信\",\"seo_description\":\"英拉他信兄妹赴美国\\\"故地重游\\\",回忆往事感慨万千\",\"tag\":\"特朗普,三胖,英拉\",\"sort\":\"100\",\"author_name\":\"网易新闻\",\"password\":\"8844\",\"status\":\"1\",\"can_comment\":\"1\",\"visibility\":\"3\",\"type\":\"1\"}', 1573456268, 1),
+(474, 1, 'menu/main', 'create', '/menu/main/create', 'id=37', '{\"id\":\"\",\"pid\":\"0\",\"menu_name\":\"语音质检\",\"icons\":\"menu-icon fa fa-volume-control-phone\",\"url\":\"\",\"status\":\"1\",\"sort\":\"100\"}', 1573457217, 1),
+(475, 2, 'menu/main', 'update', '/menu/main/update', 'id=37', '{\"id\":\"37\",\"pid\":\"0\",\"menu_name\":\"语音质检\",\"icons\":\"menu-icon fa fa-volume-control-phone\",\"url\":\"\",\"status\":\"1\",\"sort\":\"1\"}', 1573457701, 1);
+INSERT INTO `cw_admin_log` (`id`, `type`, `controller`, `action`, `url`, `index`, `params`, `created_at`, `created_id`) VALUES
+(476, 1, 'menu/main', 'create', '/menu/main/create', 'id=38', '{\"id\":\"\",\"pid\":\"37\",\"menu_name\":\"语音库\",\"icons\":\"menu-icon fa fa-caret-right\",\"url\":\"voice/main/index\",\"status\":\"1\",\"sort\":\"100\"}', 1573458311, 1),
+(477, 1, 'menu/main', 'create', '/menu/main/create', 'id=39', '{\"id\":\"\",\"pid\":\"37\",\"menu_name\":\"项目分类\",\"icons\":\"menu-icon fa fa-caret-right\",\"url\":\"voice/category/index\",\"status\":\"1\",\"sort\":\"100\"}', 1573458341, 1),
+(478, 1, 'menu/main', 'create', '/menu/main/create', 'id=40', '{\"id\":\"\",\"pid\":\"37\",\"menu_name\":\"关键词设定\",\"icons\":\"menu-icon fa fa-caret-right\",\"url\":\"voice/keywords/index\",\"status\":\"1\",\"sort\":\"100\"}', 1573458409, 1),
+(479, 2, 'menu/main', 'update', '/menu/main/update', 'id=40', '{\"id\":\"40\",\"pid\":\"37\",\"menu_name\":\"关键词设定\",\"icons\":\"menu-icon fa fa-caret-right\",\"url\":\"voice/keywords/index\",\"status\":\"1\",\"sort\":\"3\"}', 1573458431, 1),
+(480, 2, 'menu/main', 'update', '/menu/main/update', 'id=39', '{\"id\":\"39\",\"pid\":\"37\",\"menu_name\":\"项目分类\",\"icons\":\"menu-icon fa fa-caret-right\",\"url\":\"voice/category/index\",\"status\":\"1\",\"sort\":\"2\"}', 1573458445, 1),
+(481, 2, 'menu/main', 'update', '/menu/main/update', 'id=38', '{\"id\":\"38\",\"pid\":\"37\",\"menu_name\":\"语音库\",\"icons\":\"menu-icon fa fa-caret-right\",\"url\":\"voice/main/index\",\"status\":\"1\",\"sort\":\"1\"}', 1573458450, 1),
+(482, 5, 'uploads/main', 'uploads', '/uploads/main/uploads?sField=Uploads%5Burl%5D&sType=file', 'Uploads[url]', '{\"state\":\"SUCCESS\",\"message\":\"上传成功\",\"url\":\"/file/20191112/86706010_Selection_037.png\",\"savefile\":\"86706010_Selection_037.png\",\"original\":\"Selection_037.png\",\"type\":\"png\",\"size\":45146}', 1573549854, 1),
+(483, 3, 'uploads/main', 'delete', '/uploads/main/delete', 'id=84', '{\"id\":\"84\",\"name\":\"Selection_037.png\",\"type\":\"\",\"savename\":\"86706010_Selection_037.png\",\"savepath\":\"/file/20191112\",\"ext\":\"png\",\"mime\":\"image/png\",\"size\":\"45146\",\"md5\":\"b5560e9f0f1d78917b480b6ec54807e7\",\"sha1\":\"1710b80d3462d4ae458e6af9b00d04dc1328a93c\",\"location\":\"0\",\"url\":\"/file/20191112/86706010_Selection_037.png\",\"created_at\":\"1573549854\",\"created_id\":\"1\",\"updated_at\":\"1573549854\",\"updated_id\":\"1\"}', 1573549984, 1),
+(484, 5, 'uploads/main', 'uploads', '/uploads/main/uploads?sField=Uploads%5Burl%5D&sType=file', 'Uploads[url]', '{\"state\":\"SUCCESS\",\"message\":\"上传成功\",\"url\":\"/file/20191112/91323853_20190424-投诉拦截安抚卡人-5070138171258629944（可以宣导，但应诉话术不宜使用）.wav\",\"savefile\":\"91323853_20190424-投诉拦截安抚卡人-5070138171258629944（可以宣导，但应诉话术不宜使用）.wav\",\"original\":\"20190424-投诉拦截安抚卡人-5070138171258629944（可以宣导，但应诉话术不宜使用）.wav\",\"type\":\"wav\",\"size\":346806}', 1573550022, 1),
+(485, 1, 'roleitem/main', 'create', '/roleitem/main/create', 'id=', '{\"type\":\"2\",\"name\":\"\",\"newName\":\"voice/main/index\",\"description\":\"语音质检 - 语音库\",\"rule_name\":\"\"}', 1573628534, 1),
+(486, 1, 'roleitem/main', 'create', '/roleitem/main/create', 'id=', '{\"type\":\"2\",\"name\":\"\",\"newName\":\"voice/main/create\",\"description\":\"语音质检 - 创建语音\",\"rule_name\":\"\"}', 1573628733, 1),
+(487, 1, 'roleitem/main', 'create', '/roleitem/main/create', 'id=', '{\"type\":\"2\",\"name\":\"\",\"newName\":\"voice/main/search\",\"description\":\"语音质检 - 查询语音\",\"rule_name\":\"\"}', 1573628779, 1),
+(488, 1, 'roleitem/main', 'create', '/roleitem/main/create', 'id=', '{\"type\":\"2\",\"name\":\"\",\"newName\":\"voice/main/delete\",\"description\":\"语音质检 - 删除语音\",\"rule_name\":\"\"}', 1573628797, 1),
+(489, 1, 'roleitem/main', 'create', '/roleitem/main/create', 'id=', '{\"type\":\"2\",\"name\":\"\",\"newName\":\"voice/main/uploads\",\"description\":\"语音质检 - 上传语音\",\"rule_name\":\"\"}', 1573628857, 1),
+(490, 5, 'uploads/main', 'uploads', '/uploads/main/uploads?sField=Uploads%5Burl%5D&sType=file', 'Uploads[url]', '{\"state\":\"SUCCESS\",\"message\":\"上传成功\",\"url\":\"/file/20191114/1573712419780678.png\",\"savefile\":\"1573712419780678.png\",\"original\":\"Selection_036.png\",\"type\":\"png\",\"size\":61405}', 1573712419, 1),
+(491, 2, 'cms/category', 'update', '/cms/category/update', 'id=2', '{\"id\":\"2\",\"is_system\":\"1\",\"pid\":\"1\",\"name\":\"公司动态\",\"url\":\"aboutus/news\",\"status\":\"1\",\"sort\":\"100\"}', 1573810694, 1),
+(492, 1, 'cms/category', 'create', '/cms/category/create', 'id=5', '{\"id\":\"\",\"is_system\":\"2\",\"pid\":\"0\",\"name\":\"项目分类\",\"url\":\"\",\"status\":\"1\",\"sort\":\"100\"}', 1573810713, 1),
+(493, 3, 'voice/main', 'delete', '/voice/main/delete', 'id=86', '{\"id\":\"86\",\"name\":\"Selection_036.png\",\"type\":\"9\",\"savename\":\"1573712419780678.png\",\"savepath\":\"/file/20191114\",\"ext\":\"png\",\"mime\":\"image/png\",\"size\":\"61405\",\"md5\":\"32e7ab2579a13ed86fe716ae64887201\",\"sha1\":\"4806aae293f88a2c982c8ee98d74eb4db456bf29\",\"location\":\"0\",\"url\":\"/file/20191114/1573712419780678.png\",\"created_at\":\"1573712419\",\"created_id\":\"1\",\"updated_at\":\"1573712419\",\"updated_id\":\"1\"}', 1573810755, 1);
 
 -- --------------------------------------------------------
 
@@ -515,7 +563,11 @@ INSERT INTO `cw_admin_menu` (`id`, `pid`, `menu_name`, `icons`, `url`, `status`,
 (33, 29, '素材管理', 'menu-icon fa fa-caret-right', 'wechat/material/index', 1, 4, 1532944068, 1, 1533004250, 1),
 (34, 29, '微信用户管理', 'menu-icon fa fa-caret-right', 'wechat/users/index', 1, 5, 1533003861, 1, 1533003899, 1),
 (35, 29, '群发消息', 'menu-icon fa fa-caret-right', 'wechat/message/index', 1, 100, 1533008699, 1, 1533008727, 1),
-(36, 29, '模板消息管理', 'menu-icon fa fa-caret-right', 'wechat/template/index', 1, 100, 1533008824, 1, 1533008824, 1);
+(36, 29, '模板消息管理', 'menu-icon fa fa-caret-right', 'wechat/template/index', 1, 100, 1533008824, 1, 1533008824, 1),
+(37, 0, '语音质检', 'menu-icon fa fa-volume-control-phone', '', 1, 1, 1573457217, 1, 1573457701, 1),
+(38, 37, '语音库', 'menu-icon fa fa-caret-right', 'voice/main/index', 1, 1, 1573458311, 1, 1573458450, 1),
+(39, 37, '项目分类', 'menu-icon fa fa-caret-right', 'voice/category/index', 1, 2, 1573458341, 1, 1573458445, 1),
+(40, 37, '关键词设定', 'menu-icon fa fa-caret-right', 'voice/keywords/index', 1, 3, 1573458409, 1, 1573458431, 1);
 
 -- --------------------------------------------------------
 
@@ -551,10 +603,10 @@ CREATE TABLE `cw_admin_user` (
 --
 
 INSERT INTO `cw_admin_user` (`id`, `username`, `email`, `face`, `role`, `status`, `auth_key`, `password_hash`, `password_reset_token`, `access_token`, `access_token_created_at`, `allowance`, `allowance_updated_at`, `last_time`, `last_ip`, `address`, `created_at`, `created_id`, `updated_at`, `updated_id`) VALUES
-(1, 'super', 'super@admin.com', '/avatars/image/20180614/152890601224415620.jpg', 'admin', 10, 'gKkLFMdB2pvIXOFNpF_Aeemvdf1j0YUM', '$2y$13$Nuf1mzDRoCMxrWI.rIjENu20QshJG41smdEeHFHxq0qdmS99YytHy', '5vLaPpUS-I-XxJaoGP-GZDk474WdnaK3_1469073015', 'BriM4BZIRi8mlVJ74rVmiVpvVbR3Xukp', 1532662856, 0, 0, 1555318287, '127.0.0.1', '湖南省,岳阳市,岳阳县', 1525678041, 1, 1555318287, 1),
+(1, 'super', 'super@admin.com', '/avatars/image/20180614/152890601224415620.jpg', 'admin', 10, 'VQE29C9ESrQAn7JfobQe7YYwStJBkHPo', '$2y$13$MuapgeBqeztgENyoj0YYA.9GcCrHV.IYU5HGZSGDk19H3XyMYyYiK', 'zNQHsYWpj_7lIFMznxZP3zsjOHpcRkQu_1573095639', 'BriM4BZIRi8mlVJ74rVmiVpvVbR3Xukp', 1532662856, 0, 0, 1573807110, '127.0.0.1', '湖南省,岳阳市,岳阳县', 1525678041, 1, 1573807110, 1),
 (2, 'admin', 'admin@admin.com', '', 'admin', 10, 'tArp_Kv4z1JlzBUZYCL33N24AZL-_77p', '$2y$13$RNrJ7GK1A5iZRxBpho6sbeCJKfNRxzy5axCeRjZLqvA5W6RuVYBRW', 'CgScbf1E96N3pqH01b0mVi_Z58j8QsRV_1501916190', '', 0, 0, 0, 1525678041, '127.0.0.1', '湖南省,岳阳市,岳阳县', 1525678041, 1, 1525678041, 1),
 (3, 'feeling515', 'test@test.com', '', 'menu_editor', 10, '7kaT_2heHfFPOGiASRIYWZVh7xkf10X3', '$2y$13$7wtV4r4YPg65GG.jIW5dZupKvQ7vGMcemO2qgAPxE.nSzyeh1K4am', '7rUwl7cfvDv7Ph06w1uVRLdRJf_wAxpM_1532586198', '', 0, 0, 0, 1533009122, '110.184.144.249', '', 1525961352, 1, 1533009122, 3),
-(4, 'test', 'test@test123.com', '', 'admin', 10, 'hCAsj5qx8HNvPlyyOGKvCQ7cTKcAcmmP', '$2y$13$IvTIE.J/QUfCD4tyLb6FcOTsC/mILvH.fv61rxKXedM1vNQIV26dS', 'tQL-qFx7dYDuXtJBeiECJ7n4dYeSyCLg_1532673226', '', 0, 0, 0, 0, '', '', 1528980583, 1, 1532673226, 1);
+(4, 'test', 'test@test123.com', '', 'admin', 10, '-VL9tn-wfyjJ_IJkKnanGDE9FaMRrnP6', '$2y$13$KFnjQrh2Lu6nencX6OV6x.117BJ6t4GF8AnRqZwSiorUrbVABAfpu', 'sHwL8IW0BKEzkE3IaPd4b9Qxuh22pFr5_1573094774', '', 0, 0, 0, 0, '', '', 1528980583, 1, 1573094774, 1);
 
 -- --------------------------------------------------------
 
@@ -599,7 +651,7 @@ CREATE TABLE `cw_article` (
 --
 
 INSERT INTO `cw_article` (`id`, `cid`, `type`, `title`, `sub_title`, `summary`, `thumb`, `seo_title`, `seo_keywords`, `seo_description`, `status`, `sort`, `author_name`, `scan_count`, `comment_count`, `can_comment`, `visibility`, `password`, `flag_headline`, `flag_recommend`, `flag_slide_show`, `flag_special_recommend`, `flag_roll`, `flag_bold`, `flag_picture`, `created_at`, `updated_at`, `created_id`, `updated_id`) VALUES
-(4, 2, 1, '英拉他信兄妹赴美国\"故地重游\" 回忆往事感慨万千', '英拉他信赴美\"故地重游\"', '流亡海外的泰国前总理他信、英拉兄妹在美国游玩的照片再遭曝光。据悉，二人还在美国约见了一些政治人士和商业伙伴', '/image/20180615/152899574863808244.jpeg', '英拉他信兄妹赴美国', '英拉,他信', '英拉他信兄妹赴美国\"故地重游\",回忆往事感慨万千', 1, 100, '网易新闻', 0, 0, 1, 3, '8844', 1, 0, 1, 0, 0, 0, 0, 1528685130, 1528995751, 1, 1);
+(4, 3, 1, '英拉他信兄妹赴美国\"故地重游\" 回忆往事感慨万千', '英拉他信赴美\"故地重游\"', '流亡海外的泰国前总理他信、英拉兄妹在美国游玩的照片再遭曝光。据悉，二人还在美国约见了一些政治人士和商业伙伴', '/image/20180615/152899574863808244.jpeg', '英拉他信兄妹赴美国', '英拉,他信', '英拉他信兄妹赴美国\"故地重游\",回忆往事感慨万千', 1, 100, '网易新闻', 0, 0, 1, 3, '8844', 1, 0, 1, 0, 0, 0, 0, 1528685130, 1573456268, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -743,12 +795,17 @@ INSERT INTO `cw_auth_item` (`id`, `name`, `type`, `description`, `rule_name`, `d
 (26, 'roleitem/main/index', 2, '路由管理-显示列表', NULL, NULL, 1525698454, 1525704312),
 (27, 'roleitem/main/search', 2, '路由管理-搜索数据', NULL, NULL, 1525698593, 1525704306),
 (29, 'roleitem/main/update', 2, '路由管理-更新数据', NULL, NULL, 1525698670, 1525704295),
-(86, 'tester', 1, '测试账号', NULL, NULL, 1528980625, 1528997651),
+(86, 'tester', 1, '测试账号', NULL, NULL, 1528980625, 1573023452),
 (78, 'uploads/main/create', 2, '上传管理-新建文件', NULL, NULL, 1527579100, 1527655311),
 (80, 'uploads/main/delete', 2, '上传管理-文件删除', NULL, NULL, 1528178789, 1528178789),
 (76, 'uploads/main/index', 2, '上传管理-文件列表', NULL, NULL, 1527579052, 1527579052),
 (77, 'uploads/main/search', 2, '上传管理-文件搜索', NULL, NULL, 1527579075, 1527579075),
 (79, 'uploads/main/uploads', 2, '上传管理-文件上传', NULL, NULL, 1527655294, 1527657267),
+(98, 'voice/main/create', 2, '语音质检 - 创建语音', NULL, NULL, 1573628733, 1573628733),
+(100, 'voice/main/delete', 2, '语音质检 - 删除语音', NULL, NULL, 1573628797, 1573628797),
+(97, 'voice/main/index', 2, '语音质检 - 语音库', NULL, NULL, 1573628534, 1573628534),
+(99, 'voice/main/search', 2, '语音质检 - 查询语音', NULL, NULL, 1573628779, 1573628779),
+(101, 'voice/main/uploads', 2, '语音质检 - 上传语音', NULL, NULL, 1573628857, 1573628857),
 (90, 'wechat/main/create', 2, '公众号管理 - 数据添加', NULL, NULL, 1533094203, 1533094214),
 (92, 'wechat/main/delete', 2, '公众号管理 - 数据删除', NULL, NULL, 1533180196, 1533180196),
 (88, 'wechat/main/index', 2, '公众号管理 - 公众号列表', NULL, NULL, 1533017306, 1534323513),
@@ -780,10 +837,8 @@ INSERT INTO `cw_auth_item_child` (`parent`, `child`) VALUES
 ('administrator', 'admin/main/create'),
 ('admin', 'admin/main/index'),
 ('administrator', 'admin/main/index'),
-('tester', 'admin/main/index'),
 ('admin', 'admin/main/search'),
 ('administrator', 'admin/main/search'),
-('tester', 'admin/main/search'),
 ('admin', 'admin/main/update'),
 ('administrator', 'admin/main/update'),
 ('admin', 'admin/main/upload'),
@@ -794,10 +849,8 @@ INSERT INTO `cw_auth_item_child` (`parent`, `child`) VALUES
 ('administrator', 'adminlog/main/export'),
 ('admin', 'adminlog/main/index'),
 ('administrator', 'adminlog/main/index'),
-('tester', 'adminlog/main/index'),
 ('admin', 'adminlog/main/search'),
 ('administrator', 'adminlog/main/search'),
-('tester', 'adminlog/main/search'),
 ('admin', 'assign/main/create'),
 ('administrator', 'assign/main/create'),
 ('admin', 'assign/main/delete'),
@@ -806,10 +859,8 @@ INSERT INTO `cw_auth_item_child` (`parent`, `child`) VALUES
 ('administrator', 'assign/main/export'),
 ('admin', 'assign/main/index'),
 ('administrator', 'assign/main/index'),
-('tester', 'assign/main/index'),
 ('admin', 'assign/main/search'),
 ('administrator', 'assign/main/search'),
-('tester', 'assign/main/search'),
 ('admin', 'assign/main/update'),
 ('administrator', 'assign/main/update'),
 ('admin', 'authrule/main/create'),
@@ -818,22 +869,15 @@ INSERT INTO `cw_auth_item_child` (`parent`, `child`) VALUES
 ('administrator', 'authrule/main/delete'),
 ('admin', 'authrule/main/index'),
 ('administrator', 'authrule/main/index'),
-('tester', 'authrule/main/index'),
 ('admin', 'authrule/main/search'),
 ('administrator', 'authrule/main/search'),
-('tester', 'authrule/main/search'),
 ('admin', 'authrule/main/update'),
 ('administrator', 'authrule/main/update'),
 ('administrator', 'cms/category/create'),
-('tester', 'cms/category/create'),
 ('administrator', 'cms/category/delete'),
-('tester', 'cms/category/delete'),
 ('administrator', 'cms/category/index'),
-('tester', 'cms/category/index'),
 ('administrator', 'cms/category/search'),
-('tester', 'cms/category/search'),
 ('administrator', 'cms/category/update'),
-('tester', 'cms/category/update'),
 ('administrator', 'cms/main/create'),
 ('tester', 'cms/main/create'),
 ('administrator', 'cms/main/delete'),
@@ -849,11 +893,8 @@ INSERT INTO `cw_auth_item_child` (`parent`, `child`) VALUES
 ('administrator', 'cms/main/view'),
 ('tester', 'cms/main/view'),
 ('administrator', 'cms/tags/create'),
-('tester', 'cms/tags/create'),
 ('administrator', 'cms/tags/index'),
-('tester', 'cms/tags/index'),
 ('administrator', 'cms/tags/search'),
-('tester', 'cms/tags/search'),
 ('admin', 'menu/main/create'),
 ('administrator', 'menu/main/create'),
 ('menu_editor', 'menu/main/create'),
@@ -863,11 +904,9 @@ INSERT INTO `cw_auth_item_child` (`parent`, `child`) VALUES
 ('admin', 'menu/main/index'),
 ('administrator', 'menu/main/index'),
 ('menu_editor', 'menu/main/index'),
-('tester', 'menu/main/index'),
 ('admin', 'menu/main/search'),
 ('administrator', 'menu/main/search'),
 ('menu_editor', 'menu/main/search'),
-('tester', 'menu/main/search'),
 ('admin', 'menu/main/update'),
 ('administrator', 'menu/main/update'),
 ('menu_editor', 'menu/main/update'),
@@ -879,37 +918,32 @@ INSERT INTO `cw_auth_item_child` (`parent`, `child`) VALUES
 ('administrator', 'role/main/edit'),
 ('admin', 'role/main/index'),
 ('administrator', 'role/main/index'),
-('tester', 'role/main/index'),
 ('admin', 'role/main/search'),
 ('administrator', 'role/main/search'),
-('tester', 'role/main/search'),
 ('admin', 'role/main/update'),
 ('administrator', 'role/main/update'),
 ('admin', 'role/main/view'),
 ('administrator', 'role/main/view'),
-('tester', 'role/main/view'),
 ('admin', 'roleitem/main/create'),
 ('administrator', 'roleitem/main/create'),
 ('admin', 'roleitem/main/delete'),
 ('administrator', 'roleitem/main/delete'),
 ('admin', 'roleitem/main/index'),
 ('administrator', 'roleitem/main/index'),
-('tester', 'roleitem/main/index'),
 ('admin', 'roleitem/main/search'),
 ('administrator', 'roleitem/main/search'),
-('tester', 'roleitem/main/search'),
 ('admin', 'roleitem/main/update'),
 ('administrator', 'roleitem/main/update'),
 ('administrator', 'uploads/main/create'),
-('tester', 'uploads/main/create'),
 ('administrator', 'uploads/main/delete'),
-('tester', 'uploads/main/delete'),
 ('administrator', 'uploads/main/index'),
-('tester', 'uploads/main/index'),
 ('administrator', 'uploads/main/search'),
-('tester', 'uploads/main/search'),
 ('administrator', 'uploads/main/uploads'),
-('tester', 'uploads/main/uploads'),
+('administrator', 'voice/main/create'),
+('administrator', 'voice/main/delete'),
+('administrator', 'voice/main/index'),
+('administrator', 'voice/main/search'),
+('administrator', 'voice/main/uploads'),
 ('administrator', 'wechat/main/create'),
 ('administrator', 'wechat/main/delete'),
 ('administrator', 'wechat/main/index'),
@@ -957,6 +991,7 @@ CREATE TABLE `cw_category` (
   `url` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'site/index' COMMENT '访问地址',
   `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '状态',
   `sort` smallint(6) NOT NULL DEFAULT '100' COMMENT '排序',
+  `is_system` tinyint(1) UNSIGNED NOT NULL DEFAULT '1' COMMENT '系统变量:1、用户 ，2、系统',
   `created_at` int(11) NOT NULL DEFAULT '0' COMMENT '创建时间',
   `updated_at` int(11) NOT NULL DEFAULT '0' COMMENT '修改时间'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='后台导航栏目信息表';
@@ -965,11 +1000,12 @@ CREATE TABLE `cw_category` (
 -- 转存表中的数据 `cw_category`
 --
 
-INSERT INTO `cw_category` (`id`, `pid`, `name`, `url`, `status`, `sort`, `created_at`, `updated_at`) VALUES
-(1, 0, '关于我们', 'aboutus', 1, 100, 1526791662, 1526791662),
-(2, 1, '公司动态', 'aboutus/news', 1, 100, 1527054270, 1527054270),
-(3, 2, '最新客户', 'kehu', 1, 100, 1527129894, 1527129894),
-(4, 1, '联系方式', 'lxfs', 1, 100, 1527129953, 1527129953);
+INSERT INTO `cw_category` (`id`, `pid`, `name`, `url`, `status`, `sort`, `is_system`, `created_at`, `updated_at`) VALUES
+(1, 0, '关于我们', 'aboutus', 1, 100, 1, 1526791662, 1571628116),
+(2, 1, '公司动态', 'aboutus/news', 1, 100, 1, 1527054270, 1573810694),
+(3, 2, '最新客户', 'kehu', 1, 100, 1, 1527129894, 1527129894),
+(4, 1, '联系方式', 'lxfs', 2, 100, 1, 1527129953, 1571628247),
+(5, 0, '项目分类', '', 1, 100, 2, 1573810713, 1573810713);
 
 -- --------------------------------------------------------
 
@@ -980,7 +1016,7 @@ INSERT INTO `cw_category` (`id`, `pid`, `name`, `url`, `status`, `sort`, `create
 CREATE TABLE `cw_uploads` (
   `id` int(10) UNSIGNED NOT NULL COMMENT '文件ID',
   `name` char(255) NOT NULL DEFAULT '' COMMENT '原始文件名',
-  `type` tinyint(4) NOT NULL COMMENT '媒体类型:1 图片（image）、2 语音（voice）、3视频（video）、4 缩略图（thumb）',
+  `type` tinyint(4) DEFAULT NULL COMMENT '媒体类型:1 图片（image）、2 语音（voice）、3视频（video）、4 缩略图（thumb）、5 录音（playback）、9 文件混合（file）',
   `savename` char(200) NOT NULL DEFAULT '' COMMENT '保存名称',
   `savepath` char(30) NOT NULL DEFAULT '' COMMENT '文件保存路径',
   `ext` char(5) NOT NULL DEFAULT '' COMMENT '文件后缀',
@@ -1001,7 +1037,26 @@ CREATE TABLE `cw_uploads` (
 --
 
 INSERT INTO `cw_uploads` (`id`, `name`, `type`, `savename`, `savepath`, `ext`, `mime`, `size`, `md5`, `sha1`, `location`, `url`, `created_at`, `created_id`, `updated_at`, `updated_id`) VALUES
-(83, 'aaa.jpeg', 0, '152899574863808244.jpeg', '/image/20180615', 'jpeg', 'image/jpeg', 7676, '439871a9e715705a1feaa60b29e1c8ce', 'a6340374a9f4a3eccc5cca0691b878513a509988', 0, '/image/20180615/152899574863808244.jpeg', 1528995748, 1, 1528995748, 1);
+(83, 'aaa.jpeg', 0, '152899574863808244.jpeg', '/image/20180615', 'jpeg', 'image/jpeg', 7676, '439871a9e715705a1feaa60b29e1c8ce', 'a6340374a9f4a3eccc5cca0691b878513a509988', 0, '/image/20180615/152899574863808244.jpeg', 1528995748, 1, 1528995748, 1),
+(85, '20190424-投诉拦截安抚卡人-5070138171258629944（可以宣导，但应诉话术不宜使用）.wav', NULL, '91323853_20190424-投诉拦截安抚卡人-5070138171258629944（可以宣导，但应诉话术不宜使用）.wav', '/file/20191112', 'wav', 'audio/wav', 346806, '91459aa4cc7e83b46f491334351b227a', 'b5fc206508ee8065fd336780a6654092b7e42816', 0, '/file/20191112/91323853_20190424-投诉拦截安抚卡人-5070138171258629944（可以宣导，但应诉话术不宜使用）.wav', 1573550022, 1, 1573550022, 1);
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `cw_voice`
+--
+
+CREATE TABLE `cw_voice` (
+  `id` int(10) UNSIGNED NOT NULL COMMENT '文件ID',
+  `fid` int(10) UNSIGNED DEFAULT NULL COMMENT '上传文件Uploads表ID',
+  `cid` int(10) UNSIGNED DEFAULT NULL COMMENT '项目分类ID',
+  `taskid` char(100) DEFAULT NULL COMMENT '任务ID',
+  `name` char(255) NOT NULL DEFAULT '' COMMENT '原始文件名',
+  `created_at` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT '上传时间',
+  `created_id` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT '用户id',
+  `updated_at` int(10) UNSIGNED NOT NULL COMMENT '更新时间',
+  `updated_id` int(10) NOT NULL COMMENT '更新用户id'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='文件表';
 
 -- --------------------------------------------------------
 
@@ -1177,6 +1232,13 @@ ALTER TABLE `cw_uploads`
   ADD KEY `created_id` (`created_id`);
 
 --
+-- Indexes for table `cw_voice`
+--
+ALTER TABLE `cw_voice`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `created_id` (`created_id`);
+
+--
 -- Indexes for table `cw_wechat`
 --
 ALTER TABLE `cw_wechat`
@@ -1204,13 +1266,13 @@ ALTER TABLE `cw_wechat_menu`
 -- 使用表AUTO_INCREMENT `cw_admin_log`
 --
 ALTER TABLE `cw_admin_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '日志ID', AUTO_INCREMENT=447;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '日志ID', AUTO_INCREMENT=494;
 
 --
 -- 使用表AUTO_INCREMENT `cw_admin_menu`
 --
 ALTER TABLE `cw_admin_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '导航栏目ID', AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '导航栏目ID', AUTO_INCREMENT=41;
 
 --
 -- 使用表AUTO_INCREMENT `cw_admin_user`
@@ -1240,7 +1302,7 @@ ALTER TABLE `cw_article_tags`
 -- 使用表AUTO_INCREMENT `cw_auth_item`
 --
 ALTER TABLE `cw_auth_item`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 
 --
 -- 使用表AUTO_INCREMENT `cw_auth_rule`
@@ -1252,13 +1314,19 @@ ALTER TABLE `cw_auth_rule`
 -- 使用表AUTO_INCREMENT `cw_category`
 --
 ALTER TABLE `cw_category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '导航栏目ID', AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '导航栏目ID', AUTO_INCREMENT=6;
 
 --
 -- 使用表AUTO_INCREMENT `cw_uploads`
 --
 ALTER TABLE `cw_uploads`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '文件ID', AUTO_INCREMENT=84;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '文件ID', AUTO_INCREMENT=87;
+
+--
+-- 使用表AUTO_INCREMENT `cw_voice`
+--
+ALTER TABLE `cw_voice`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '文件ID';
 
 --
 -- 使用表AUTO_INCREMENT `cw_wechat`
