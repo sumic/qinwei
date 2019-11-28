@@ -20,8 +20,20 @@ class MainController extends AppadminController{
         return $this->render($this->action->id,$data['params']);
     }
     
+    public function actionView(){
+        //获取内容
+        $doTranslate = $this->getBlock('index')->doTranslate();
+        $data = $this->getBlock('view')->getLastData();
+        return $data ? $this->render($this->action->id,$data) : '';
+    }
+
+    public function actionTranslate(){
+        return $this->getBlock('index')->doTranslate();
+    }
+
     public function actionUploads()
     {
         return $this->getBlock('index')->doUpload();
     }
+
 }

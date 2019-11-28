@@ -84,11 +84,8 @@ class Json extends Service
      */
     protected function actionError($code = 201, $msg = '',$data=[])
     {
-        return $this->returnJson([
-            'code' => $code,
-            'msg' => $msg,
-            'data' => $data
-        ]);
+        return $this->returnJson(compact('code', 'msg', 'data'));
+
     }
     
     /**

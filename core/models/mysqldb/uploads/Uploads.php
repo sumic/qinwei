@@ -24,6 +24,7 @@ class Uploads extends ActiveRecord
     public $file;
     public $image;
     public $video;
+    public $playback;
 
     public static function tableName()
     {
@@ -64,6 +65,7 @@ class Uploads extends ActiveRecord
                 ['image'], 'file',
                 'extensions' => $this->config['imageAllowFiles'],
                 'maxSize' => $this->config['imageMaxSize'],
+                'checkExtensionByMimeType' => false,
                 'wrongExtension' => '不支持的文件扩展名',
                 'on' => 'image'
             ],
@@ -71,6 +73,7 @@ class Uploads extends ActiveRecord
                 ['video'], 'file',
                 'extensions' => $this->config['videoAllowFiles'],
                 'maxSize' => $this->config['videoMaxSize'],
+                'checkExtensionByMimeType' => false,
                 'wrongExtension' => '不支持的文件扩展名',
                 'on' => 'video'
             ],
@@ -79,6 +82,7 @@ class Uploads extends ActiveRecord
                 'extensions' => $this->config['playbackAllowFiles'],
                 'maxSize' => $this->config['playbackMaxSize'],
                 'wrongExtension' => '不支持的文件扩展名',
+                'checkExtensionByMimeType' => false,
                 'on' => 'playback'
             ],
             [['size', 'created_at', 'created_id'], 'integer'],

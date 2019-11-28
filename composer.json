@@ -26,7 +26,8 @@
         "yiisoft/yii2-mongodb": "^2.1",
         "yiisoft/yii2-redis": "^2.0",
         "yurkinx/yii2-image": "^1.1",
-        "yiisoft/yii2-imagine": "^2.1"
+        "yiisoft/yii2-imagine": "^2.1",
+        "yiisoft/yii2-authclient": "^2.2"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

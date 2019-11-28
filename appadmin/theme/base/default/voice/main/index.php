@@ -13,6 +13,8 @@ $this->title = '录音列表';
 DropzoneAsset::register($this);
 ?>
 <?= Yii::$service->page->widget->render('metable'); ?>
+<?= Yii::$service->page->widget->render('flashmessage'); ?>
+
 <?php JsBlock::begin() ?>
 <script type="text/javascript">
     var myDropzone = null;
@@ -26,14 +28,21 @@ DropzoneAsset::register($this);
             return '<div id="dropzone" class="dropzone"></div>';
         }
     });
-    var aAdmins = <?= Json::encode($adminUsers) ?>;
+    var aAdmins = <?= Json::encode($adminUsers) ?>,
+        aParents = <?= Json::encode($parents) ?>;
+        aStatus = <?= Json::encode($status) ?>;
+        oButtons = <?= Json::encode($buttons['operations']) ?>;
+        oButtons.see = {
+            "cClass": "role-see"
+        };
+
     var m = meTables({
         title: "录音文件",
         buttons: <?= Json::encode($buttons['buttons']) ?>,
         operations: {
-            buttons: <?= Json::encode($buttons['operations']) ?>
+            buttons: oButtons,
         },
-        number:false,
+        number: false,
         url: {
             search: '<?= Url::toRoute('search'); ?>',
             create: '<?= Url::toRoute('create'); ?>',
@@ -57,57 +66,45 @@ DropzoneAsset::register($this);
                     },
                     "bViews": false
                 },
-                
+
+                {
+                    data: "cid",
+                    title: "项目分类",
+                    edit: {
+                        type: "selectOptions",
+                        number: 1,
+                        required: 1,
+                        id: "select-options"
+                    },
+                    search: {
+                        type: "selectOptions"
+                    },
+                    createdCell: parentStatus
+                },
+                {
+                    "title": "状态",
+                    "data": "status",
+                    value:aStatus,
+                    "search": {
+                        "type": "select"
+                    },
+                    render: function(data) {
+                        return $.getValue(aStatus, data, data);
+                    },
+                },
+
                 {
                     "title": "录音名称",
-                    "data": "savename",
+                    "data": "name",
                     "bSortable": false,
                     "search": {
                         "type": "text"
                     },
                 },
+
                 {
-                    "title": "保存路径",
-                    "data": "savepath",
-                    "bSortable": false,
-                    "isHide": true,
-                },
-                {
-                    "title": "文件后缀",
-                    "data": "ext",
-                    "bSortable": false
-                },
-                {
-                    "title": "MiMe类型",
-                    "data": "mime",
-                    "bSortable": false
-                },
-                {
-                    "title": "文件大小 Byte",
-                    "data": "size",
-                    "bSortable": true,
-                },
-                {
-                    "title": "MD5",
-                    "data": "md5",
-                    "bSortable": false,
-                    "isHide": true,
-                },
-                {
-                    "title": "SHA1",
-                    "data": "sha1",
-                    "bSortable": false,
-                    "isHide": true,
-                },
-                {
-                    "title": "Url地址",
-                    "data": "url",
-                    "bSortable": false,
-                    "isHide": true,
-                },
-                {
-                    "title": "保存名称",
-                    "data": "name",
+                    "title": "文件上传",
+                    "data": "fid",
                     "edit": {
                         "type": "dropzone"
                     },
@@ -131,6 +128,23 @@ DropzoneAsset::register($this);
         }
     });
 
+    function parentStatus(td, data) {
+        $(td).html($.getValue(aParents, data, '顶级分类'));
+    }
+    $.extend(MeTables, {
+        selectOptionsCreate: function(params) {
+            return '<select ' + this.handleParams(params) + '><option value="">请选择</option><?= $options ?></select>';
+        },
+        selectOptionsSearchMiddleCreate: function(params) {
+            delete params.type;
+            params.id = "search-" + params.name;
+            return '<label for="' + params.id + '"> ' + params.title + ': <select ' + this.handleParams(params) + '>' +
+                '<option value="All">请选择</option>' +
+                '<?= $options ?>' +
+                '</select></label>';
+        }
+    });
+
     var $form = null;
     $.extend(m, {
         // 显示的前置和后置操作
@@ -138,34 +152,47 @@ DropzoneAsset::register($this);
             if (!$form) $form = $("#edit-form");
             myDropzone.removeAllFiles();
             $("#dropzone").find("div.dz-image-preview").remove();
-            $form.find("input[name='url[]']").remove();
-            if (this.action === "update" && data["url"]) {
-                try {
-                    var imgs = JSON.parse(data["url"]);
-                    for (var i in imgs) {
-                        var mockFile = {
-                            name: "Filename" + i,
-                            size: 12345
-                        };
-                        myDropzone.emit("addedfile", mockFile);
-                        myDropzone.emit("thumbnail", mockFile, imgs[i]);
-                        myDropzone.emit("complete", mockFile);
-                        addInput(mockFile.name, imgs[i]);
-                    }
-                } catch (e) {
-                    console.error(e)
-                }
-            }
+            $form.find("input[name='fid[]']").remove();
+            $form.find("input[name='name[]']").remove();
             return true;
         }
     });
 
-    function addInput(name, url) {
-        $form.append('<input type="hidden" data-name="' + name + '" name="url[]" value="' + url + '">');
+    function addInput(name, fileinfo) {
+        $form.append('<input type="hidden" data-name="' + fileinfo.original + '" name="fid[]"  value="' + fileinfo.fid + '">');
+        $form.append('<input type="hidden" data-name="' + fileinfo.original + '" name="name[]" value="' + fileinfo.original + '">');
+    }
+
+    var mixLayer = null;
+
+    function layerClose() {
+        layer.close(mixLayer);
+        mixLayer = null;
+    }
+
+    function layerOpen(title, url) {
+        console.log(mixLayer);
+        if (mixLayer) {
+            layer.msg("请先关闭当前的弹出窗口");
+        } else {
+            mixLayer = layer.open({
+                type: 2,
+                area: ["90%", "90%"],
+                title: title,
+                content: url,
+                anim: 2,
+                maxmin: true,
+                cancel: function() {
+                    mixLayer = null;
+                }
+            });
+
+        }
     }
 
     $(function() {
         m.init();
+
 
         $form = $("#edit-form");
         // 新版本上传修改
@@ -178,13 +205,13 @@ DropzoneAsset::register($this);
 
         try {
             myDropzone = new Dropzone("#dropzone", {
-                url: "<?= Url::toRoute(['uploads', 'sField' => 'Uploads[url]', 'sType' => 'file']) ?>",
+                url: "<?= Url::toRoute(['uploads', 'sField' => 'Playback[url]', 'sType' => 'playback']) ?>",
                 // The name that will be used to transfer the file
-                paramName: "Uploads[url]",
+                paramName: "Playback[url]",
                 params: params,
                 parallelUploads: 10, //同时上传的文件个数
                 autoProcessQueue: false,
-                maxFilesize: 5, // MB
+                maxFilesize: 10, // MB
                 addRemoveLinks: true,
                 dictDefaultMessage: '<span class="bigger-150 bolder"><i class="ace-icon fa fa-caret-right red"></i> 拖拽文件</span> 上传 \
                 <span class="smaller-80 grey">(或点击)</span> <br /> \
@@ -197,27 +224,44 @@ DropzoneAsset::register($this);
                 //change the previewTemplate to use Bootstrap progress bars
                 previewTemplate: "<div class=\"dz-preview dz-file-preview\">\n<div class=\"dz-details\">\n<div class=\"dz-filename\"><span data-dz-name></span></div>\n<div class=\"dz-size\" data-dz-size></div>\n<img data-dz-thumbnail />\n</div>\n<div class=\"progress progress-small progress-striped active\"><div class=\"progress-bar progress-bar-success\" data-dz-uploadprogress></div></div>\n<div class=\"dz-success-mark\"><span></span></div>\n<div class=\"dz-error-mark\"><span></span></div>\n<div class=\"dz-error-message\"><span data-dz-errormessage></span></div>\n</div>",
                 init: function() {
-
                     this.on("addedfile", function() {
-                        $("#show-table-save").attr('disabled', false);
+                        $("#show-table-save").attr('disabled', false).html('开始上传');
                     });
                     this.on("success", function(file, response) {
-                        swal('上传成功', ':) ' + response.message, 'success');
+                        swal('上传成功', ':) ' + response.msg, 'success');
                         //重新加载datatables
-                        m.table.draw();
+                        if (response.code === 0) {
+                            addInput(file.name, response.data);
+                        } else {
+                            this.removeFile(file);
+                            swal('上传失败', ':( ' + response.msg, 'error');
+                        }
                     });
-
                     this.on("error", function(file, response) {
                         console.log(response);
-                        $(".dz-error-message").text(response.message);
-                        swal('上传失败', ':( ' + response.message, 'error');
+                        $(".dz-error-message").text(response.msg);
+                        //swal('上传失败', ':( ' + response.msg, 'error');
+                        if (response.msg) {
+                            $.notify({
+                                icon: 'fa fa-warning',
+                                message: "<strong>" + response.msg + "( " + response.data.original + " )</<strong>"
+                            });
+                        } else {
+                            $.notify({
+                                icon: 'fa fa-warning',
+                                message: "<strong>" + response + "</<strong>"
+                            });
+                        }
+                        return false;
                     });
-
                     this.on("removedfile", function(file) {
                         $form.find("input[data-name='" + file.name + "']").remove();
                     });
-                    this.on("queuecomplete", function() {
-                        $("#show-table-save").attr('disabled', true);
+                    this.on("queuecomplete", function(file) {
+                        if ($("input[name='fid[]']").length > 0) {
+                            m.save();
+                        }
+                        $("#show-table-save").attr('disabled', true).html('上传完成');
                     });
                 }
             });
@@ -225,9 +269,23 @@ DropzoneAsset::register($this);
             console.error(e);
         }
         $("#show-table-save").attr('disabled', true).click(function() {
+            if ($("#select-options").val() === '') {
+                swal('错误', ':（ 请选择项目分类', 'error');
+                return false;
+            }
             myDropzone.processQueue();
             return false;
         }).html('开始上传');
+
+        $(document).on('click', '.role-see-show-table', function() {
+            var data = $.getValue(m.table.data(), $(this).data('row'));
+            if (data) {
+                layerOpen(
+                    "查看" + data["name"] + "详情",
+                    "<?= Url::toRoute(['view']) ?>?id=" + data['id']
+                );
+            }
+        });
     });
 </script>
 <?php JsBlock::end() ?>

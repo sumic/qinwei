@@ -1,4 +1,5 @@
 <?php
+
 /**
  * =======================================================
  * @Description :Voice main block
@@ -9,6 +10,7 @@
  * @date: 2019年11月12日
  * @version: v1.0.0
  */
+
 namespace appadmin\modules\Voice\block\main;
 
 use Yii;
@@ -16,74 +18,44 @@ use appadmin\modules\AppadminBlock;
 use appadmin\interfaces\AppadminBlockInterface;
 use yii\helpers\ArrayHelper;
 
-class Index extends AppadminBlock implements AppadminBlockInterface{
-    
+class Index extends AppadminBlock implements AppadminBlockInterface
+{
+
     /**
      * @var string 定义上传文件的目录
      */
-    public $uploadPath = '@voices';
-    /**
-     * 缩略图设置
-     * 默认不开启
-     * ['height' => 200, 'width' => 200]表示生成200*200的缩略图，如果设置为空数组则不生成缩略图
-     * @var array
-     */
-    public $thumbnail = ['height' => 200, 'width' => 200];
-    
-    /**
-     * 图片缩放设置
-     * 默认不缩放。
-     * 配置如 ['height'=>200,'width'=>200]
-     *
-     * @var array
-     */
-    public $zoom = ['height'=>200,'width'=>200];
-    
-    /**
-     * 水印设置
-     * 参考配置如下：
-     * ['path'=>'水印图片位置','position'=>0]
-     * 默认位置为 9，可不配置
-     * position in [1 ,9]，表示从左上到右下的9个位置。
-     *
-     * @var array
-     */
-    public $watermark = ['path'=>'@uploads/water.gif','position'=>0];
-    /**
-     * @var string 上传model
-     */
+    public $uploadPath = '@uploads';
+
     public $uploader;
-    
+
     public function init()
     {
         parent::init();
         $this->uploader = \Yii::$service->helper->uploader;
         //上传路径
         $this->uploader->uploadPath = \Yii::getAlias($this->uploadPath);
-        //缩略图
-        //$this->uploader->thumbnail = $this->thumbnail;
-        //缩放
-        //$this->uploader->zoom = $this->zoom;
-        //水印
-        //$this->uploader->watermark = $this->watermark;
-        
+        //是不是超管
+        $userole = \Yii::$app->user->identity->role;
+        if($userole == 'admin'){
+            $this->_param['filters']['created_id'] = \Yii::$app->user->identity->id;
+        }
     }
-    
+
     public function setModel()
     {
-        $this->_modelName = Yii::$service->helper->uploader->getModelName();
+        $this->_modelName = Yii::$service->voice->playback->getModelName();
     }
-    
+
     public function setSearchFields()
     {
         $this->_searchFields = $this->searchFields();
     }
-    
+
     public function setService()
     {
-        $this->_service = Yii::$service->helper->uploader;
+        $this->_service = Yii::$service->voice->playback;
     }
-    
+
     public function setDisplay()
     {
         $this->_display = Yii::$service->datatables;
@@ -108,18 +80,18 @@ class Index extends AppadminBlock implements AppadminBlockInterface{
         return [
             [
                 'type' => 'textInput',
-                'name' => 'username',
-                'columns_type' =>'string'
+                'name' => 'status',
+                'columns_type' => 'int'
             ],
             [
                 'type' => 'textInput',
-                'name' => 'email',
-                'columns_type' =>'string'
+                'name' => 'created_id',
+                'columns_type' => 'int'
             ],
             [
                 'type' => 'textInput',
                 'name' => 'id',
-                'columns_type' =>'int'
+                'columns_type' => 'int'
             ],
         ];
     }
@@ -129,21 +101,23 @@ class Index extends AppadminBlock implements AppadminBlockInterface{
         $filler = $this->initFiller();
         #用户列表
         $params['adminUsers']  = ArrayHelper::map(\Yii::$service->admin->user->getall(), 'id', 'username');
-        #用户状态
-        $params['status'] = \Yii::$service->admin->user->getarraystatus();
-        #用户状态颜色
-        $params['statusColor'] = \Yii::$service->admin->user->getstatuscolor();
-        #可用角色
-        $params['roles'] = \Yii::$service->admin->role->getallrolearray();
+        #查询父级分类信息
+        $params['parents'] = \Yii::$service->cms->category->getAll();
+        #处理显示select
+        $params['options'] = \Yii::$service->helper->tree->setParam(['data' => $params['parents'], 'parentIdName' => 'pid'])->getTree(5, '<option value="{id}" data-pid="{pid}"> {extend_space}{name} </option>');
+        $params['parents'] = ArrayHelper::map($params['parents'], 'id', 'name');
         #可用按钮
         $params['buttons']  = $this->_tableButton;
+        #文件状态
+        $params['status'] = [-1 => '未上传', 1 => '已上传', 9 => '已完成', 0 => '队列中',2=>'处理中'];
+        //  var_dump($filler);exit;
         #return data
-        $result = \Yii::$service->search->getColl($filler,$this->_model);
-        $data ['tables']= $this->_display->handleResponse($result['coll'],$result['total'],$params);
-        $data ['params'] = $params;
+        $result = \Yii::$service->search->getColl($filler, $this->_model);
+        $data['tables'] = $this->_display->handleResponse($result['coll'], $result['total'], $params);
+        $data['params'] = $params;
         return $data;
     }
-    
+
     public function doUpload()
     {
         $request = Yii::$app->request;
@@ -153,17 +127,149 @@ class Index extends AppadminBlock implements AppadminBlockInterface{
         if (empty($strField) || empty($strType)) {
             return \Yii::$service->helper->json->error(201);
         }
-        $result  = \Yii::$service->helper->uploader->up($strField,$strType);
-        if($result['state'] != 'SUCCESS'){
+        $result  = \Yii::$service->helper->uploader->up($strField, $strType);
+        if ($result['state'] != 'SUCCESS') {
             Yii::$app->response->statusCode = 400;
-            Yii::$app->response->content = \Yii::$service->helper->json->error(201,$result['message'],$result);
-        }else{
-            Yii::$app->response->content = \Yii::$service->helper->json->success($result,$result['message']);
+            Yii::$app->response->data = \Yii::$service->helper->json->error(201, $result['message'], $result);
+        } else {
+            Yii::$app->response->data = \Yii::$service->helper->json->success($result, $result['message']);
+            //上传文件成功写入voice表
+
             //记录日志 TYPE_CREATE TYPE_UPDATE TYPE_DELETE TYPE_OTHER TYPE_UPLOAD
             $logs = \Yii::$service->admin->logs;
             $logs->save($logs::TYPE_UPLOAD, $result, $strField);
         }
-        return $result;
     }
-    
+
+    public function doTranslate()
+    {
+        $id = Yii::$app->request->get('id');
+        $xfyunApi = \Yii::$service->voice->xfyun;
+        if (!$id) {
+            return \Yii::$service->helper->json->error(201, 'ID不存在');
+        }
+        //获取录音基础信息
+        $playBack = $this->_service->getByPrimaryKey($id);
+        if ($playBack) {
+            switch ($playBack->status) {
+                    //-1 未上传过
+                case  -1:
+                    //预处理
+                    $prepare = $xfyunApi->prepare($playBack->fid);
+                    //更新taskid
+                    if ($prepare  && $prepare['ok'] == 0) {
+                        $result = $this->_service->updateTask($id, $prepare);
+                    }
+                    //上传文件
+                    if ($result) {
+                        $upload =  $xfyunApi->upload($result);
+                        if ($upload && $upload['ok'] == 0) {
+                            //上传成功，更新状态
+                            $result = $this->_service->updateStatus($id, '1');
+                            //合并文件
+                            $merge = $xfyunApi->megreFile($result->taskid);
+                            if ($merge && $merge['ok'] == 0) {
+                                //合并成功，更新状态
+                                $result = $this->_service->updateStatus($id, '2');
+                                //获取处理进度
+                                $process = $xfyunApi->porcessFile($result->taskid);
+                                if ($process && $process['ok'] == 0) {
+                                    if (json_decode($process['data'])->status == 9) {
+                                        //处理成功,更新状态9 
+                                        $result = $this->_service->updateStatus($id, '9');
+                                        //获取转换内容并保存
+                                        $content = $xfyunApi->getresult($result->taskid);
+                                        if ($content && $content['ok'] == 0) {
+                                            //保存转换内容数据
+                                            $playBack->content = $result['data'];
+                                            $playBack->save();
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    break;
+                    // 0 预处理完成，上传文件
+                case 0:
+                    $upload =  $xfyunApi->upload($playBack);
+                    if ($upload && $upload['ok'] == 0) {
+                        //上传成功，更新状态
+                        $result = $this->_service->updateStatus($id, '1');
+                        //合并文件
+                        $merge = $xfyunApi->megreFile($playBack->taskid);
+                        if ($merge && $merge['ok'] == 0) {
+                            //合并成功，更新状态
+                            $result = $this->_service->updateStatus($id, '2');
+                            //获取处理进度
+                            $process = $xfyunApi->porcessFile($playBack->taskid);
+                            if ($process && $process['ok'] == 0) {
+                                if (json_decode($process['data'])->status == 9) {
+                                    //处理成功,更新状态9 
+                                    $result = $this->_service->updateStatus($id, '9');
+                                    //获取转换内容并保存
+                                    $content = $xfyunApi->getresult($playBack->taskid);
+                                    if ($content && $content['ok'] == 0) {
+                                        //保存转换内容数据
+                                        $playBack->content = $result['data'];
+                                        $playBack->save();
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    break;
+                case 1:
+                    //合并文件
+                    $merge = $xfyunApi->megreFile($playBack->taskid);
+                    if ($merge && $merge['ok'] == 0) {
+                        //合并成功，更新状态 2
+                        $result = $this->_service->updateStatus($id, '2');
+                        //获取处理进度
+                        $process = $xfyunApi->porcessFile($playBack->taskid);
+                        if ($process && $process['ok'] == 0) {
+                            if (json_decode($process['data'])->status == 9) {
+                                //处理成功,更新状态9 
+                                $result = $this->_service->updateStatus($id, '9');
+                                //获取转换内容并保存
+                                $content = $xfyunApi->getresult($playBack->taskid);
+                                if ($content && $content['ok'] == 0) {
+                                    //保存转换内容数据
+                                    $playBack->content = $result['data'];
+                                    $playBack->save();
+                                }
+                            }
+                        }
+                    }
+                    break;
+                case 2:
+                    //获取处理进度
+                    $process = $xfyunApi->porcessFile($playBack->taskid);
+                    if ($process && $process['ok'] == 0) {
+                        if (json_decode($process['data'])->status == 9) {
+                            //处理成功,更新状态9 
+                            $result = $this->_service->updateStatus($id, '9');
+                            //获取转换内容并保存
+                            $content = $xfyunApi->getresult($playBack->taskid);
+                            if ($content && $content['ok'] == 0) {
+                                //保存转换内容数据
+                                $playBack->content = $content['data'];
+                                $playBack->save();
+                            }
+                        }
+                    }
+                    break;
+                case 9:
+                    if (empty($playBack->content)) {
+                        $result = $xfyunApi->getresult($playBack->taskid);
+                        if ($result && $result['ok'] == 0) {
+                            //保存转换内容数据
+                            $playBack->content = $result['data'];
+                            $playBack->save();
+                        }
+                    }
+                    break;
+            }
+        }
+    }
 }

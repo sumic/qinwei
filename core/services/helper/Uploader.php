@@ -6,10 +6,10 @@
  * 类型有 image file video
  * up($filename ,$senction)
  * =======================================================
- * @copyright Copyright (c) 2018 成都勤为科技有限公司
+ * @copyright Copyright (c) 2018 勤为科技有限公司
  * @link: http://www.qinweigroup.cn
  * @author: sumic <sumic515@gmail.com>
- * @date: 2018年5月28日
+ * @date: 2019年11月21日
  * @version: v1.0.0
  */
 namespace core\services\helper;
@@ -20,7 +20,6 @@ use yii\helpers\FileHelper;
 //use yii\imagine\Image;
 use yii\image\drivers\Image;
 use yii;
-use phpDocumentor\Reflection\Types\This;
 
 class Uploader extends Service
 {
@@ -157,6 +156,15 @@ class Uploader extends Service
         return 'id';
     }
     
+    public function getByPrimaryKey($primaryKey)
+    {
+        if ($primaryKey) {
+            $one = $this->_model->findOne($primaryKey);
+            return $one;
+        } else {
+            return new $this->_modelName();
+        }
+    }
     /**
      * $strField 上传表单名称
      * $scenario 模型验证场景$image = $imageComponent->load($rootPath . $file);
@@ -170,11 +178,14 @@ class Uploader extends Service
         // 初始化上次表单model对象，并定义好验证场景
         $model = $this->_model;
         $model->scenario = $scenario;
+
         
         //确保文件上传后写入数据库，使用了事务
         //开始事务
         $objFile = UploadedFile::getInstanceByName($strField);
         $innerTransaction = Yii::$app->db->beginTransaction();
+        $model->playback = $objFile;
+          
         try {
             //文件类型
             $model->type = $this->_fileType[$scenario];
@@ -187,6 +198,7 @@ class Uploader extends Service
             $model->mime = $objFile->type;
             $model->md5 = md5_file($objFile->tempName);
             $model->sha1 = sha1_file($objFile->tempName);
+            
             //文件MD5已经存在
             if(!$model->validate('md5')){
                 $file = $model->find()->where(['md5'=>$model->md5])->one();
@@ -200,7 +212,8 @@ class Uploader extends Service
                         "savefile" => $file->savename,
                         "original" => $file->name,
                         "type" => $file->ext,
-                        "size" => $file->size
+                        "size" => $file->size,
+                        "fid" => $file->id
                     ];
                     //结束事务返回数据
                     $innerTransaction->commit();
@@ -244,7 +257,8 @@ class Uploader extends Service
                         "savefile" => $model->savename,
                         "original" => $model->name,
                         "type" => $model->ext,
-                        "size" => $model->size
+                        "size" => $model->size,
+                        'fid' => $model->id
                     ];
                     //上传成功提交事务
                     $innerTransaction->commit();
@@ -805,7 +819,7 @@ class Uploader extends Service
     }
     
     //根据ID删除数据，使用了事务
-    public function remove($ids)
+    public function remove($ids, $force = false)
     {
         if (!$ids) {
             Yii::$service->helper->errors->add('没有选中删除项。');
@@ -814,11 +828,11 @@ class Uploader extends Service
         $innerTransaction = Yii::$app->db->beginTransaction();
         if (is_array($ids) && !empty($ids)) {
             foreach ($ids as $id) {
-                if(!$result = $this->removeOne($id, $innerTransaction))return false;
+                if(!$result = $this->removeOne($id, $innerTransaction, $force))return false;
             }
         } else {
             $id = $ids;
-            $result = $this->removeOne($id, $innerTransaction);
+            $result = $this->removeOne($id, $innerTransaction, $force);
         }
         if($result){
             $innerTransaction->commit();
@@ -828,7 +842,7 @@ class Uploader extends Service
         }
     }
     
-    public function removeOne($id,$innerTransaction){
+    public function removeOne($id,$innerTransaction, $force){
         $model = $this->_model->findOne($id);
         // 旧的地址
         if (!empty($model['url']) && file_exists($this->uploadPath. $model['url'])) unlink($this->uploadPath. $model['url']);

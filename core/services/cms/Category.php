@@ -40,6 +40,7 @@ class Category extends Service
         return $result;
     }
     
+    
     public function actionGetModelName()
     {
         return get_class($this->_model);

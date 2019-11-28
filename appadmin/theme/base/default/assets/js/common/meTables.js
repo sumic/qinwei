@@ -5,10 +5,10 @@
 (function (window, $) {
   //notifiy
   var notifyconfig = $.notifyDefaults({
-    z_index: 1031,
+    z_index: 2031,
     placement: {from: "top",align: "center"},
     type: "danger",
-    template: '<div data-notify="container" class="col-xs-11 col-sm-3 alert alert-{0} alert-with-icon" role="alert">'+
+    template: '<div data-notify="container" class="col-xs-12 col-sm-4 alert alert-{0} alert-with-icon" role="alert">'+
     '<button type="button" aria-hidden="true" class="close" data-notify="dismiss">×</button>'+
     '<i data-notify="icon"></i>'+
     '<span data-notify="title">{1}</span>'+
@@ -1174,7 +1174,7 @@
 
     if (value) {
       for (i in value) {
-        html += '<option value="' + i + ' " '+ (defaultValue === i ? 'selected="selected"' : '') +'>' + value[i] + '</option>'
+        html += '<option value="' + i + '"'+ (defaultValue === i ? 'selected="selected"' : '') +'>' + value[i] + '</option>'
       }
     }
 

@@ -111,9 +111,8 @@ class AppadminBlock extends BaseObject
         if (empty($param['asArray'])) {
             $param['asArray'] = $this->_asArray;
         }
-        if (is_array($param) && !empty($param)) {
-            $this->_param = array_merge($this->_param, $param);
-        }
+        $this->_param = array_merge($this->_param, $param);
+
         $this->_model = $this->_service->getModel();
     }
     

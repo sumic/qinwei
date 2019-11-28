@@ -28,9 +28,9 @@ class MainController extends AppadminController{
         return $data ? $this->render($this->action->id,$data) :'';
     }
     
-    public function actionView($id)
+    public function actionView()
     {
-        $data = $this->getBlock()->getLastData($id);
+        $data = $this->getBlock()->getLastData();
         return $data ? $this->render($this->action->id,$data) :'';
     }
     

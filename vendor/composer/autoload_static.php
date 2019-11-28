@@ -22,11 +22,13 @@ class ComposerStaticInitb9a6dee18bf5c4e750112cc8a2fbd97f
             'yii\\redis\\' => 10,
             'yii\\mongodb\\' => 12,
             'yii\\imagine\\' => 12,
+            'yii\\httpclient\\' => 15,
             'yii\\gii\\' => 8,
             'yii\\faker\\' => 10,
             'yii\\debug\\' => 10,
             'yii\\composer\\' => 13,
             'yii\\bootstrap\\' => 14,
+            'yii\\authclient\\' => 15,
             'yii\\' => 4,
         ),
         'p' => 
@@ -98,6 +100,10 @@ class ComposerStaticInitb9a6dee18bf5c4e750112cc8a2fbd97f
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2-imagine/src',
         ),
+        'yii\\httpclient\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/yiisoft/yii2-httpclient/src',
+        ),
         'yii\\gii\\' => 
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2-gii',
@@ -117,6 +123,10 @@ class ComposerStaticInitb9a6dee18bf5c4e750112cc8a2fbd97f
         'yii\\bootstrap\\' => 
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2-bootstrap/src',
+        ),
+        'yii\\authclient\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/yiisoft/yii2-authclient/src',
         ),
         'yii\\' => 
         array (

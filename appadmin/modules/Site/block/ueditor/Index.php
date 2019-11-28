@@ -18,7 +18,7 @@ class Index extends AppadminBlock
     /**
      * @var string 定义上传文件的目录
      */
-    public $uploadPath = '@uploads/ueditor';
+    public $uploadPath = '@ueditor';
     
     public $ueditor;
     /**

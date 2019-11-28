@@ -43,7 +43,7 @@ class DataTables extends Service
             'recordsTotal'    => (int)$total,                    // 数据总条数
             'recordsFiltered' => (int)$total,                    // 数据总条数
             'data'            => $data,                     // 数据信息
-            'params'          => $params
+            //'params'          => $params
         ];
     }
 }
