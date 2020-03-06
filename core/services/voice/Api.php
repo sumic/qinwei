@@ -96,36 +96,7 @@ class Api extends Xfyun
             }
         }
         return $result;
-    }
-
-    /**
-     * 解析微信服务器请求的xml数据, 如果是加密数据直接自动解密
-     * @param string $xml 微信请求的XML信息主体, 默认取$_GET数据
-     * @param string $messageSignature 加密签名, 默认取$_GET数据
-     * @param string $timestamp 加密时间戳, 默认取$_GET数据
-     * @param string $nonce 加密随机串, 默认取$_GET数据
-     * @param string $encryptType 加密类型, 默认取$_GET数据
-     * @return array
-     */
-    public function parseRequestXml($xml = null, $messageSignature = null, $timestamp = null, $nonce = null, $encryptType = null)
-    {
-        $xml === null && $xml = Yii::$app->request->getRawBody();
-        $return = [];
-        if (!empty($xml)) {
-            $messageSignature === null && isset($_GET['msg_signature']) && $messageSignature = $_GET['msg_signature'];
-            $encryptType === null && isset($_GET['encrypt_type']) && $encryptType = $_GET['encrypt_type'];
-            if ($messageSignature !== null && $encryptType == 'aes') { // 自动解密
-                $timestamp === null && isset($_GET['timestamp']) && $timestamp = $_GET['timestamp'];
-                $nonce === null && isset($_GET['nonce']) && $nonce = $_GET['nonce'];
-                $xml = $this->decryptXml($xml, $messageSignature, $timestamp, $nonce);
-                if ($xml === false) {
-                    return $return;
-                }
-            }
-            $return = (array) simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA);
-        }
-        return $return;
-    }
+    }   
 
     /**
      * 创建加密数字签名

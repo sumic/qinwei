@@ -4,7 +4,7 @@
  * @Description : api services 
  * 该类主要是给appserver端的api，返回的数据做格式输出，规范输出的各种状态。
  * =======================================================
- * @copyright Copyright (c) 2018 成都勤为科技有限公司
+ * @copyright Copyright (c) 2018 勤为科技有限公司
  * @link: http://www.qinweigroup.cn
  * @author: sumic <sumic515@gmail.com>
  * @date: 2018年7月24日 下午4:51:49

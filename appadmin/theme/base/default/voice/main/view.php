@@ -37,7 +37,7 @@ LoginAsset::register($this);
 
             <div class="widget-body">
                 <div class="widget-main">
-                <audio controls="controls"><source src="<?= Yii::$app->params['site-img'].$fileinfo->url?>" type="<?=$fileinfo->mime?>"></audio>
+                <audio controls="controls" id="players"><source src="<?= Yii::$app->params['site-img'].$fileinfo->url?>" type="<?=$fileinfo->mime?>"></audio>
                     <?php
                     echo DetailView::widget([
                         'model' => $model,

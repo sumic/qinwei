@@ -53,7 +53,7 @@ DropzoneAsset::register($this);
             editable: "editable",
             deleteAll: '<?= Url::toRoute('delete'); ?>',
         },
-        oViewConfig: {
+        viewConfig: {
             area: ['50%', 'auto']
         },
         table: {
@@ -171,7 +171,6 @@ DropzoneAsset::register($this);
     }
 
     function layerOpen(title, url) {
-        console.log(mixLayer);
         if (mixLayer) {
             layer.msg("请先关闭当前的弹出窗口");
         } else {
@@ -192,8 +191,6 @@ DropzoneAsset::register($this);
 
     $(function() {
         m.init();
-
-
         $form = $("#edit-form");
         // 新版本上传修改
         var csrfParam = $('meta[name=csrf-param]').attr('content') || "_csrf",
@@ -209,7 +206,7 @@ DropzoneAsset::register($this);
                 // The name that will be used to transfer the file
                 paramName: "Playback[url]",
                 params: params,
-                parallelUploads: 10, //同时上传的文件个数
+                parallelUploads: 100, //同时上传的文件个数
                 autoProcessQueue: false,
                 maxFilesize: 10, // MB
                 addRemoveLinks: true,

@@ -3,7 +3,7 @@
  * =======================================================
  * @Description : wechat sync contorller
  * =======================================================
- * @copyright Copyright (c) 2018 成都勤为科技有限公司
+ * @copyright Copyright (c) 2018 勤为科技有限公司
  * @link: http://www.qinweigroup.cn
  * @author: sumic <sumic515@gmail.com>
  * @date: Aug 9, 2018 10:59:04 AM

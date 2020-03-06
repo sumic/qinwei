@@ -36,7 +36,7 @@ class Index extends AppadminBlock implements AppadminBlockInterface
         $this->uploader->uploadPath = \Yii::getAlias($this->uploadPath);
         //是不是超管
         $userole = \Yii::$app->user->identity->role;
-        if($userole == 'admin'){
+        if($userole != 'admin'){
             $this->_param['filters']['created_id'] = \Yii::$app->user->identity->id;
         }
     }

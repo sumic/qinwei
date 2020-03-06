@@ -3,7 +3,7 @@
  * =======================================================
  * @Description :base service
  * =======================================================
- * @copyright Copyright (c) 2018 成都勤为科技有限公司
+ * @copyright Copyright (c) 2018 勤为科技有限公司
  * @link: http://www.qinweigroup.cn
  * @author: sumic <sumic515@gmail.com>
  * @date: 2018年08月01日09:37:32
