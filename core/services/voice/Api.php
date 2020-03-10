@@ -134,6 +134,7 @@ class Api extends Xfyun
      * @param sensitive_type	string	否	敏感词检测类型	需要进行敏感词检测(has_sensitive为true)时必传，0(默认词库)或1(自定义敏感词)
      * @param keywords	        string	否	自定义的敏感词	敏感词检测类型为1时必传，格式：科大讯飞,语音转写（每个词用英文逗号分割，整个字符串长度不超过256）
      * @param language	        string	否	语种cn:中文（默认）en:英文（英文不支持热词）	cn     
+     * @param pd                string  否  垂直领域个性化参数:法院: court 教育: edu 金融: finance 医疗: medical 科技: tech
      * @return array|bool 
      **/
     public function prepare($fileId)
@@ -147,7 +148,13 @@ class Api extends Xfyun
                 'ts'        => (string) $this->ts,
                 'file_len'  => (string) $fileInfo->size,
                 'file_name' => (string) $fileInfo->savename,
-                'slice_num' => 1
+                'slice_num' => '1',
+                'has_seperate' => 'true',
+                'has_sensitive' => 'true',
+                'sensitive_type' => '1',
+                'keywords' => '你好,信用卡',
+                'pd' => 'finance'
+
             ], [
                 'Content-Type: application/x-www-form-urlencoded; charset=UTF-8'
             ]);

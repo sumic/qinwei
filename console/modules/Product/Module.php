@@ -1,15 +1,9 @@
 <?php
-/**
- * FecShop file.
- *
- * @link http://www.fecshop.com/
- * @copyright Copyright (c) 2016 FecShop Software LLC
- * @license http://www.fecshop.com/license/
- */
 
-namespace fecshop\app\console\modules\Product;
 
-use fecshop\app\console\modules\ConsoleModule;
+namespace console\modules\Product;
+
+use console\modules\ConsoleModule;
 
 /**
  * @author Terry Zhao <2358269014@qq.com>

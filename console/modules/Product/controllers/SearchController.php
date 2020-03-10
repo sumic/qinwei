@@ -7,7 +7,7 @@
  * @license http://www.fecshop.com/license/
  */
 
-namespace fecshop\app\console\modules\Product\controllers;
+namespace console\modules\Product\controllers;
 
 use Yii;
 use yii\console\Controller;

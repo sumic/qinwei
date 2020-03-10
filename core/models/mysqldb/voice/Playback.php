@@ -37,6 +37,9 @@ class Playback extends ActiveRecord
     public $image;
     public $video;
 
+    //敏感词
+    public $sensitive;
+
     public function behaviors()
     {
         return [
@@ -62,7 +65,7 @@ class Playback extends ActiveRecord
     public function rules()
     {
         return [
-            [['fid', 'cid', 'endtime', 'status', 'created_at', 'created_id', 'updated_at', 'updated_id'], 'integer'],
+            [['fid', 'cid', 'has_sensitive', 'status', 'created_at', 'created_id', 'updated_at', 'updated_id'], 'integer'],
             [['status'],'default','value' => '-1'],
             [['content'], 'string'],
             [['taskid'], 'string', 'max' => 100],
@@ -85,7 +88,7 @@ class Playback extends ActiveRecord
             'taskid' => '任务ID',
             'name' => '原始文件名',
             'content' => '转换内容',
-            'endtime' => '语音时长',
+            'has_sensitive' => '是否包含敏感词',
             'status' => '语音状态',
             'created_at' => '上传时间',
             'created_id' => '用户id',

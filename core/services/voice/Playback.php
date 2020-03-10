@@ -65,6 +65,16 @@ class Playback extends Service
         }
     }
 
+    public function getAllTranslate(){
+        $result = $this->_model->find()
+            //->select(['id', 'menu_name', 'pid'])
+            ->where([
+                '<>' ,'status','9'
+            ])
+            ->indexBy('id')
+            ->all();
+        return $result;
+    }
     public function save($param, $scenario = 'default')
     {
         $primaryVal = isset($param[$this->getPrimaryKey()]) ? $param[$this->getPrimaryKey()] : '';
@@ -161,6 +171,7 @@ class Playback extends Service
     {
         if ($id) {
             //更新数据
+            
             $model = $this->getByPrimaryKey($id);
             if (!$model) {
                 Yii::$service->helper->errors->add($this->getPrimaryKey() . ' 不存在');
@@ -171,7 +182,6 @@ class Playback extends Service
                 //状态0 任务创建成功
                 $model->status = 0;
                 $model->scenario = 'update';
-
                 if ($model->validate()) {
                     $model->save();
                 } else {

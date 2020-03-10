@@ -28,7 +28,11 @@ class View
             $data['model']->cid        = \Yii::$service->cms->category->getbyprimarykey($data['model']->cid)->name;
             $data['model']->created_id = \Yii::$service->admin->user->getbyprimarykey($data['model']->created_id)->username;
             $data['model']->updated_id = \Yii::$service->admin->user->getbyprimarykey($data['model']->updated_id)->username;
-            $data['model']->content = json_decode($data['model']->content);
+            //敏感词解析
+            $data['model']->sensitive = json_decode((json_decode($data['model']->content))->sensitive_result);
+            //var_dump($data['model']->sensitive);exit;
+            //通话内容解析
+            $data['model']->content = json_decode((json_decode($data['model']->content))->audio_result);
             $data['fileinfo'] = \Yii::$service->helper->uploader->getByPrimaryKey($data['model']->fid);
         } else {
             Yii::$service->page->message->adderror('ID不正确');

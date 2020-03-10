@@ -7,7 +7,7 @@
  * @license http://www.fecshop.com/license/
  */
 
-namespace fecshop\app\console\modules\Product\controllers;
+namespace console\modules\Product\controllers;
 
 use Yii;
 use yii\console\Controller;
@@ -18,7 +18,7 @@ use yii\console\Controller;
  */
 class IndexController extends Controller
 {
-    public function actionIndex()
+    public function actionFuck()
     {
         echo 'xxxxx';
         //$article = Yii::$service->cms->article->coll();

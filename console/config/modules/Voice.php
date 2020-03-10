@@ -13,6 +13,6 @@
 <?php
 return [
     'voice' => [
-        'class' => '\console\modules\Voice\Module',
+        'class' => 'console\modules\Voice\Module',
     ],
 ];
