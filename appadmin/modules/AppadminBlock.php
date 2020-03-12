@@ -216,7 +216,6 @@ class AppadminBlock extends BaseObject
         // 接收参数判断
         $param = Yii::$app->request->post();
         $this->_param = $param;
-        
         $result = $this->_service->save($this->_param,$scenarios); 
         $errors = Yii::$service->helper->errors->get();
          if (!$errors) {

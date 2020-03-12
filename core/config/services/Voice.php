@@ -18,6 +18,9 @@ return [
             'playback' => [
                 'class'            => 'core\services\voice\Playback',
             ],
+            'console' => [
+                'class'            => 'core\services\voice\ConsolePlayback',
+            ],
             'xfyun' => [
                 'class'            => 'core\services\voice\Api',
                 'appId'            => '5dd4f7a8',

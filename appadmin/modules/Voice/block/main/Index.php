@@ -90,7 +90,12 @@ class Index extends AppadminBlock implements AppadminBlockInterface
             ],
             [
                 'type' => 'textInput',
-                'name' => 'id',
+                'name' => 'cid',
+                'columns_type' => 'int'
+            ],
+            [
+                'type' => 'textInput',
+                'name' => 'has_sensitive',
                 'columns_type' => 'int'
             ],
         ];
@@ -110,6 +115,9 @@ class Index extends AppadminBlock implements AppadminBlockInterface
         $params['buttons']  = $this->_tableButton;
         #文件状态
         $params['status'] = [-1 => '未上传', 1 => '已上传', 9 => '已完成', 0 => '队列中',2=>'处理中'];
+        #敏感词
+        $params['sensitive'] = [0 => '正常', 1 => '高危'];
+
         //  var_dump($filler);exit;
         #return data
         $result = \Yii::$service->search->getColl($filler, $this->_model);
@@ -141,6 +149,27 @@ class Index extends AppadminBlock implements AppadminBlockInterface
         }
     }
 
+    public function doUpdate($scenarios = 'update')
+    {
+        // 接收参数判断
+        $param = Yii::$app->request->post('Playback');
+        $this->_param = $param;
+        $result = $this->_service->updateChecked($param['id'], $param['is_checked']);
+
+        $errors = Yii::$service->helper->errors->get();
+         if (!$errors) {
+             //记录日志 TYPE_CREATE TYPE_UPDATE TYPE_DELETE TYPE_OTHER TYPE_UPLOAD
+             $logs = \Yii::$service->admin->logs;
+             $logs->save($scenarios == 'create' ? $logs::TYPE_CREATE : $logs::TYPE_UPDATE, $param, $this->_primaryKey . '=' . $result[$this->_primaryKey]);
+             Yii::$service->url->redirect(['voice/main/view','id'=>$result->id]);
+                return ;
+            }else{
+                $this->_model->load($param,'');
+                $errors =  Yii::$service->helper->errors->get();
+                //设置错误提示信息
+                Yii::$service->page->message->adderror($errors[0]);
+            } 
+    }
     public function doTranslate()
     {
         $id = Yii::$app->request->get('id');

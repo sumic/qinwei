@@ -27,6 +27,9 @@ class MainController extends AppadminController{
         return $data ? $this->render($this->action->id,$data) : '';
     }
 
+    public function actionUpdate(){
+        return $this->getBlock('index')->doUpdate();
+    }
     public function actionTranslate(){
         return $this->getBlock('index')->doTranslate();
     }

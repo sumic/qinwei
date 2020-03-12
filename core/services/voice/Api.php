@@ -152,7 +152,7 @@ class Api extends Xfyun
                 'has_seperate' => 'true',
                 'has_sensitive' => 'true',
                 'sensitive_type' => '1',
-                'keywords' => '你好,信用卡',
+                'keywords' => '通讯录,高利贷,催债,法务,检察院,司法,公安,法院,屎,操,你妈,傻,砍,死,人话,一直,狗,不要脸,跳楼,妈的,王八蛋,二逼,孙子,畜,人渣,脑残,你大爷,猪,逼,轰炸,报警,偷,抢,骗贷,血,肾,器官,套现,投诉,骚扰,威胁,图,骂,文明,威胁,儿子',
                 'pd' => 'finance'
 
             ], [

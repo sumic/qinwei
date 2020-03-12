@@ -3,13 +3,22 @@
 use core\widgets\JsBlock;
 use yii\widgets\DetailView;
 use \backend\widgets\Nestable;
+use yii\bootstrap\ActiveForm;
 use appadmin\assets\RoleViewAsset;
 use appadmin\assets\LoginAsset;
+use yii\helpers\Html;
 
 $this->title = '录音详情';
 RoleViewAsset::register($this);
 LoginAsset::register($this);
 /* @var $model \backend\models\Auth */
+$checkboxOptions = [
+    'options' => [
+        'class' => 'from-group col-sm-6'
+    ],
+    'inputTemplate' => "{input}",
+    'checkboxTemplate' => "{input}\n<span class='lbl'>&nbsp;&nbsp;{label}</span>"
+];
 ?>
 <!-- flashmessage -->
 <?= Yii::$service->page->widget->render('flashmessage'); ?>
@@ -127,13 +136,53 @@ LoginAsset::register($this);
                     'attributes' => [
                         'name',
                         'cid',
-                        ['label' => '添加时间', 'value' => date('Y-m-d H:i:s', $model->created_at)],
-                        ['label' => '修改时间', 'value' => date('Y-m-d H:i:s', $model->updated_at)],
+                        ['label' => '创建时间', 'value' => date('Y-m-d H:i:s', $model->created_at)],
+                        ['label' => '更新时间', 'value' => date('Y-m-d H:i:s', $model->updated_at)],
                     ],
                 ]);
                 ?>
             </div>
         </div>
+    </div>
+</div>
+<div class="col-xs-4 col-sm-4 widget-container-col ui-sortable">
+    <!-- #section:custom/widget-box -->
+    <div class="widget-box  ui-sortable-handle">
+        <div class="widget-header">
+            <h5 class="widget-title"> 操作 </h5>
+            <!-- #section:custom/widget-box.toolbar -->
+            <div class="widget-toolbar">
+                <a class="orange2" data-action="fullscreen" href="#">
+                    <i class="ace-icon fa fa-expand"></i>
+                </a>
+
+                <a data-action="collapse" href="#">
+                    <i class="ace-icon fa fa-chevron-up"></i>
+                </a>
+            </div>
+
+            <!-- /section:custom/widget-box.toolbar -->
+        </div>
+        <?php
+        $form = ActiveForm::begin([
+            'action' => ['update'],
+            'options' => [
+                'class' => 'form-horizontal'
+            ]
+        ]);
+        ?>
+        <div class="widget-body">
+            <div class="widget-main">
+            <?= Html::activeHiddenInput($model,'id') ?>
+
+                <?= $form->field($model, 'is_checked', $checkboxOptions)->checkbox(['class' => 'ace ace-switch ace-switch-4 btn-rotate']); ?>
+                <div style="clear:both;text-align:center"><button class="btn btn-info" type="submit">
+                    <i class="ace-icon fa fa-check bigger-110"></i> 提交
+                </button></div>
+            </div>
+        </div>
+        <?php $form = ActiveForm::end() ?>
+
     </div>
 </div>
 

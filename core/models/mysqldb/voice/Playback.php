@@ -59,7 +59,7 @@ class Playback extends ActiveRecord
 	    return [
 	        'default' => ['fid', 'cid', 'name', 'created_at', 'created_id', 'updated_at', 'updated_id'],
             'create'  => ['fid', 'cid', 'name', 'created_at', 'created_id', 'updated_at', 'updated_id'],
-            'update'  => ['taskid','status', 'updated_at', 'updated_id'],
+            'update'  => ['taskid','status', 'is_checked','updated_at', 'updated_id'],
 	    ];
 	}
     public function rules()
@@ -90,6 +90,7 @@ class Playback extends ActiveRecord
             'content' => '转换内容',
             'has_sensitive' => '是否包含敏感词',
             'status' => '语音状态',
+            'is_checked' => '已抽检',
             'created_at' => '上传时间',
             'created_id' => '用户id',
             'updated_at' => '更新时间',

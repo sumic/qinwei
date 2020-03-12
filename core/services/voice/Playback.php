@@ -71,6 +71,7 @@ class Playback extends Service
             ->where([
                 '<>' ,'status','9'
             ])
+            ->orwhere(['IS','content',new \yii\db\Expression('NULL')])
             ->indexBy('id')
             ->all();
         return $result;
@@ -81,6 +82,7 @@ class Playback extends Service
         if ($primaryVal) {
             //更新数据
             $model = $this->getByPrimaryKey($primaryVal);
+
             if (!$model) {
                 Yii::$service->helper->errors->add($this->getPrimaryKey() . ' 不存在');
                 return false;
@@ -203,6 +205,28 @@ class Playback extends Service
             } else {
                 //状态1 上传成功
                 $model->status = $param;
+
+                if ($model->validate()) {
+                    $model->save();
+                } else {
+                    Yii::$service->helper->errors->addByModelErrors($model->getErrors());
+                    return false;
+                }
+            }
+            return $model;
+        }
+    }
+
+    public function updateChecked($id,$param){
+        if ($id) {
+            //更新数据
+            $model = $this->getByPrimaryKey($id);
+            if (!$model) {
+                Yii::$service->helper->errors->add($this->getPrimaryKey() . ' 不存在');
+                return false;
+            } else {
+                //状态1 上传成功
+                $model->is_checked = $param;
 
                 if ($model->validate()) {
                     $model->save();

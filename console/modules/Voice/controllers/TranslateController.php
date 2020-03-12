@@ -18,14 +18,12 @@ class TranslateController extends Controller
      * */
     public function actionIndex()
     {
-        var_dump(Yii::$app->getUser());exit;
         $xfyunApi = \Yii::$service->voice->xfyun;
-        $this->_service = Yii::$service->voice->playback;
-        $data = $this->_service->getAllTranslate();  
+        $this->_service = Yii::$service->voice->console;
+        $data = $this->_service->getAllTranslate(); 
         if($data){
             foreach ($data as $playBack){
                 if ($playBack) {
-                    
                     switch ($playBack->status) {
                             //-1 未上传过
                         case  -1:
@@ -34,11 +32,8 @@ class TranslateController extends Controller
                             
                             //更新taskid
                             if ($prepare  && $prepare['ok'] == 0) {
-                                var_dump($playBack);exit;
                                 $result = $this->_service->updateTask($playBack->id, $prepare);
-                            }
-                            var_dump($result);
-                            var_dump($playBack->id);exit;
+                            }                           
                             //上传文件
                             if ($result) {
                                 $upload =  $xfyunApi->upload($result);
@@ -94,9 +89,9 @@ class TranslateController extends Controller
                                             $content = $xfyunApi->getresult($playBack->taskid);
                                             if ($content && $content['ok'] == 0) {
                                                 //保存转换内容数据
-                                                $playBack->content = $result['data'];
+                                                $playBack->content = $content['data'];
                                                  //是否包含敏感词
-                                                 if(!empty(json_decode((json_decode($result['data']))->sensitive_result))){
+                                                 if(!empty(json_decode((json_decode($content['data']))->sensitive_result))){
                                                     $playBack->has_sensitive = 1;
                                                 }
                                                 $playBack->save();
@@ -109,6 +104,7 @@ class TranslateController extends Controller
                         case 1:
                             //合并文件
                             $merge = $xfyunApi->megreFile($playBack->taskid);
+                            
                             if ($merge && $merge['ok'] == 0) {
                                 //合并成功，更新状态 2
                                 $result = $this->_service->updateStatus($playBack->id, '2');
@@ -122,9 +118,9 @@ class TranslateController extends Controller
                                         $content = $xfyunApi->getresult($playBack->taskid);
                                         if ($content && $content['ok'] == 0) {
                                             //保存转换内容数据
-                                            $playBack->content = $result['data'];
+                                            $playBack->content = $content['data'];
                                              //是否包含敏感词
-                                             if(!empty(json_decode((json_decode($result['data']))->sensitive_result))){
+                                             if(!empty(json_decode((json_decode($content['data']))->sensitive_result))){
                                                 $playBack->has_sensitive = 1;
                                             }
                                             $playBack->save();
@@ -136,17 +132,20 @@ class TranslateController extends Controller
                         case 2:
                             //获取处理进度
                             $process = $xfyunApi->porcessFile($playBack->taskid);
+                            
                             if ($process && $process['ok'] == 0) {
                                 if (json_decode($process['data'])->status == 9) {
                                     //处理成功,更新状态9 
                                     $result = $this->_service->updateStatus($playBack->id, '9');
+                                    
                                     //获取转换内容并保存
                                     $content = $xfyunApi->getresult($playBack->taskid);
+
                                     if ($content && $content['ok'] == 0) {
                                         //保存转换内容数据
                                         $playBack->content = $content['data'];
                                          //是否包含敏感词
-                                         if(!empty(json_decode((json_decode($result['data']))->sensitive_result))){
+                                         if(!empty(json_decode((json_decode($content['data']))->sensitive_result))){
                                             $playBack->has_sensitive = 1;
                                         }
                                         $playBack->save();

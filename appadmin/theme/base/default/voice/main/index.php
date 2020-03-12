@@ -32,6 +32,7 @@ DropzoneAsset::register($this);
         aParents = <?= Json::encode($parents) ?>;
         aStatus = <?= Json::encode($status) ?>;
         oButtons = <?= Json::encode($buttons['operations']) ?>;
+        arrSystem = <?= Json::encode($sensitive) ?>;
         oButtons.see = {
             "cClass": "role-see"
         };
@@ -66,7 +67,6 @@ DropzoneAsset::register($this);
                     },
                     "bViews": false
                 },
-
                 {
                     data: "cid",
                     title: "项目分类",
@@ -82,15 +82,38 @@ DropzoneAsset::register($this);
                     createdCell: parentStatus
                 },
                 {
-                    "title": "状态",
+                    data: "has_sensitive",
+                    title: "敏感词",
+                    value: arrSystem,
+                    search: {
+                        type: "select"
+                    },
+                    "createdCell": function(td, data) {
+                        $(td).html('<span class="label label-' + (parseInt(data) === 1 ? 'danger">高危' : 'success">正常') + '</span>');
+                    },
+                    sortable: false
+                },
+                {
+                    "title": "转码",
                     "data": "status",
                     value:aStatus,
-                    "search": {
-                        "type": "select"
-                    },
+                    
                     render: function(data) {
                         return $.getValue(aStatus, data, data);
                     },
+                },
+
+                {
+                    data: "is_checked",
+                    title: "人工复核",
+                    value: arrSystem,
+                    search: {
+                        type: "select"
+                    },
+                    "createdCell": function(td, data) {
+                        $(td).html('<span class="label label-' + (parseInt(data) === 0 ? 'warning">待抽检' : 'success">已抽检') + '</span>');
+                    },
+                    sortable: false
                 },
 
                 {
@@ -113,12 +136,17 @@ DropzoneAsset::register($this);
                     "bViews": false,
                 },
                 {
-                    "title": "上传时间",
+                    "title": "创建时间",
                     "data": "created_at",
                     "createdCell": MeTables.dateTimeString
                 },
                 {
-                    "title": "上传者",
+                    "title": "更新时间",
+                    "data": "updated_at",
+                    "createdCell": MeTables.dateTimeString
+                },
+                {
+                    "title": "上传",
                     "data": "created_id",
                     render: function(data) {
                         return $.getValue(aAdmins, data, data);
